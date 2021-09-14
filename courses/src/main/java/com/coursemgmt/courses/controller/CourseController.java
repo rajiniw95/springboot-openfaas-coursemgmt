@@ -46,7 +46,7 @@ public class CourseController {
     // Rest controller for showNewCourseForm method -- duplicate method with @ResponseBody annotation
     @PostMapping("/saveCourse/api")
     @ResponseBody
-    public String saveCourse(@ModelAttribute("course") Course course){
+    public String saveCourseRestAPI(@ModelAttribute("course") Course course){
         // save course to database
         courseService.saveCourse(course);
         return "redirect:/";
@@ -66,7 +66,7 @@ public class CourseController {
     // Rest controller for showFormForUpdate method -- duplicate method with @ResponseBody annotation
     @GetMapping("/showFormForUpdate/{id}/api")
     @ResponseBody
-    public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
+    public String showFormForUpdateRestAPI(@PathVariable( value = "id") long id, Model model) {
 
         // get course from the service
         Course course = courseService.getCourseById(id);
@@ -87,7 +87,7 @@ public class CourseController {
     // Rest controller for deleteCourse method -- duplicate method with @ResponseBody annotation
     @GetMapping("/deleteCourse/{id}/api")
     @ResponseBody
-    public String deleteCourse(@PathVariable (value = "id") long id) {
+    public String deleteCourseRestAPI(@PathVariable (value = "id") long id) {
 
         // call delete course method
         this.courseService.deleteCourseById(id);

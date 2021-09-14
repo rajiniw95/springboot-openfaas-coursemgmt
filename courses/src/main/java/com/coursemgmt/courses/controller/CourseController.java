@@ -1,7 +1,6 @@
 package com.coursemgmt.courses.controller;
 
 import com.coursemgmt.courses.model.Course;
-import com.coursemgmt.courses.repository.CourseRepository;
 import com.coursemgmt.courses.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +20,6 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
-
-    @Autowired
-    private CourseRepository courseRepository;
 
     //============================ VIEW AVAILABLE COURSES ============================//
 
@@ -64,7 +60,7 @@ public class CourseController {
     @PostMapping(value = "/saveCourse/api", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public Course saveCourseRestAPI(@Valid @RequestBody Course course) {
-        return courseRepository.save(course);
+        return courseService.saveCourse(course);
     }
 
     //============================ VIEW UPDATE FORM ============================//

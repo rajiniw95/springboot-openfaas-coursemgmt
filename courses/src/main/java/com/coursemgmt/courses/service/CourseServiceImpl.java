@@ -19,8 +19,9 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void saveCourse(Course course) {
+    public Course saveCourse(Course course) {
         this.courseRepository.save(course);
+        return course;
     }
 
     @Override
@@ -35,8 +36,14 @@ public class CourseServiceImpl implements CourseService{
         return course;
     }
 
+//    @Override
+//    public Course deleteCourseById(long id) {
+//        return courseRepository.deleteById(id);
+//    }
+
     @Override
-    public void deleteCourseById(long id) {
+    public long deleteCourseById(long id) {
         this.courseRepository.deleteById(id);
+        return id;
     }
 }

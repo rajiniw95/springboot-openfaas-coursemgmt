@@ -61,8 +61,7 @@ public class CourseController {
     }
 
     // REST API to save a course
-    // TODO : error "org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported"
-    @PostMapping("/saveCourse/api")
+    @PostMapping(value = "/saveCourse/api", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public Course saveCourseRestAPI(@Valid @RequestBody Course course) {
         return courseRepository.save(course);

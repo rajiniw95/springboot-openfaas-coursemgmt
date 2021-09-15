@@ -30,12 +30,12 @@ public class CourseController {
         return "index";
     }
 
-    // REST API to view JSON of home page
-    @GetMapping("/api")
-    @ResponseBody
-    public List<Course> viewHomePageRestAPI() {
-        return courseService.getAllCourses();
-    }
+//    // REST API to view JSON of home page
+//    @GetMapping("/api")
+//    @ResponseBody
+//    public List<Course> viewHomePageRestAPI() {
+//        return courseService.getAllCourses();
+//    }
 
     //============================ DISPLAY PAGE TO ADD NEW COURSE ============================//
 
@@ -56,12 +56,12 @@ public class CourseController {
         return "redirect:/";
     }
 
-    // REST API to save a course
-    @PostMapping(value = "/saveCourse/api", consumes = "application/json", produces = "application/json")
-    @ResponseBody
-    public Course saveCourseRestAPI(@Valid @RequestBody Course course) {
-        return courseService.saveCourse(course);
-    }
+//    // REST API to save a course
+//    @PostMapping(value = "/saveCourse/api", consumes = "application/json", produces = "application/json")
+//    @ResponseBody
+//    public Course saveCourseRestAPI(@Valid @RequestBody Course course) {
+//        return courseService.saveCourse(course);
+//    }
 
     //============================ VIEW UPDATE FORM ============================//
 
@@ -76,12 +76,12 @@ public class CourseController {
         return "update_course";
     }
 
-    // REST API to view update course form
-    @GetMapping("/showFormForUpdate/{id}/api")
-    @ResponseBody
-    public Course showFormForUpdateRestAPI(@PathVariable(value = "id") long id) {
-        return courseService.getCourseById(id);
-    }
+//    // REST API to view update course form
+//    @GetMapping("/showFormForUpdate/{id}/api")
+//    @ResponseBody
+//    public Course showFormForUpdateRestAPI(@PathVariable(value = "id") long id) {
+//        return courseService.getCourseById(id);
+//    }
 
     //============================ DELETE COURSE ============================//
 
@@ -93,10 +93,10 @@ public class CourseController {
         return "redirect:/";
     }
 
-    // REST API to delete course
-    @GetMapping("/deleteCourse/{id}/api")
-    @ResponseBody
-    public long deleteCourseRestAPI(@PathVariable(value = "id") long id) {
-        return courseService.deleteCourseById(id);
-    }
+//    // REST API to delete course
+//    @GetMapping("/deleteCourse/{id}/api")
+//    @ResponseBody
+//    public long deleteCourseRestAPI(@PathVariable(value = "id") long id) {
+//        return courseService.deleteCourseById(id);
+//    }
 }

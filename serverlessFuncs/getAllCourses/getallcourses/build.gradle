@@ -2,8 +2,6 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'distribution'
-
-//    id 'org.springframework.boot' version '2.5.4'
 }
 
 dependencies {
@@ -19,13 +17,9 @@ dependencies {
     compile 'com.openfaas:model:0.1.1'
     compile 'com.openfaas:entrypoint:0.1.0'
 
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.4'
-//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4'
-//    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
-//    runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.5.4'
-    runtimeOnly 'mysql:mysql-connector-java:8.0.26'
+    //runtimeOnly 'mysql:mysql-connector-java:8.0.26'
+    compile 'mysql:mysql-connector-java:8.0.26'
     
-//    runtime 'com.github.cliftonlabs:json-simple:4.0.0'
 }
 
 // In this section you declare where to find the dependencies of your project

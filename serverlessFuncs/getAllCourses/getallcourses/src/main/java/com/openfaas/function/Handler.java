@@ -6,10 +6,6 @@ import com.openfaas.model.IRequest;
 import com.openfaas.model.Response;
 
 import com.mysql.jdbc.*;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.*;
 import java.util.*;
 

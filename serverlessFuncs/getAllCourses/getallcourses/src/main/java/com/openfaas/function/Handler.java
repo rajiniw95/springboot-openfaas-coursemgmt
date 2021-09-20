@@ -25,9 +25,6 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     public IResponse Handle(IRequest req) {
 
         try {
-
-            Handler handler = new Handler();
-
             Statement statement = connection.createStatement();
 
             ResultSet rs = statement.executeQuery("select * from courses");
@@ -52,6 +49,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
         } catch (Exception e) {
             Response res = new Response();
             res.setBody(e.toString());
+            e.printStackTrace();
             return res;
         }
 

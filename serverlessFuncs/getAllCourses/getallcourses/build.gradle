@@ -19,7 +19,6 @@ dependencies {
 
     //runtimeOnly 'mysql:mysql-connector-java:8.0.26'
     compile 'mysql:mysql-connector-java:8.0.26'
-    
 }
 
 // In this section you declare where to find the dependencies of your project

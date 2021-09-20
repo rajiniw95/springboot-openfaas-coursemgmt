@@ -5,33 +5,32 @@ import com.openfaas.model.IResponse;
 import com.openfaas.model.IRequest;
 import com.openfaas.model.Response;
 
+import com.mysql.jdbc.*;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.*;
-
 import java.util.*;
 
 public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
 
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/coursedb?useSSL=false";
-        String username = "root";
-        String password = "rajiniw95";
-
-        Connection conn = null;
+        Connection connection = null;
 
         try {
-            conn = DriverManager.getConnection(url, username, password);
+            Class.forName("com.mysql.jdbc.Driver");
 
-            String query = "SELECT * FROM courses";
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/coursedb", "root", "rajiniw95");
 
-            Statement st = conn.createStatement();
+            Statement statement = connection.createStatement();
 
-            ResultSet rs = st.executeQuery(query);
+            ResultSet rs = statement.executeQuery("select * from courses");
 
             ResultSetMetaData rsmd = rs.getMetaData();
-            //getting the column type
             int column_count = rsmd.getColumnCount();
+
             String column_count_str = String.valueOf(column_count);
 	/*
 	List allRows = new ArrayList();

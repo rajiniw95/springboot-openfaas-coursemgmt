@@ -17,14 +17,14 @@ dependencies {
     compile 'com.openfaas:model:0.1.1'
     compile 'com.openfaas:entrypoint:0.1.0'
 
-    //runtimeOnly 'mysql:mysql-connector-java:8.0.26'
-    compile 'mysql:mysql-connector-java:8.0.26'
+    implementation 'mysql:mysql-connector-java:8.0.26'
 }
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
     jcenter()
 
     flatDir {
@@ -57,4 +57,8 @@ uploadArchives {
            dirs 'repos'
        }
     }
+}
+
+configurations {
+    driver
 }

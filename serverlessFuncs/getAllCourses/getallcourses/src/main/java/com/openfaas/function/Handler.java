@@ -14,7 +14,6 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     Connection connection = null;
 
     public void Handler() {
-        //Class.forName("com.mysql.jdbc.Driver");
         try {
             connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/coursedb", "root", "rajiniw95");
         } catch (Exception e){
@@ -25,24 +24,20 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     public IResponse Handle(IRequest req) {
 
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement();/*
 
             ResultSet rs = statement.executeQuery("select * from courses");
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int column_count = rsmd.getColumnCount();
-            String column_count_string = Integer.toString(column_count);
 
-//            int i = 0;
-//            String[] arrCourseName = null;
-//            while(rs.next()) {
-//                arrCourseName[i] = rs.getString("course_name");
-//                i++;
-//            }
+            Integer column_count_int = new Integer(column_count);
+
+            String column_count_string = column_count_int.toString();*/
 
             Response res = new Response();
-            res.setBody(column_count_string);
+            res.setBody("okay");
 
             return res;
 

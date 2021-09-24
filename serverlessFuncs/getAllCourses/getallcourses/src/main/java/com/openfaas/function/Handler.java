@@ -27,7 +27,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     public IResponse Handle(IRequest req) {
 
         try {
-            Handler handler = new Handler();
+            //Handler handler = new Handler();
             //System.out.println("MAIN");
 
             Statement statement = connection.createStatement();

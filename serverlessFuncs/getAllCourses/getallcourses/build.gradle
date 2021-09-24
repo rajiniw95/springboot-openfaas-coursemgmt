@@ -18,6 +18,8 @@ dependencies {
     compile 'com.openfaas:entrypoint:0.1.0'
 
     implementation 'mysql:mysql-connector-java:8.0.26'
+    
+    //implementation files('/mysql-connector-java-8.0.26.jar')
 }
 
 // In this section you declare where to find the dependencies of your project

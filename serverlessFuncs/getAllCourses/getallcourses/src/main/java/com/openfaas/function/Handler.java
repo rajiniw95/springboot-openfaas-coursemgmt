@@ -16,7 +16,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public Handler() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/coursedb", "root", "rajiniw95");
+            connection = DriverManager.getConnection("jdbc:mysql://mysql:3306/coursedb", "root", "rajiniw95");
             //System.out.println("Connected");
         } catch (Exception e) {
             e.printStackTrace();

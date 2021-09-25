@@ -15,8 +15,9 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     static Connection connection;
 
     public Handler() {
+    
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://mysql:3306/coursedb", "root", "password");
+            connection = DriverManager.getConnection("jdbc:mysql://10.43.0.2:3306/coursedb", "root", "password");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +50,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             String column_count_string = column_count_int.toString();
 
             Response res = new Response();
-            res.setBody("okay");
+            res.setBody(column_count_string);
 
             return res;
 

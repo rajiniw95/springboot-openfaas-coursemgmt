@@ -5,8 +5,6 @@ import com.openfaas.model.IResponse;
 import com.openfaas.model.IRequest;
 import com.openfaas.model.Response;
 
-//import com.mysql.jdbc.*;
-
 import java.sql.*;
 import java.util.*;
 
@@ -24,8 +22,6 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
         try {
-            //Handler handler = new Handler();
-
             Statement statement = connection.createStatement();
             ResultSet resultset = statement.executeQuery("select * from courses");
 

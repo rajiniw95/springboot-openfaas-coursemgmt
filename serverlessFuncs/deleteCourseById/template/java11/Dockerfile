@@ -8,6 +8,8 @@ RUN apt-get update -qqy \
    ca-certificates \
    unzip
 
+RUN curl -L -o /mysql-connector-java-8.0.26.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar
+
 RUN mkdir -p /opt/ && cd /opt/ \
     && echo "Downloading gradle.." \
     && curl -sSfL "https://services.gradle.org/distributions/gradle-${GRADLE_VER}-bin.zip" -o gradle-$GRADLE_VER-bin.zip \
@@ -50,7 +52,7 @@ WORKDIR /home/app/
 
 ENV upstream_url="http://127.0.0.1:8082"
 ENV mode="http"
-ENV CLASSPATH="/home/app/function-1.0/function-1.0.jar:/home/app/function-1.0/lib/*"
+ENV CLASSPATH="/home/app/function-1.0/function-1.0.jar:/home/app/function-1.0/lib/*:/mysql-connector-java-8.0.26.jar"
 
 ENV fprocess="java -XX:+UseContainerSupport com.openfaas.entrypoint.App"
 EXPOSE 8080

@@ -21,6 +21,8 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    //HttpClient client = HttpClient.newHttpClient();
+
     //============================ VIEW AVAILABLE COURSES ============================//
 
     // display list of courses

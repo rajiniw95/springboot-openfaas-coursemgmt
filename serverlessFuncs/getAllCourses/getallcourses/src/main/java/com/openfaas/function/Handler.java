@@ -15,7 +15,6 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     static Connection connection;
 
     public Handler() {
-    
         try {
             connection = DriverManager.getConnection("jdbc:mysql://10.43.0.2:3306/coursedb", "root", "password");
         } catch (Exception e) {
@@ -24,33 +23,41 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     }
 
     public IResponse Handle(IRequest req) {
-
         try {
             //Handler handler = new Handler();
 
             Statement statement = connection.createStatement();
             ResultSet resultset = statement.executeQuery("select * from courses");
 
-            // get all data in table
-            ArrayList<String> arrayList = new ArrayList<String>();
-            while (resultset.next()) {
-                int i = 1;
-                while (i <= 4) {
-                    arrayList.add(resultset.getString(i++));
-                }
-            }
-
             // get number of columns
             ResultSetMetaData rsmd = resultset.getMetaData();
 
             int column_count = rsmd.getColumnCount();
-
-            Integer column_count_int = new Integer(column_count);
-
-            String column_count_string = column_count_int.toString();
+            
+            // put all data in table to array list 
+            ArrayList<String> arrayList = new ArrayList<String>();
+            while (resultset.next()) {
+                int i = 2;
+                while (i <= column_count) {
+                    arrayList.add(resultset.getString(i++));
+                }
+            }
+	
+	    StringBuffer stringBuffer = new StringBuffer();
+      
+            for (String s : arrayList) {
+           	stringBuffer.append(s);
+           	stringBuffer.append(" ");
+            }
+            String str = stringBuffer.toString();
+            
+	    // convert column count integer to string 
+	    // so that it can be included in the response body -- if necessary
+            // Integer column_count_int = new Integer(column_count);
+            // String column_count_string = column_count_int.toString();
 
             Response res = new Response();
-            res.setBody(column_count_string);
+            res.setBody(str);
 
             return res;
 

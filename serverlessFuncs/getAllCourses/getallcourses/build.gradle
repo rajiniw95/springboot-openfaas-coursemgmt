@@ -17,10 +17,8 @@ dependencies {
     compile 'com.openfaas:model:0.1.1'
     compile 'com.openfaas:entrypoint:0.1.0'
 
+    // add Java JDBC connector
     compile 'mysql:mysql-connector-java:8.0.26'
-    
-    //implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
-   
 }
 
 // In this section you declare where to find the dependencies of your project

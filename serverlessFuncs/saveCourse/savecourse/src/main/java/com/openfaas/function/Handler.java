@@ -23,7 +23,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     public IResponse Handle(IRequest req) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultset = statement.executeQuery("select * from courses");
+            ResultSet resultset = statement.executeQuery("INSERT INTO courses (course_code, course_name, lecturer, credits) VALUES ('CS1005', 'Research Methods', 'Stacy Peters', '100')");
 
             // get number of columns
             ResultSetMetaData rsmd = resultset.getMetaData();
@@ -43,7 +43,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
       
             for (String s : arrayList) {
            	stringBuffer.append(s);
-           	stringBuffer.append(" ");
+           	stringBuffer.append(", ");
             }
             String str = stringBuffer.toString();
             

@@ -22,7 +22,9 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
         try {
-            String cid = req.getBody(); 
+            Map<String, String> query = req.getQuery();
+            String cid = query.get("cid");
+            
             String q = "SELECT * FROM courses WHERE cid = " + cid;
             
             Statement statement = connection.createStatement();

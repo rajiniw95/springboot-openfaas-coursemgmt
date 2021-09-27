@@ -22,7 +22,9 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
         try {
-            String req_string = req.getBody(); 
+            Map<String, String> query = req.getQuery();
+            String req_string = query.get("data");
+            
             String[] req_array = req_string.split("\\s*,\\s*");
             String course_code = req_array[0];
             String course_name = req_array[1];

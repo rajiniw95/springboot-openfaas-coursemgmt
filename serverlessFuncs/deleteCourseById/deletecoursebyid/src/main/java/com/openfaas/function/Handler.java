@@ -22,12 +22,14 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
         try {
+            String cid = req.getBody(); 
+            String q = "DELETE FROM courses WHERE cid = 5 = " + cid;
+            
             Statement statement = connection.createStatement();
-            ResultSet resultset = statement.executeQuery("DELETE FROM courses WHERE cid = 5");
+            ResultSet resultset = statement.executeQuery(q);
 
             // get number of columns
             ResultSetMetaData rsmd = resultset.getMetaData();
-
             int column_count = rsmd.getColumnCount();
             
             // put all data in table to array list 
@@ -46,11 +48,6 @@ public class Handler extends com.openfaas.model.AbstractHandler {
            	stringBuffer.append(", ");
             }
             String str = stringBuffer.toString();
-            
-	    // convert column count integer to string 
-	    // so that it can be included in the response body -- if necessary
-            // Integer column_count_int = new Integer(column_count);
-            // String column_count_string = column_count_int.toString();
 
             Response res = new Response();
             res.setBody(str);

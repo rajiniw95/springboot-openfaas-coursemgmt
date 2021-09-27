@@ -23,34 +23,16 @@ public class Handler extends com.openfaas.model.AbstractHandler {
     public IResponse Handle(IRequest req) {
         try {
             String cid = req.getBody(); 
-            String q = "DELETE FROM courses WHERE cid = 5 = " + cid;
+            String q = "DELETE FROM courses WHERE cid = " + cid;
             
             Statement statement = connection.createStatement();
-            ResultSet resultset = statement.executeQuery(q);
+            int executed = statement.executeUpdate(q);
 
-            // get number of columns
-            ResultSetMetaData rsmd = resultset.getMetaData();
-            int column_count = rsmd.getColumnCount();
+            Integer executed_int = new Integer(executed);
+            String executed_string = executed_int.toString();
             
-            // put all data in table to array list 
-            ArrayList<String> arrayList = new ArrayList<String>();
-            while (resultset.next()) {
-                int i = 2;
-                while (i <= column_count) {
-                    arrayList.add(resultset.getString(i++));
-                }
-            }
-	
-	    StringBuffer stringBuffer = new StringBuffer();
-      
-            for (String s : arrayList) {
-           	stringBuffer.append(s);
-           	stringBuffer.append(", ");
-            }
-            String str = stringBuffer.toString();
-
             Response res = new Response();
-            res.setBody(str);
+            res.setBody(executed_string);
 
             return res;
 

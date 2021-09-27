@@ -22,38 +22,17 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public IResponse Handle(IRequest req) {
         try {
+            String cid = req.getBody(); 
+            String q = "INSERT INTO courses (course_code, course_name, lecturer, credits) VALUES ('CS1005', 'Research Methods', 'Stacy Peters', '100')";
+            
             Statement statement = connection.createStatement();
-            ResultSet resultset = statement.executeQuery("INSERT INTO courses (course_code, course_name, lecturer, credits) VALUES ('CS1005', 'Research Methods', 'Stacy Peters', '100')");
+            int executed = statement.executeUpdate(q);
 
-            // get number of columns
-            ResultSetMetaData rsmd = resultset.getMetaData();
-
-            int column_count = rsmd.getColumnCount();
+            Integer executed_int = new Integer(executed);
+            String executed_string = executed_int.toString();
             
-            // put all data in table to array list 
-            ArrayList<String> arrayList = new ArrayList<String>();
-            while (resultset.next()) {
-                int i = 2;
-                while (i <= column_count) {
-                    arrayList.add(resultset.getString(i++));
-                }
-            }
-	
-	    StringBuffer stringBuffer = new StringBuffer();
-      
-            for (String s : arrayList) {
-           	stringBuffer.append(s);
-           	stringBuffer.append(", ");
-            }
-            String str = stringBuffer.toString();
-            
-	    // convert column count integer to string 
-	    // so that it can be included in the response body -- if necessary
-            // Integer column_count_int = new Integer(column_count);
-            // String column_count_string = column_count_int.toString();
-
             Response res = new Response();
-            res.setBody(str);
+            res.setBody(executed_string);
 
             return res;
 

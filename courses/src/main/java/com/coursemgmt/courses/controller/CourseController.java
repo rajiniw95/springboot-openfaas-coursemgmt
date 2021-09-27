@@ -15,13 +15,22 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Supplier;
+
 @Controller
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
 
-    //HttpClient client = HttpClient.newHttpClient();
+    HttpClient client = HttpClient.newHttpClient();
 
     //============================ VIEW AVAILABLE COURSES ============================//
 
@@ -90,9 +99,20 @@ public class CourseController {
     @GetMapping("/deleteCourse/{id}")
     public String deleteCourse(@PathVariable(value = "id") long id) {
 
-        // call delete course method
-        this.courseService.deleteCourseById(id);
-        return "redirect:/";
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"))
+                    .build();
+
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+            // call delete course method
+            //this.courseService.deleteCourseById(id);
+            return "redirect:/";
+        } catch (Exception e) {
+            return e.toString();
+        }
+
     }
 
 //    // REST API to delete course

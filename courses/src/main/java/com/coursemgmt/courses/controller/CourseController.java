@@ -8,9 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -79,12 +77,34 @@ public class CourseController {
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
-        // get course from the service
-        Course course = courseService.getCourseById(id);
+	String uri = "http://127.0.0.1:31112/function/getcoursebyid?cid=" + id;
 
-        // set course as a model attribute to pre-populate the form
-        model.addAttribute("course", course);
-        return "update_course";
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            //ArrayList<String> course_detail_list = new ArrayList<>(Arrays.asList(response.split(",")));
+            String response1 = response.body();
+            String[] course_detail_list = response1.split(",");
+            /*
+            String course_code = course_detail_list[0];
+            String course_name = course_detail_list[1];
+            String lecturer = course_detail_list[2];
+            String credits = course_detail_list[3];*/
+            
+            // get course from the service
+            Course course = courseService.getCourseById(id);
+
+            // set course as a model attribute to pre-populate the form
+            model.addAttribute("course", course);
+            return "update_course";
+
+        } catch (Exception e) {
+            return e.toString();
+        }
     }
 
 //    // REST API to view update course form
@@ -98,10 +118,12 @@ public class CourseController {
 
     @GetMapping("/deleteCourse/{id}")
     public String deleteCourse(@PathVariable(value = "id") long id) {
+    
+    	String uri = "http://127.0.0.1:31112/function/deletecoursebyid?cid=" + id;
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"))
+                    .uri(URI.create(uri))
                     .build();
 
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -112,7 +134,6 @@ public class CourseController {
         } catch (Exception e) {
             return e.toString();
         }
-
     }
 
 //    // REST API to delete course

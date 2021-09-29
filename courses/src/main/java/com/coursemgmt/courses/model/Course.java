@@ -21,7 +21,18 @@ public class Course {
 
     @Column(name = "credits")
     private int credits;
-
+    
+    /*
+    public Course(long id, String courseCode, String courseName, String lecturer, int credits)
+    {
+        this.id = id;
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.lecturer = lecturer;
+        this.credits = credits;
+    }
+    */
+    
     public long getId() {
         return id;
     }

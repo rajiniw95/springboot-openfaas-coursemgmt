@@ -77,7 +77,12 @@ public class CourseController {
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
-	String uri = "http://127.0.0.1:31112/function/getcoursebyid?cid=" + id;
+	long cid = id;
+	System.out.println("PRINT ID FOR GET COURSE BY ID...");
+	System.out.println(cid);
+	System.out.println("END ID FOR GET COURSE BY ID");
+	
+	String uri = "http://127.0.0.1:31112/function/getcoursebyid?cid=" + cid;
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
@@ -87,16 +92,23 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             
             //ArrayList<String> course_detail_list = new ArrayList<>(Arrays.asList(response.split(",")));
-            String response1 = response.body();
-            String[] course_detail_list = response1.split(",");
-            /*
-            String course_code = course_detail_list[0];
-            String course_name = course_detail_list[1];
-            String lecturer = course_detail_list[2];
-            String credits = course_detail_list[3];*/
+            String response_body = response.body();
+            System.out.println("BEGIN RESPONSE BODY FOR GET COURSE BY ID");
+            System.out.println(response_body);
+            System.out.println("BEGIN RESPONSE BODY FOR GET COURSE BY ID");
+            String[] course_detail_list = response_body.split(",");
             
+            String response_course_code = course_detail_list[0];
+            String response_course_name = course_detail_list[1];
+            String response_lecturer = course_detail_list[2];
+            String response_credits = course_detail_list[3];
+            int int_credits = Integer.valueOf(response_credits); 
+            
+	    ///////  TO DO : create Course object with above parameters            
+
             // get course from the service
             Course course = courseService.getCourseById(id);
+            //Course course = new Course(cid, response_course_code, response_course_name, response_lecturer, response_credits);
 
             // set course as a model attribute to pre-populate the form
             model.addAttribute("course", course);
@@ -119,7 +131,11 @@ public class CourseController {
     @GetMapping("/deleteCourse/{id}")
     public String deleteCourse(@PathVariable(value = "id") long id) {
     
-    	String uri = "http://127.0.0.1:31112/function/deletecoursebyid?cid=" + id;
+    	System.out.println("PRINT ID FOR DELETE COURSE BY ID...");
+	System.out.println(id);
+	System.out.println("END ID FOR DELETE COURSE BY ID");
+	
+	String uri = "http://127.0.0.1:31112/function/deletecoursebyid?cid=" + id;
 
         try {
             HttpRequest request = HttpRequest.newBuilder()

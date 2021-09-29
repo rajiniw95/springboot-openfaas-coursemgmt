@@ -60,8 +60,20 @@ public class CourseController {
 
     @PostMapping("/saveCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
+        /*
+        String request_course_code = course.getCourseCode;
+        String request_course_name = course.getCourseName;
+        String request_lecturer = course.getLecturer;
+        String request_credits = course.getCredits;
+        
+        System.out.println(request_course_code);
+        System.out.println(request_course_name);
+        System.out.println(request_lecturer);
+        System.out.println(request_credits);
+        */
+        
         // save course to database
-        courseService.saveCourse(course);
+        // courseService.saveCourse(course);
         return "redirect:/";
     }
 
@@ -107,11 +119,19 @@ public class CourseController {
 	    ///////  TO DO : create Course object with above parameters            
 
             // get course from the service
-            Course course = courseService.getCourseById(id);
+            Course course = new Course();
+            /*
+            course.setCourseCode = response_course_code;
+            course.setCourseName = response_course_name;
+            course.setLecturer = response_lecturer;
+            course.setCredits = int_credits;
+            */
+            
+            //Course course = courseService.getCourseById(id);
             //Course course = new Course(cid, response_course_code, response_course_name, response_lecturer, response_credits);
 
             // set course as a model attribute to pre-populate the form
-            model.addAttribute("course", course);
+            //model.addAttribute("course", course);
             return "update_course";
 
         } catch (Exception e) {

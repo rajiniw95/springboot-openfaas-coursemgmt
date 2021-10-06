@@ -89,49 +89,51 @@ public class CourseController {
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
+	// check course ID
 	long cid = id;
 	System.out.println("PRINT ID FOR GET COURSE BY ID...");
 	System.out.println(cid);
 	System.out.println("END ID FOR GET COURSE BY ID");
 	
+	// set uri to getcoursebyid serverless function with paramemeter cid
 	String uri = "http://127.0.0.1:31112/function/getcoursebyid?cid=" + cid;
 
         try {
+            // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
                     .build();
 
+	    // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             
-            //ArrayList<String> course_detail_list = new ArrayList<>(Arrays.asList(response.split(",")));
+            // extract body of HTTP response
             String response_body = response.body();
             System.out.println("BEGIN RESPONSE BODY FOR GET COURSE BY ID");
+            response_body = response_body.replaceAll(", $", "");
             System.out.println(response_body);
-            System.out.println("BEGIN RESPONSE BODY FOR GET COURSE BY ID");
-            String[] course_detail_list = response_body.split(",");
+            System.out.println("END RESPONSE BODY FOR GET COURSE BY ID");
             
+            // put response body to array and assign elements to variables
+            String[] course_detail_list = response_body.split(",");
             String response_course_code = course_detail_list[0];
             String response_course_name = course_detail_list[1];
             String response_lecturer = course_detail_list[2];
             String response_credits = course_detail_list[3];
-            int int_credits = Integer.valueOf(response_credits); 
-            
-	    ///////  TO DO : create Course object with above parameters            
-
-            // get course from the service
+            String trimmed_response_creedits = response_credits.trim();
+            int int_credits=Integer.parseInt(trimmed_response_creedits);  
+                   
+            // create course object with response variables 
             Course course = new Course();
-            /*
-            course.setCourseCode = response_course_code;
-            course.setCourseName = response_course_name;
-            course.setLecturer = response_lecturer;
-            course.setCredits = int_credits;
-            */
+            course.setCourseCode(response_course_code);
+            course.setCourseName(response_course_name);
+            course.setLecturer(response_lecturer);
+            course.setCredits(int_credits);
             
             //Course course = courseService.getCourseById(id);
-            //Course course = new Course(cid, response_course_code, response_course_name, response_lecturer, response_credits);
 
             // set course as a model attribute to pre-populate the form
-            //model.addAttribute("course", course);
+            model.addAttribute("course", course);
             return "update_course";
 
         } catch (Exception e) {
@@ -151,21 +153,27 @@ public class CourseController {
     @GetMapping("/deleteCourse/{id}")
     public String deleteCourse(@PathVariable(value = "id") long id) {
     
+        // check course ID
     	System.out.println("PRINT ID FOR DELETE COURSE BY ID...");
 	System.out.println(id);
 	System.out.println("END ID FOR DELETE COURSE BY ID");
 	
+	// set uri to deletecoursebyid serverless function with paramemeter cid
 	String uri = "http://127.0.0.1:31112/function/deletecoursebyid?cid=" + id;
 
         try {
+            // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
                     .build();
 
+	    // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // call delete course method
             //this.courseService.deleteCourseById(id);
+            
+            // reditect to home page 
             return "redirect:/";
         } catch (Exception e) {
             return e.toString();

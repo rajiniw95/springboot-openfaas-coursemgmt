@@ -35,8 +35,35 @@ public class CourseController {
     // display list of courses
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        model.addAttribute("listCourses", courseService.getAllCourses());
-        return "index";
+    
+        String uri = "http://127.0.0.1:31112/function/getallcourses";
+
+        try {
+            // send HTTP request
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+
+	    // get HTTP response
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            // extract body of HTTP response
+            String response_body = response.body();
+            System.out.println("BEGIN RESPONSE BODY FOR GET ALL COURSES");
+            response_body = response_body.replaceAll(", $", "");
+            System.out.println(response_body);
+            System.out.println("END RESPONSE BODY FOR GET ALL COURSES");
+            
+            String[] array_response = response_body.split(",");
+
+            return "index";
+        } catch (Exception e) {
+            return e.toString();
+        }
+        
+    
+        //model.addAttribute("listCourses", courseService.getAllCourses());
+	//return "index";
     }
 
 //    // REST API to view JSON of home page

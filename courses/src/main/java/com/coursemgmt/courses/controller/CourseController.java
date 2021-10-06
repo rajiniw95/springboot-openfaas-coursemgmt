@@ -60,21 +60,43 @@ public class CourseController {
 
     @PostMapping("/saveCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
-        /*
-        String request_course_code = course.getCourseCode;
-        String request_course_name = course.getCourseName;
-        String request_lecturer = course.getLecturer;
-        String request_credits = course.getCredits;
         
-        System.out.println(request_course_code);
-        System.out.println(request_course_name);
-        System.out.println(request_lecturer);
-        System.out.println(request_credits);
-        */
+        // assign object attributes to variables 
+        String input_course_code = course.getCourseCode();
+        String input_course_name = course.getCourseName();
+        String input_lecturer = course.getLecturer();
+        int input_credits = course.getCredits();
+        String string_input_credits =String.valueOf(input_credits);
         
-        // save course to database
-        // courseService.saveCourse(course);
-        return "redirect:/";
+        // construct parameter for http request with object attributes
+        String uri_parameter = input_course_code + ","+ input_course_name + ","+ input_lecturer + ","+ string_input_credits;
+        // replace all spaces in uri with %20
+        uri_parameter = uri_parameter.replaceAll(" ", "%20");
+        
+        System.out.println("UPDATING DATABASE WITH COURSE...");
+	System.out.println(uri_parameter);
+	
+	// set uri to savecourse serverless function with paramemeter uri_parameter
+	String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
+	
+	try {
+            // send HTTP request
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+
+	    // get HTTP response
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+                 
+            // save course to database
+            // courseService.saveCourse(course);
+            
+            // redirect to home page 
+            return "redirect:/";
+        } catch (Exception e) {
+            return e.toString();
+        }
+
     }
 
 //    // REST API to save a course
@@ -173,7 +195,7 @@ public class CourseController {
             // call delete course method
             //this.courseService.deleteCourseById(id);
             
-            // reditect to home page 
+            // redirect to home page 
             return "redirect:/";
         } catch (Exception e) {
             return e.toString();

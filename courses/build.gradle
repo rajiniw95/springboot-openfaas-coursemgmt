@@ -34,6 +34,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // Use Guava in your implementation only:
+    implementation("com.google.guava:guava:31.0.1-jre")
 }
 
 // In this section you declare where to find the dependencies of your project

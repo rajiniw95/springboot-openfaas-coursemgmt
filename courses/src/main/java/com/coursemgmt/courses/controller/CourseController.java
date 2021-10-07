@@ -36,6 +36,7 @@ public class CourseController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
     
+        /*
         String uri = "http://127.0.0.1:31112/function/getallcourses";
 
         try {
@@ -55,15 +56,39 @@ public class CourseController {
             System.out.println("END RESPONSE BODY FOR GET ALL COURSES");
             
             String[] array_response = response_body.split(",");
+            
+            int array_size = array_response.length;
+                        
+            String[] trimmed_array = new String[array_size];
+	    for (int i = 0; i < array_response.length; i++)
+		trimmed_array[i] = array_response[i].trim();
+            
+            int class_size = 5;
+            
+            int n = 1;
+            
+            for (int i = 0; i < array_size; i = i + class_size) {
+       	     // String array_name = "array" + n; 
+       	     // System.out.println(array_name);
+       	     List<String> list = new ArrayList<String>();
+       	     int k = i;
+       	     for (int j = 0; j < class_size; j++){
+       	     	list.add(trimmed_array[k]);
+       	     	k++;
+       	     }
+       	     
+       	     System.out.println(Arrays.toString(list.toArray()));
+       	     n++;
+            }
 
             return "index";
         } catch (Exception e) {
             return e.toString();
         }
-        
+        */
     
-        //model.addAttribute("listCourses", courseService.getAllCourses());
-	//return "index";
+        model.addAttribute("listCourses", courseService.getAllCourses());
+	return "index";
     }
 
 //    // REST API to view JSON of home page

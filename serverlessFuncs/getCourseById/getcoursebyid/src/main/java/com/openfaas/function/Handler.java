@@ -37,7 +37,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             // put all data in table to array list 
             ArrayList<String> arrayList = new ArrayList<String>();
             while (resultset.next()) {
-                int i = 2;
+                int i = 1;
                 while (i <= column_count) {
                     arrayList.add(resultset.getString(i++));
                 }

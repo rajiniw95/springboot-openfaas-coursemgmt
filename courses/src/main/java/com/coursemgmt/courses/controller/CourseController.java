@@ -132,6 +132,8 @@ public class CourseController {
     public String saveCourse(@ModelAttribute("course") Course course) {
 
         // assign object attributes to variables 
+        long input_id = course.getId();
+        String string_input_id =String.valueOf(input_id); 
         String input_course_code = course.getCourseCode();
         String input_course_name = course.getCourseName();
         String input_lecturer = course.getLecturer();
@@ -139,9 +141,13 @@ public class CourseController {
         String string_input_credits = String.valueOf(input_credits);
 
         // construct parameter for http request with object attributes
-        String uri_parameter = input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
+        String uri_parameter = string_input_id + "," + input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
         // replace all spaces in uri with %20
         uri_parameter = uri_parameter.replaceAll(" ", "%20");
+
+
+        System.out.println("INPUT COURSE ID == ");
+        System.out.println(string_input_id);
 
         System.out.println("UPDATING DATABASE WITH COURSE...");
         System.out.println(uri_parameter);
@@ -198,15 +204,18 @@ public class CourseController {
 
             // put response body to array and assign elements to variables
             String[] course_detail_list = response_body.split(",");
-            String response_course_code = course_detail_list[0];
-            String response_course_name = course_detail_list[1];
-            String response_lecturer = course_detail_list[2];
-            String response_credits = course_detail_list[3];
+            String response_course_id = course_detail_list[0];
+            long long_course_id = Long.parseLong(response_course_id);
+            String response_course_code = course_detail_list[1];
+            String response_course_name = course_detail_list[2];
+            String response_lecturer = course_detail_list[3];
+            String response_credits = course_detail_list[4];
             String trimmed_response_creedits = response_credits.trim();
             int int_credits = Integer.parseInt(trimmed_response_creedits);
 
             // create course object with response variables 
             Course course = new Course();
+            course.setId(long_course_id);
             course.setCourseCode(response_course_code);
             course.setCourseName(response_course_name);
             course.setLecturer(response_lecturer);

@@ -43,6 +43,7 @@ for ind in newcourselist.index:
 	
 	course_obj = {'courseCode': courseCodeIn, 'courseName' : courseNameIn, 'lecturer' : lecturerIn, 'credits' : creditsIn}
 	print(course_obj)
+	"""
 
 	response = requests.post(uri_save_course, data = course_obj)
 
@@ -51,8 +52,7 @@ for ind in newcourselist.index:
 	print(response.elapsed.total_seconds())   
 
 	print(response.url)     
-	
-	"""  
+	 
 
 ### GET request to delete course by ID
 

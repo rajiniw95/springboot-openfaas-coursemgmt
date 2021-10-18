@@ -1,3 +1,101 @@
 courseCode,courseName,lecturer,credits
-CS777,testing777,lec777,777
-CS888,testing888,lec888,888
+CS001,Discovering Computer Science,Todd Camacho,100
+CS002,Computer Science with Applications,Giana Chandler,300
+CS003,Introduction to Computer Science,Luciana Norris,300
+CS004,Introduction to Computing and Programming,Brittany Barajas,200
+CS005,Introduction to Computer Systems,Livia Yu,100
+CS006,MATLAB Programming for Engineers,Scarlet Zimmerman,200
+CS007,Program Design,Finley Miranda,300
+CS008,Program Design I in the Context of Biological Problems,Tania Rowe,200
+CS009,Program Design I in the Context of Law and Public Policy,Savanna Dyer,100
+CS010,Mathematical Foundations of Computing,Imani Flores,100
+CS011,Discrete Mathematics,Kolten Farley,200
+CS012,Machine Organization,Johnathon Kirby,200
+CS013,Languages and Automata,Makenzie Summers,200
+CS014,Programming Language Design and Implementation,Helena Black,300
+CS015,Software Design,Spencer Bailey,100
+CS016,Systems Programming,Averie Roy,300
+CS017,Computer Design,Jennifer Meyers,100
+CS018,Robotics,Maci Pruitt,200
+CS019,Communication and Ethical Issues in Computing,Tucker Levine,100
+CS020,Algorithms I,Reed Kennedy,100
+CS021,Algorithms II,Carley Rich,300
+CS022,Computational Finance,Bentley Jefferson,300
+CS023,Computers for Learning,Pedro Mckenzie,300
+CS024,Artificial Intelligence,Rishi Salazar,300
+CS025,Introduction to Machine Learning,Carmen Powers,100
+CS026,Computer Vision,Xiomara Mccullough,200
+CS027,Introduction to Data Science,Elian Dodson,200
+CS028,Natural Language Processing,Kathryn Norris,100
+CS029,User Interface Design and Programming,Lauren Holmes,100
+CS030,Visualization and Visual Analytics,Santiago Parks,200
+CS031,Computer Graphics,Hailie Hobbs,100
+CS032,Video Game Design and Development,Royce Underwood,300
+CS033,Creative Coding,Xander Pearson,300
+CS034,Virtual Augmented and Mixed Reality,Diana Salazar,100
+CS035,Software Engineering,Cristopher Lam,200
+CS036,Engineering Distributed Objects For Cloud Computing,Jan Case,200
+CS037,Introduction to Networking,Libby Estes,200
+CS038,Design and Implementation of Network Protocols,Mohamed Fleming,100
+CS039,Operating Systems Design and Implementation,Kamila Holden,100
+CS040,Systems Performance and Concurrent Computing,Heidi Parks,100
+CS041,Advanced Computer Architecture,Aden Cochran,300
+CS042,Network Security,Phoenix Cooper,200
+CS043,Computer Architecture,Jadon Dyer,200
+CS044,Object-Oriented Languages and Environments,Jorge Porter,100
+CS045,Object-Oriented Programming,Shirley Long,300
+CS046,Programming Language Design,Pierre Douglas,100
+CS047,Software Development for Mobile Platforms,Jerry Arellano,200
+CS048,Database Systems,Alexandria Hahn,200
+CS049,Secure Web Application Development,Nora Duran,200
+CS050,Networked Operating Systems Programming,Kailee Crosby,200
+CS051,Secure Operating System Design and Implementation,Jenny Garcia,100
+CS052,Building Secure Computer Systems,Muhammad Donovan,100
+CS053,Human Augmentics,Caleb Crane,100
+CS054,Calculus,Jolie George,100
+CS055,Statistics,Sofia Underwood,100
+CS056,Graph Theory and Applications,Ben Morris,100
+CS057,Combinatorics,Paris Compton,300
+CS058,Software Development Practices,Eden Morgan,300
+CS059,Science and Art of Digital Photography,100
+CS060,Parallel Computing,Eden Morgan,300
+CS061,Distributed Computing,Evangeline Mckay,200
+CS062,Serverless Computing,Marie Mills,200
+CS063,Interaction Programming,Miley Rocha,100
+CS064,Human Computer Interaction,Alden Church,200
+CS065,Hardware Design and Implementation,Makhi Pierce,100
+CS066,Compilers for Computer Languages,Jase Frost,100
+CS067,Scientific Visualization,Boston Monroe,300
+CS068,Mathematical Foundations of Machine Learning,Rory Holt,300
+CS069,Introduction to Neural Networks,Adrienne Clark,200
+CS070,Cryptography,Ansley Coleman,200
+CS071,Topics in Networks,Luka Rasmussen,100
+CS072,The Value of Data,Leroy Rush,100
+CS073,Deep Learning Systems,Jadyn Montoya,300
+CS074,Topics in Scientific Computing,Stanley Wiley,100
+CS075,Mathematical Toolkit,Janessa Kirk,200
+CS076,Inclusive Technology,Ashanti Bowen,100
+CS077,Fundamentals of Deep Learning,Everett Osborn,200
+CS078,Topics in Big Data,Frankie Galloway,100
+CS079,Topics in Networks,Gemma Booker,100
+CS080,Introduction to Statistical Machine Learning,Turner Lucas,200
+CS081,Introduction to Bioinformatics and Computational Biology,Kassidy Byrd,200
+CS082,Topics in Systems,Cason Ramos,100
+CS083,Topics in Computer Security,Terrell Doyle,100
+CS084,Speech Technologies,Mila Whitaker,200
+CS085,Probabalistic Graphical Models,Landyn Stafford,300
+CS086,Advanced Natural Language Processing,John Warren,300
+CS087,An Introduction to the Theory of Machine Learning,Jerome Gill,100
+CS088,Numerical Partial Differential Equations,Aiden Bolton,200
+CS089,Complexity Theory,Donovan Luna,200
+CS090,Formal Languages,Eric Peterson,100
+CS091,Large-scale Data Analytics,Jace Day,200
+CS092,Quantum Computing Systems,Maximilian Strong,200
+CS093,Usable Security and Privacy,Sophie Bradshaw,100
+CS094,Programming Proofs,Heidy Mccullough,200
+CS095,Topics in Optimization,Blake Stone,100
+CS096,Topics in Human Computer Interaction,Darren Benton,100
+CS097,Surveillance Aesthetics,Aryan Holt,100
+CS098,Operating Systems,Conor Snyder,300
+CS099,Advanced Operating Systems,Lea Davis,300
+CS100,Data Structures,Kayley Mckenzie,200

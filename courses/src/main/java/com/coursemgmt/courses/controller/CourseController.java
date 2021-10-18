@@ -23,7 +23,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
 import org.json.simple.*;
-import com.google.gson.*;
+import com.google.
+        gson.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 @Controller
 public class CourseController {
@@ -75,13 +80,17 @@ public class CourseController {
             // define list of course objects, to add the gson objects to and return to model
             List<Course> course_obj_list = new ArrayList<Course>();
 
+            // define list for course ID (for use by the monitoring tool)
+            List<String> course_id_list = new ArrayList<String>();
+
+            // n is defined to iterate over objects
             int n = 1;
+
+            // a is defined to increment index in course ID list (for use by the monitoring tool)
+            int a = 0;
 
             // loop to break response array in to class_size chunks, so that each can be converted to an object
             for (int i = 0; i < array_size; i = i + class_size) {
-                // String array_name = "array" + n;
-                // System.out.println(array_name);
-
                 // add object elements to arraylist
                 List<String> list = new ArrayList<String>();
                 int k = i;
@@ -106,6 +115,20 @@ public class CourseController {
                 // add new course object to course object list
                 course_obj_list.add(course_gson);
 
+                // add course ID of object to list (for use by the monitoring tool)
+                course_id_list.add(list.get(0));
+                a++;
+            }
+
+            // write course ID of all courses in DB to CSV file (for use by the monitoring tool) 
+            try (PrintWriter writer = new PrintWriter("course_id_list.csv")) {
+                for (int j = 0; j < course_id_list.size(); j++) {
+                    writer.append(String.valueOf(course_id_list.get(j)));
+                    writer.append("\n");
+                }
+                writer.close();
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
             }
 
             // add course object list to model
@@ -133,7 +156,7 @@ public class CourseController {
 
         // assign object attributes to variables 
         long input_id = course.getId();
-        String string_input_id =String.valueOf(input_id); 
+        String string_input_id = String.valueOf(input_id);
         String input_course_code = course.getCourseCode();
         String input_course_name = course.getCourseName();
         String input_lecturer = course.getLecturer();
@@ -221,8 +244,6 @@ public class CourseController {
             course.setLecturer(response_lecturer);
             course.setCredits(int_credits);
 
-            //Course course = courseService.getCourseById(id);
-
             // set course as a model attribute to pre-populate the form
             model.addAttribute("course", course);
             return "update_course";
@@ -253,9 +274,6 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-
-            // call delete course method
-            //this.courseService.deleteCourseById(id);
 
             // redirect to home page 
             return "redirect:/";

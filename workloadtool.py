@@ -1,5 +1,7 @@
 import requests
 
+import pandas as pd
+
 ### GET request to get all courses
 
 uri_home_page = 'http://127.0.0.1:8080/'
@@ -30,13 +32,27 @@ uri_save_course = 'http://127.0.0.1:8080/saveCourse'
 
 course_obj = {'courseCode': 'CS1001', 'courseName' : 'testt', 'lecturer' : 'testerrr', 'credits' : 200}
 
-response = requests.post(uri_save_course, data = course_obj)
+newcourselist= pd.read_csv("courselist.csv")
+print(newcourselist)
+ 
+for ind in newcourselist.index:
+	courseCodeIn = newcourselist['courseCode'][ind]
+	courseNameIn = newcourselist['courseName'][ind]
+	lecturerIn = newcourselist['lecturer'][ind]
+	creditsIn = newcourselist['credits'][ind]
+	
+	course_obj = {'courseCode': courseCodeIn, 'courseName' : courseNameIn, 'lecturer' : lecturerIn, 'credits' : creditsIn}
+	print(course_obj)
 
-print(response.status_code)     
+	response = requests.post(uri_save_course, data = course_obj)
 
-print(response.elapsed.total_seconds())   
+	print(response.status_code)     
 
-print(response.url)       
+	print(response.elapsed.total_seconds())   
+
+	print(response.url)     
+	
+	"""  
 
 ### GET request to delete course by ID
 
@@ -69,4 +85,5 @@ print(response.status_code)
 print(response.elapsed.total_seconds())  
 
 print(response.url)       
+"""
 

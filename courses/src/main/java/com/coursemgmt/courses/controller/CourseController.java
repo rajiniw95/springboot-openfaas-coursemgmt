@@ -80,14 +80,11 @@ public class CourseController {
             // define list of course objects, to add the gson objects to and return to model
             List<Course> course_obj_list = new ArrayList<Course>();
 
-            // define list for course ID (for use by the monitoring tool)
-            List<String> course_id_list = new ArrayList<String>();
-
             // n is defined to iterate over objects
             int n = 1;
-
-            // a is defined to increment index in course ID list (for use by the monitoring tool)
-            int a = 0;
+            
+            // Begin writing course objects to CSV (for use by the monitoring tool)
+            PrintWriter writer = new PrintWriter("db_course_list.csv");
 
             // loop to break response array in to class_size chunks, so that each can be converted to an object
             for (int i = 0; i < array_size; i = i + class_size) {
@@ -97,7 +94,15 @@ public class CourseController {
                 for (int j = 0; j < class_size; j++) {
                     list.add(trimmed_array[k]);
                     k++;
+                    
+                    // append object data to CSV (for use by the monitoring tool)
+                    writer.append(String.valueOf(list.get(j)));
+                    writer.append(",");
+                    
                 }
+                
+                // append new line to CSV (for use by the monitoring tool)
+                writer.append("\n");
 
                 System.out.println(Arrays.toString(list.toArray()));
                 n++;
@@ -114,23 +119,11 @@ public class CourseController {
 
                 // add new course object to course object list
                 course_obj_list.add(course_gson);
-
-                // add course ID of object to list (for use by the monitoring tool)
-                course_id_list.add(list.get(0));
-                a++;
             }
-
-            // write course ID of all courses in DB to CSV file (for use by the monitoring tool) 
-            try (PrintWriter writer = new PrintWriter("course_id_list.csv")) {
-                for (int j = 0; j < course_id_list.size(); j++) {
-                    writer.append(String.valueOf(course_id_list.get(j)));
-                    writer.append("\n");
-                }
-                writer.close();
-            } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
-
+            
+            // End CSV  writer (for use by the monitoring tool)
+            writer.close();
+            
             // add course object list to model
             model.addAttribute("listCourses", course_obj_list);
             return "index";

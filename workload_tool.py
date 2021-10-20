@@ -145,7 +145,6 @@ plt.title("Elapsed time for Load New Course Page HTTP requests")
 plt.xlabel("Request number")
 plt.ylabel("Elapsed time (seconds)")
 plt.plot(x, y, color ="green")
-
 plt.savefig('new_course_page.png') 
 plt.clf()
 
@@ -158,7 +157,6 @@ plt.title("Elapsed time for Load Update Course Page HTTP requests")
 plt.xlabel("Request number")
 plt.ylabel("Elapsed time (seconds)")
 plt.plot(a, b, color ="blue")
-
 plt.savefig('update_course_page.png') 
 plt.clf()
 
@@ -171,7 +169,6 @@ plt.title("Elapsed time for Save Course HTTP requests")
 plt.xlabel("Request number")
 plt.ylabel("Elapsed time (seconds)")
 plt.plot(c, d, color ="red")
-
 plt.savefig('save_course.png') 
 plt.clf()
 
@@ -184,6 +181,5 @@ plt.title("Elapsed time for Delete Course HTTP requests")
 plt.xlabel("Request number")
 plt.ylabel("Elapsed time (seconds)")
 plt.plot(e, f, color ="orange")
-
 plt.savefig('delete_course.png') 
 plt.clf()

@@ -29,6 +29,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.Arrays;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -55,8 +59,25 @@ public class CourseController {
                     .uri(URI.create(uri))
                     .build();
 
+	    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    long filename_time = timestamp.getTime();
+	    String str_filename_time = String.valueOf(filename_time);
+	    String filename = "timestamp_analysis/getallcourses_"+str_filename_time+".txt";
+	    PrintWriter writer_timestamp = new PrintWriter(filename);
+	    
+	    long start_time = timestamp.getTime();
+	    String str_start_time = String.valueOf(start_time);
+	    writer_timestamp.append(str_start_time);
+	    
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            writer_timestamp.append("\n");
+            long end_time = timestamp.getTime();
+	    String str_end_time = String.valueOf(end_time);
+	    writer_timestamp.append(str_end_time);
+            
+            writer_timestamp.close();
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -186,9 +207,26 @@ public class CourseController {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
                     .build();
-
+                    
+	    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    long filename_time = timestamp.getTime();
+	    String str_filename_time = String.valueOf(filename_time);
+	    String filename = "timestamp_analysis/savecourse"+str_filename_time+".txt";
+	    PrintWriter writer_timestamp = new PrintWriter(filename);
+	    
+	    long start_time = timestamp.getTime();
+	    String str_start_time = String.valueOf(start_time);
+	    writer_timestamp.append(str_start_time);
+	    
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            writer_timestamp.append("\n");
+            long end_time = timestamp.getTime();
+	    String str_end_time = String.valueOf(end_time);
+	    writer_timestamp.append(str_end_time);
+            
+            writer_timestamp.close();
 
             // redirect to home page 
             return "redirect:/";
@@ -218,8 +256,25 @@ public class CourseController {
                     .uri(URI.create(uri))
                     .build();
 
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    long filename_time = timestamp.getTime();
+	    String str_filename_time = String.valueOf(filename_time);
+	    String filename = "timestamp_analysis/savecourse"+str_filename_time+".txt";
+	    PrintWriter writer_timestamp = new PrintWriter(filename);
+	    
+	    long start_time = timestamp.getTime();
+	    String str_start_time = String.valueOf(start_time);
+	    writer_timestamp.append(str_start_time);
+	    
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            writer_timestamp.append("\n");
+            long end_time = timestamp.getTime();
+	    String str_end_time = String.valueOf(end_time);
+	    writer_timestamp.append(str_end_time);
+            
+            writer_timestamp.close();
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -275,8 +330,25 @@ public class CourseController {
                     .uri(URI.create(uri))
                     .build();
 
+	    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    long filename_time = timestamp.getTime();
+	    String str_filename_time = String.valueOf(filename_time);
+	    String filename = "timestamp_analysis/savecourse"+str_filename_time+".txt";
+	    PrintWriter writer_timestamp = new PrintWriter(filename);
+	    
+	    long start_time = timestamp.getTime();
+	    String str_start_time = String.valueOf(start_time);
+	    writer_timestamp.append(str_start_time);
+	    
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            writer_timestamp.append("\n");
+            long end_time = timestamp.getTime();
+	    String str_end_time = String.valueOf(end_time);
+	    writer_timestamp.append(str_end_time);
+            
+            writer_timestamp.close();
 
             // redirect to home page 
             return "redirect:/";

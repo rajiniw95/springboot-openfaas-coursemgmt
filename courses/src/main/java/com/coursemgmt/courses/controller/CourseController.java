@@ -23,12 +23,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
 import org.json.simple.*;
-import com.google.
-        gson.*;
+import com.google.gson.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
 
 @Controller
 public class CourseController {
@@ -79,6 +81,15 @@ public class CourseController {
 
             // define list of course objects, to add the gson objects to and return to model
             List<Course> course_obj_list = new ArrayList<Course>();
+            
+            // handle when response body is empty
+            if (array_size == 1){
+            	System.out.println("EMPTY DATABASE FOR GET ALL COURSES");
+            	// remove index 1 (null) from the response array
+            	array_response = ArrayUtils.remove(array_response, 0);
+            	// assign new array size
+            	array_size = array_response.length;
+            }
 
             // n is defined to iterate over objects
             int n = 1;
@@ -98,7 +109,6 @@ public class CourseController {
                     // append object data to CSV (for use by the monitoring tool)
                     writer.append(String.valueOf(list.get(j)));
                     writer.append(",");
-                    
                 }
                 
                 // append new line to CSV (for use by the monitoring tool)
@@ -123,7 +133,7 @@ public class CourseController {
             
             // End CSV  writer (for use by the monitoring tool)
             writer.close();
-            
+
             // add course object list to model
             model.addAttribute("listCourses", course_obj_list);
             return "index";

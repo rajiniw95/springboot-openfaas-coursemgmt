@@ -209,7 +209,7 @@ public class CourseController {
             Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
             long filename_time = timestamp_start.getTime();
             String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/savecourse" + str_filename_time + ".txt";
+            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
             PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
@@ -258,7 +258,7 @@ public class CourseController {
             Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
             long filename_time = timestamp_start.getTime();
             String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/getcoursebyid" + str_filename_time + ".txt";
+            String filename = "timestamp_analysis/getcoursebyid_" + str_filename_time + ".txt";
             PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)

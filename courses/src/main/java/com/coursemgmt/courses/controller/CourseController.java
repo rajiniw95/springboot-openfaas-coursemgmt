@@ -231,8 +231,8 @@ public class CourseController {
             writer_timestamp.append(str_exec_time);
             writer_timestamp.close();
 
-            // redirect to home page 
-            return "redirect:/";
+            // load course saved successfully page 
+            return "course_saved";
         } catch (Exception e) {
             return e.toString();
         }
@@ -355,8 +355,8 @@ public class CourseController {
             writer_timestamp.append(str_exec_time);
             writer_timestamp.close();
 
-            // redirect to home page 
-            return "redirect:/";
+            // load course deleted successfully page 
+            return "course_deleted";
         } catch (Exception e) {
             return e.toString();
         }

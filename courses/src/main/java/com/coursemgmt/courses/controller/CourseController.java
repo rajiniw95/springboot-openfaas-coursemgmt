@@ -257,8 +257,6 @@ public class CourseController {
     public String saveCourse(@ModelAttribute("course") Course course) {
 
         // assign object attributes to variables 
-        long input_id = course.getId();
-        String string_input_id = String.valueOf(input_id);
         String input_course_code = course.getCourseCode();
         String input_course_name = course.getCourseName();
         String input_lecturer = course.getLecturer();
@@ -266,15 +264,11 @@ public class CourseController {
         String string_input_credits = String.valueOf(input_credits);
 
         // construct parameter for http request with object attributes
-        String uri_parameter = string_input_id + "," + input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
+        String uri_parameter = input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
         // replace all spaces in uri with %20
         uri_parameter = uri_parameter.replaceAll(" ", "%20");
 
-
-        System.out.println("INPUT COURSE ID == ");
-        System.out.println(string_input_id);
-
-        System.out.println("UPDATING DATABASE WITH COURSE...");
+        System.out.println("UPDATING DATABASE WITH NEW COURSE...");
         System.out.println(uri_parameter);
 
         // set uri to savecourse serverless function with paramemeter uri_parameter
@@ -341,15 +335,15 @@ public class CourseController {
         System.out.println("UPDATING DATABASE WITH COURSE...");
         System.out.println(uri_parameter);
 
-        // set uri to savecourse serverless function with paramemeter uri_parameter
-        String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
+        // set uri to updatecourse serverless function with paramemeter uri_parameter
+        String uri = "http://127.0.0.1:31112/function/updatecourse?data=" + uri_parameter;
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
             Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
             long filename_time = timestamp_start.getTime();
             String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
+            String filename = "timestamp_analysis/updatecourse_" + str_filename_time + ".txt";
             PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)

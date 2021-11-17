@@ -35,14 +35,8 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             
             int int_cid = Integer.parseInt(cid);
             
-            String q;
-            
-            if (int_cid == 0){
-            	q = "INSERT INTO courses (course_code, course_name, lecturer, credits) VALUES ('" + course_code + "', '" + course_name + "', '" + lecturer + "', '" + credits + "')";
-            } else {
-            	q = "UPDATE courses SET course_code = '" + course_code + "', course_name = '"+ course_name +"', lecturer = '"+ lecturer +"', credits = '"+ credits + "' WHERE cid = '" + cid + "'";
-            }
-            
+            String q = "UPDATE courses SET course_code = '" + course_code + "', course_name = '"+ course_name +"', lecturer = '"+ lecturer +"', credits = '"+ credits + "' WHERE cid = '" + cid + "'";
+
             
             Statement statement = connection.createStatement();
             int executed = statement.executeUpdate(q);

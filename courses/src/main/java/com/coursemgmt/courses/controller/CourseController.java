@@ -174,71 +174,7 @@ public class CourseController {
         model.addAttribute("course", course);
         return "new_course";
     }
-
-    //============================ SAVE/UPDATE COURSE DETAILS ============================//
-
-    @PostMapping("/saveCourse")
-    public String saveCourse(@ModelAttribute("course") Course course) {
-
-        // assign object attributes to variables 
-        long input_id = course.getId();
-        String string_input_id = String.valueOf(input_id);
-        String input_course_code = course.getCourseCode();
-        String input_course_name = course.getCourseName();
-        String input_lecturer = course.getLecturer();
-        int input_credits = course.getCredits();
-        String string_input_credits = String.valueOf(input_credits);
-
-        // construct parameter for http request with object attributes
-        String uri_parameter = string_input_id + "," + input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
-        // replace all spaces in uri with %20
-        uri_parameter = uri_parameter.replaceAll(" ", "%20");
-
-
-        System.out.println("INPUT COURSE ID == ");
-        System.out.println(string_input_id);
-
-        System.out.println("UPDATING DATABASE WITH COURSE...");
-        System.out.println(uri_parameter);
-
-        // set uri to savecourse serverless function with paramemeter uri_parameter
-        String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
-
-        try {
-            // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
-
-            // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
-
-            // send HTTP request
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(uri))
-                    .build();
-
-            // get HTTP response
-            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-
-            // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
-
-            // load course saved successfully page 
-            return "course_saved";
-        } catch (Exception e) {
-            return e.toString();
-        }
-
-    }
-
+    
     //============================ VIEW UPDATE FORM ============================//
 
     @GetMapping("/showFormForUpdate/{id}")
@@ -315,6 +251,134 @@ public class CourseController {
         }
     }
 
+    //============================ SAVE NEW COURSE DETAILS ============================//
+
+    @PostMapping("/saveCourse")
+    public String saveCourse(@ModelAttribute("course") Course course) {
+
+        // assign object attributes to variables 
+        long input_id = course.getId();
+        String string_input_id = String.valueOf(input_id);
+        String input_course_code = course.getCourseCode();
+        String input_course_name = course.getCourseName();
+        String input_lecturer = course.getLecturer();
+        int input_credits = course.getCredits();
+        String string_input_credits = String.valueOf(input_credits);
+
+        // construct parameter for http request with object attributes
+        String uri_parameter = string_input_id + "," + input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
+        // replace all spaces in uri with %20
+        uri_parameter = uri_parameter.replaceAll(" ", "%20");
+
+
+        System.out.println("INPUT COURSE ID == ");
+        System.out.println(string_input_id);
+
+        System.out.println("UPDATING DATABASE WITH COURSE...");
+        System.out.println(uri_parameter);
+
+        // set uri to savecourse serverless function with paramemeter uri_parameter
+        String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
+
+        try {
+            // create txt file with funcname_timestamp (Monitoring)
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long filename_time = timestamp_start.getTime();
+            String str_filename_time = String.valueOf(filename_time);
+            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
+            PrintWriter writer_timestamp = new PrintWriter(filename);
+
+            // get timestamp before sending http request (Monitoring)
+            long start_time = timestamp_start.getTime();
+
+            // send HTTP request
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+
+            // get HTTP response
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+            // get timestamp after receiving http response and write to txt file (Monitoring)
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            long end_time = timestamp_end.getTime();
+            long exec_time = end_time - start_time;
+            String str_exec_time = String.valueOf(exec_time);
+            writer_timestamp.append(str_exec_time);
+            writer_timestamp.close();
+
+            // load course saved successfully page 
+            return "new_course_saved";
+        } catch (Exception e) {
+            return e.toString();
+        }
+
+    }
+
+    //============================ UPDATE COURSE DETAILS ============================//
+
+    @PostMapping("/updateCourse")
+    public String updateCourse(@ModelAttribute("course") Course course) {
+
+        // assign object attributes to variables 
+        long input_id = course.getId();
+        String string_input_id = String.valueOf(input_id);
+        String input_course_code = course.getCourseCode();
+        String input_course_name = course.getCourseName();
+        String input_lecturer = course.getLecturer();
+        int input_credits = course.getCredits();
+        String string_input_credits = String.valueOf(input_credits);
+
+        // construct parameter for http request with object attributes
+        String uri_parameter = string_input_id + "," + input_course_code + "," + input_course_name + "," + input_lecturer + "," + string_input_credits;
+        // replace all spaces in uri with %20
+        uri_parameter = uri_parameter.replaceAll(" ", "%20");
+
+
+        System.out.println("INPUT COURSE ID == ");
+        System.out.println(string_input_id);
+
+        System.out.println("UPDATING DATABASE WITH COURSE...");
+        System.out.println(uri_parameter);
+
+        // set uri to savecourse serverless function with paramemeter uri_parameter
+        String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
+
+        try {
+            // create txt file with funcname_timestamp (Monitoring)
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long filename_time = timestamp_start.getTime();
+            String str_filename_time = String.valueOf(filename_time);
+            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
+            PrintWriter writer_timestamp = new PrintWriter(filename);
+
+            // get timestamp before sending http request (Monitoring)
+            long start_time = timestamp_start.getTime();
+
+            // send HTTP request
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+
+            // get HTTP response
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+            // get timestamp after receiving http response and write to txt file (Monitoring)
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            long end_time = timestamp_end.getTime();
+            long exec_time = end_time - start_time;
+            String str_exec_time = String.valueOf(exec_time);
+            writer_timestamp.append(str_exec_time);
+            writer_timestamp.close();
+
+            // load course saved successfully page 
+            return "course_updated";
+        } catch (Exception e) {
+            return e.toString();
+        }
+
+    }
+    
     //============================ DELETE COURSE ============================//
 
     @GetMapping("/deleteCourse/{id}")

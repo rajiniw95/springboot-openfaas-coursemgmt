@@ -1,4 +1,4 @@
-package selfScalingHistogram;
+package com.coursemgmt.courses.monitoring;
 
 import org.HdrHistogram.*;
 
@@ -8,7 +8,7 @@ import java.net.SocketException;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-public class App {
+public class HistogramGenerator {
 
     // A Histogram covering the range from 1 nsec to 1 hour with 3 decimal point resolution:
     static Histogram histogram = new Histogram(3600000000000L, 3);
@@ -31,7 +31,7 @@ public class App {
         histogram.recordValue(endTime - startTime);
     }
 
-    public static void main(String[] args) {        
+    public static void createHistogram(String[] args) {        
         long startTime = System.currentTimeMillis();
         long now;
 
@@ -54,6 +54,7 @@ public class App {
         try(PrintStream ps = new PrintStream(filename)){
         	ps.println("Recorded latencies [in usec] for Create+Close of a DatagramSocket:");
             	histogram.outputPercentileDistribution(ps, 1000.0);
+            	ps.println("UPDATE APPLIED");
             	ps.flush();
         } catch (FileNotFoundException e) {
             	e.printStackTrace();

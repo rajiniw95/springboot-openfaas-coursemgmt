@@ -2,7 +2,7 @@ package com.coursemgmt.courses.controller;
 
 import com.coursemgmt.courses.model.Course;
 import com.coursemgmt.courses.service.CourseService;
-import com.coursemgmt.courses.monitoring.App;
+//import com.coursemgmt.courses.monitoring.App;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -58,14 +58,14 @@ public class CourseController {
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/getallcourses_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
+            //Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            //long filename_time = timestamp_start.getTime();
+            //String str_filename_time = String.valueOf(filename_time);
+            //String filename = "timestamp_analysis/getallcourses_" + str_filename_time + ".txt";
+            //PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
+            //long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -76,12 +76,12 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
+            //Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            //long end_time = timestamp_end.getTime();
+            //long exec_time = end_time - start_time;
+            //String str_exec_time = String.valueOf(exec_time);
+            //writer_timestamp.append(str_exec_time);
+            //writer_timestamp.close();
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -193,14 +193,14 @@ public class CourseController {
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/getcoursebyid_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
+            //Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            //long filename_time = timestamp_start.getTime();
+            //String str_filename_time = String.valueOf(filename_time);
+            //String filename = "timestamp_analysis/getcoursebyid_" + str_filename_time + ".txt";
+            //PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
+            //long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -211,12 +211,12 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
+            //Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            //long end_time = timestamp_end.getTime();
+            //long exec_time = end_time - start_time;
+            //String str_exec_time = String.valueOf(exec_time);
+            //writer_timestamp.append(str_exec_time);
+            //writer_timestamp.close();
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -278,14 +278,14 @@ public class CourseController {
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
+            //Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            //long filename_time = timestamp_start.getTime();
+            //String str_filename_time = String.valueOf(filename_time);
+            //String filename = "timestamp_analysis/savecourse_" + str_filename_time + ".txt";
+            //PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
+            //long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -296,12 +296,12 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
+            //Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            //long end_time = timestamp_end.getTime();
+            //long exec_time = end_time - start_time;
+            //String str_exec_time = String.valueOf(exec_time);
+            //writer_timestamp.append(str_exec_time);
+            //writer_timestamp.close();
 
             // load course saved successfully page 
             return "new_course_saved";
@@ -342,14 +342,14 @@ public class CourseController {
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/updatecourse_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
+            //Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            //long filename_time = timestamp_start.getTime();
+            //String str_filename_time = String.valueOf(filename_time);
+            //String filename = "timestamp_analysis/updatecourse_" + str_filename_time + ".txt";
+            //PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
+            //long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -360,12 +360,12 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
+            //Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            //long end_time = timestamp_end.getTime();
+            //long exec_time = end_time - start_time;
+            //String str_exec_time = String.valueOf(exec_time);
+            //writer_timestamp.append(str_exec_time);
+            //writer_timestamp.close();
 
             // load course saved successfully page 
             return "course_updated";
@@ -390,14 +390,14 @@ public class CourseController {
 
         try {
             // create txt file with funcname_timestamp (Monitoring)
-            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
-            long filename_time = timestamp_start.getTime();
-            String str_filename_time = String.valueOf(filename_time);
-            String filename = "timestamp_analysis/deletecourse_" + str_filename_time + ".txt";
-            PrintWriter writer_timestamp = new PrintWriter(filename);
+            //Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            //long filename_time = timestamp_start.getTime();
+            //String str_filename_time = String.valueOf(filename_time);
+            //String filename = "timestamp_analysis/deletecourse_" + str_filename_time + ".txt";
+            //PrintWriter writer_timestamp = new PrintWriter(filename);
 
             // get timestamp before sending http request (Monitoring)
-            long start_time = timestamp_start.getTime();
+            //long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -408,12 +408,12 @@ public class CourseController {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
             // get timestamp after receiving http response and write to txt file (Monitoring)
-            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
-            long end_time = timestamp_end.getTime();
-            long exec_time = end_time - start_time;
-            String str_exec_time = String.valueOf(exec_time);
-            writer_timestamp.append(str_exec_time);
-            writer_timestamp.close();
+            //Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+            //long end_time = timestamp_end.getTime();
+            //long exec_time = end_time - start_time;
+            //String str_exec_time = String.valueOf(exec_time);
+            //writer_timestamp.append(str_exec_time);
+            //writer_timestamp.close();
 
             // load course deleted successfully page 
             return "course_deleted";

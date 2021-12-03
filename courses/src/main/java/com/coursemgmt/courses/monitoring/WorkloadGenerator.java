@@ -51,19 +51,19 @@ public class WorkloadGenerator {
     		}
     		
     		if (workload_type.equals("workload_B")) {
-    			workload_A();
+    			workload_B();
     		}
     		
     		if (workload_type.equals("workload_C")) {
-    			workload_A();
+    			workload_C();
     		}
 
     		if (workload_type.equals("workload_D")) {
-    			workload_A();
+    			workload_D();
     		}
     		
     		if (workload_type.equals("workload_E")) {
-    			workload_A();
+    			workload_E();
     		}   	
  	}
  	
@@ -71,5 +71,29 @@ public class WorkloadGenerator {
   	public void workload_A()
   	{
 	    System.out.println("Hello World from A");
+ 	}
+ 	
+	// workload_B
+  	public void workload_B()
+  	{
+	    System.out.println("Hello World from B");
+ 	}
+ 	
+	// workload_C
+  	public void workload_C()
+  	{
+	    System.out.println("Hello World from C");
+ 	}
+ 	
+ 	// workload_D
+  	public void workload_D()
+  	{
+	    System.out.println("Hello World from D");
+ 	}
+ 	
+ 	// workload_E
+  	public void workload_E()
+  	{
+	    System.out.println("Hello World from E");
  	}
 }

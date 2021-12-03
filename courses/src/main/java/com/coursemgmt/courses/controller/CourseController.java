@@ -57,6 +57,7 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/getallcourses";
 
         try {
+
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -211,6 +212,7 @@ public class CourseController {
             // set course as a model attribute to pre-populate the form
             model.addAttribute("course", course);
             return "update_course";
+
         } catch (Exception e) {
             return e.toString();
         }

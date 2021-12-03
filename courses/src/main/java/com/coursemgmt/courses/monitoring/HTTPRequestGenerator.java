@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.entity.StringEntity;
+
 // source : https://mkyong.com/java/how-to-send-http-request-getpost-in-java/
 
 public class HTTPRequestGenerator {
@@ -106,29 +108,46 @@ public class HTTPRequestGenerator {
         	}
     	}
 	
-	// incomplete   
 	// http://127.0.0.1:8080/saveCourse 
-	public void sendPOST_save_course() throws Exception {
+	public void sendPOST_save_course(String c_code, String c_name, String c_lec, String c_cred) throws Exception {
 
         	HttpPost post = new HttpPost(uri_save_course);
 
-        	// add request parameter, form parameters
+        	// add parameters to POST request (attributes of the Course object)
         	List<NameValuePair> urlParameters = new ArrayList<>();
-        	urlParameters.add(new BasicNameValuePair("data", "CS1008,Human%20Computer%20Interaction,Sarah%20Sebo,100001"));
-        	//urlParameters.add(new BasicNameValuePair("password", "123"));
-        	//urlParameters.add(new BasicNameValuePair("custom", "secret"));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-		//http://127.0.0.1:31112/function/savecourse?data=CS1008,Human%20Computer%20Interaction,Sarah%20Sebo,100
-
+        	urlParameters.add(new BasicNameValuePair("courseCode", c_code));
+        	urlParameters.add(new BasicNameValuePair("courseName", c_name));
+        	urlParameters.add(new BasicNameValuePair("lecturer", c_lec));
+        	urlParameters.add(new BasicNameValuePair("credits", c_cred));
 
         	post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
         	try (CloseableHttpClient http_client = HttpClients.createDefault();
              		CloseableHttpResponse response = http_client.execute(post)) {
-            		System.out.println(EntityUtils.toString(response.getEntity()));
+            		System.out.println("NEW COURSE SAVED");
         	}
 
     	}
     	
-    	
+    	// http://127.0.0.1:8080/updateCourse 
+	public void sendPOST_update_course(String c_id, String c_code, String c_name, String c_lec, String c_cred) throws Exception {
+
+        	HttpPost post = new HttpPost(uri_update_course);
+
+        	// add parameters to POST request (attributes of the Course object)
+        	List<NameValuePair> urlParameters = new ArrayList<>();
+        	urlParameters.add(new BasicNameValuePair("id", c_id));
+        	urlParameters.add(new BasicNameValuePair("courseCode", c_code));
+        	urlParameters.add(new BasicNameValuePair("courseName", c_name));
+        	urlParameters.add(new BasicNameValuePair("lecturer", c_lec));
+        	urlParameters.add(new BasicNameValuePair("credits", c_cred));
+
+        	post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        	try (CloseableHttpClient http_client = HttpClients.createDefault();
+             		CloseableHttpResponse response = http_client.execute(post)) {
+            		System.out.println("Course with id " + c_id + "UPDATED successfully");
+        	}
+
+    	}
 }

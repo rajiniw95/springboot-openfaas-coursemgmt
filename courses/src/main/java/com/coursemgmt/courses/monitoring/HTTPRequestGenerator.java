@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.entity.StringEntity;
-
 // source : https://mkyong.com/java/how-to-send-http-request-getpost-in-java/
 
 public class HTTPRequestGenerator {

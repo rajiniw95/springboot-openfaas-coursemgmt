@@ -15,8 +15,6 @@ import com.opencsv.*;
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 
 public class WorkloadGenerator {
-
-	HTTPRequestGenerator http_req = new HTTPRequestGenerator();
 		
 	// method to read user input file as string
   	public String read_file_as_string(String file_name)throws Exception
@@ -75,36 +73,36 @@ public class WorkloadGenerator {
   	}
   	
   	// method to run the user defined workload 
-  	public void run_workload(String workload_type, List<List<String>> dataset) throws Exception
+  	public void run_workload(String workload_type, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		workload_type = workload_type.trim();
   		
     		if (workload_type.equals("workload_A")) {
-    			workload_A(dataset);
+    			workload_A(dataset, http_req);
     		}
     		
     		if (workload_type.equals("workload_B")) {
-    			workload_B(dataset);
+    			workload_B(dataset, http_req)
     		}
     		
     		if (workload_type.equals("workload_C")) {
-    			workload_C(dataset);
+    			workload_C(dataset, http_req)
     		}
 
     		if (workload_type.equals("workload_D")) {
-    			workload_D(dataset);
+    			workload_D(dataset, http_req)
     		}
     		
     		if (workload_type.equals("workload_E")) {
-    			workload_E(dataset);
+    			workload_E(dataset, http_req)
     		}   	
  	}
  	
  	// workload_A (CREATE HEAVY)
  	// 50% HTTP with no invokations, 50% CREATE
- 	// load new course form and then save new course (repeated for all records in database) 
- 	
-  	public void workload_A(List<List<String>> dataset) throws Exception
+ 	// load new course form and then save new course (repeated for all records in dataset)  
+ 	// follows the natural order of HTTP request (new course form --> enter data to form --> save new course)	
+  	public void workload_A(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		int number_records = dataset.size();
 	    	for (int i = 0; i < number_records; i++) {
@@ -129,28 +127,104 @@ public class WorkloadGenerator {
 		}
  	}
  	
-	// workload_B
-  	public void workload_B(List<List<String>> dataset)
+	// workload_B (CREATE_ONLY)
+ 	// 100% CREATE
+ 	// send HTTP request for save new course (repeated for all records in database)  	
+  	public void workload_B(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
-		System.out.println("Hello World from B");
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
  	}
  	
-	// workload_C
-  	public void workload_C(List<List<String>> dataset)
+ 	// workload_B (CREATE_ONLY)
+ 	// 100% CREATE
+ 	// send HTTP request for save new course (repeated for all records in database)  	
+  	public void workload_C(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
-		System.out.println("Hello World from C");
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
  	}
  	
- 	// workload_D
-  	public void workload_D(List<List<String>> dataset)
+ 		// workload_B (CREATE_ONLY)
+ 	// 100% CREATE
+ 	// send HTTP request for save new course (repeated for all records in database)  	
+  	public void workload_D(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
-		System.out.println("Hello World from D");
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
  	}
  	
- 	// workload_E
-  	public void workload_E(List<List<String>> dataset)
+ 	// workload_B (CREATE_ONLY)
+ 	// 100% CREATE
+ 	// send HTTP request for save new course (repeated for all records in database)  	
+  	public void workload_E(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
-		System.out.println("Hello World from E");
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
  	}
 	
 	// method to read and extract data set input to array

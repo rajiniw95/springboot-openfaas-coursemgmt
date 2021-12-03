@@ -33,6 +33,10 @@ public class CoursesApplication {
     		String dataset_location = workload_gen.get_dataset_location(user_input_file_location);
     		System.out.println("The user defined dataset location is : " + dataset_location);
     		
+    		// extract retrieve count from user input file 
+    		String retrieve_count = workload_gen.get_retrieve_count(user_input_file_location);
+    		System.out.println("The user defined retrieve count : " + retrieve_count);
+    		
     		// get dataset to memory
     		List<List<String>> dataset = workload_gen.read_dataset(dataset_location);
 		System.out.println("INPUT DATASET");   
@@ -44,7 +48,8 @@ public class CoursesApplication {
 		System.out.println("===========================");
 
 		try {
-			workload_gen.run_workload(workload_type, dataset, http_req);
+			workload_gen.run_workload(user_input_file_location, workload_type, dataset, http_req);
+			
             		// http_req.sendGET_home();
             		// http_req.sendGET_new_course();
             		// http_req.sendGET_delete_course("916");

@@ -1,11 +1,5 @@
 package com.coursemgmt.courses.monitoring;
 
-/*
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.client.params.HttpClientParams;
-import java.io.*;*/
-
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;

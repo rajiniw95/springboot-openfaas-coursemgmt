@@ -18,10 +18,23 @@ public class CoursesApplication {
 		HTTPRequestGenerator http_req = new HTTPRequestGenerator();
 		WorkloadGenerator workload_gen = new WorkloadGenerator();
 		
-		// define location of user input file 
-		String workload_type = workload_gen.get_workload_type("/home/rajini/Desktop/coursemgmt-openfaas/user_input.txt");
-    		System.out.println(workload_type);
+		// UPDATE if required (path to user input txt file)
+		String user_input_file_location = "/home/rajini/Desktop/coursemgmt-openfaas/user_input.txt";
+		
+		System.out.println("READING USER INPUT FILE ...");
+		System.out.println("===========================");
+		
+		// extract workload type from user input file 
+		String workload_type = workload_gen.get_workload_type(user_input_file_location);
+    		System.out.println("The user defined workload type is : " + workload_type);
+    		
+    		// extract dataset location from user input file 
+    		String dataset_location = workload_gen.get_dataset_location(user_input_file_location);
+    		System.out.println("The user defined dataset location is : " + dataset_location);
+    		
+    		workload_gen.read_dataset(dataset_location);
     		workload_gen.run_workload(workload_type);
+    		
 				
 		try {
             		// http_req.sendGET_home();

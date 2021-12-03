@@ -42,7 +42,7 @@ public class CoursesApplication {
 		// run user-defined workload with dataset
 		System.out.println("RUNNING WORKLOAD " + workload_type + " WITH DATASET " + dataset_location);
 		System.out.println("===========================");
-    		workload_gen.run_workload(workload_type, dataset);
+    		//workload_gen.run_workload(workload_type, dataset);
 
 		try {
             		// http_req.sendGET_home();
@@ -52,7 +52,7 @@ public class CoursesApplication {
             		// http_req.sendPOST_save_course("CSMC 3333", "Network", "Ben", "200");
             		// http_req.sendPOST_update_course("922", "CSMC 3335", "Networks", "BenZ", "250");           		
         	} finally {
-            		http_req.close();
+            		//http_req.close();
         	}
     	}
 }

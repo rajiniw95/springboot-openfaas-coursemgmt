@@ -12,7 +12,11 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import com.opencsv.*;
 
+import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
+
 public class WorkloadGenerator {
+
+	HTTPRequestGenerator http_req = new HTTPRequestGenerator();
 		
 	// method to read user input file as string
   	public String read_file_as_string(String file_name)throws Exception
@@ -71,7 +75,7 @@ public class WorkloadGenerator {
   	}
   	
   	// method to run the user defined workload 
-  	public void run_workload(String workload_type, List<List<String>> dataset)
+  	public void run_workload(String workload_type, List<List<String>> dataset) throws Exception
   	{
   		workload_type = workload_type.trim();
   		
@@ -96,34 +100,57 @@ public class WorkloadGenerator {
     		}   	
  	}
  	
- 	// workload_A
-  	public void workload_A(List<List<String>> dataset)
+ 	// workload_A (CREATE HEAVY)
+ 	// 50% HTTP with no invokations, 50% CREATE
+ 	// load new course form and then save new course (repeated for all records in database) 
+ 	
+  	public void workload_A(List<List<String>> dataset) throws Exception
   	{
-	    System.out.println("Hello World from A");
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    		
+	    		// load new course form -- no serverless function or database operation invoked
+  			http_req.sendGET_new_course();
+  			
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
  	}
  	
 	// workload_B
   	public void workload_B(List<List<String>> dataset)
   	{
-	    System.out.println("Hello World from B");
+		System.out.println("Hello World from B");
  	}
  	
 	// workload_C
   	public void workload_C(List<List<String>> dataset)
   	{
-	    System.out.println("Hello World from C");
+		System.out.println("Hello World from C");
  	}
  	
  	// workload_D
   	public void workload_D(List<List<String>> dataset)
   	{
-	    System.out.println("Hello World from D");
+		System.out.println("Hello World from D");
  	}
  	
  	// workload_E
   	public void workload_E(List<List<String>> dataset)
   	{
-	    System.out.println("Hello World from E");
+		System.out.println("Hello World from E");
  	}
 	
 	// method to read and extract data set input to array

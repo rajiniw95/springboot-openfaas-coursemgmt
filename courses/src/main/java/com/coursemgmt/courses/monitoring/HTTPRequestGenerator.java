@@ -61,7 +61,6 @@ public class HTTPRequestGenerator {
             		// Get HttpResponse Status
             		System.out.println(response.getStatusLine().toString());
             		HttpEntity entity = response.getEntity();
-
             		if (entity != null) {
                   		System.out.println("NEW COURSE PAGE request sent successfully");
             		}

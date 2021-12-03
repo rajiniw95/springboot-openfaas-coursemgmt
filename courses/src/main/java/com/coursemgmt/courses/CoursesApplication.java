@@ -33,9 +33,16 @@ public class CoursesApplication {
     		String dataset_location = workload_gen.get_dataset_location(user_input_file_location);
     		System.out.println("The user defined dataset location is : " + dataset_location);
     		
+    		// get dataset to memory
     		List<List<String>> dataset = workload_gen.read_dataset(dataset_location);
-    		System.out.println(dataset);
-    		workload_gen.run_workload(workload_type);
+		System.out.println("INPUT DATASET");   
+		System.out.println("===========================");		
+		System.out.println(dataset);
+		
+		// run user-defined workload with dataset
+		System.out.println("RUNNING WORKLOAD " + workload_type + " WITH DATASET " + dataset_location);
+		System.out.println("===========================");
+    		workload_gen.run_workload(workload_type, dataset);
 
 		try {
             		// http_req.sendGET_home();

@@ -71,57 +71,57 @@ public class WorkloadGenerator {
   	}
   	
   	// method to run the user defined workload 
-  	public void run_workload(String workload_type)
+  	public void run_workload(String workload_type, List<List<String>> dataset)
   	{
   		workload_type = workload_type.trim();
   		
     		if (workload_type.equals("workload_A")) {
-    			workload_A();
+    			workload_A(dataset);
     		}
     		
     		if (workload_type.equals("workload_B")) {
-    			workload_B();
+    			workload_B(dataset);
     		}
     		
     		if (workload_type.equals("workload_C")) {
-    			workload_C();
+    			workload_C(dataset);
     		}
 
     		if (workload_type.equals("workload_D")) {
-    			workload_D();
+    			workload_D(dataset);
     		}
     		
     		if (workload_type.equals("workload_E")) {
-    			workload_E();
+    			workload_E(dataset);
     		}   	
  	}
  	
  	// workload_A
-  	public void workload_A()
+  	public void workload_A(List<List<String>> dataset)
   	{
 	    System.out.println("Hello World from A");
  	}
  	
 	// workload_B
-  	public void workload_B()
+  	public void workload_B(List<List<String>> dataset)
   	{
 	    System.out.println("Hello World from B");
  	}
  	
 	// workload_C
-  	public void workload_C()
+  	public void workload_C(List<List<String>> dataset)
   	{
 	    System.out.println("Hello World from C");
  	}
  	
  	// workload_D
-  	public void workload_D()
+  	public void workload_D(List<List<String>> dataset)
   	{
 	    System.out.println("Hello World from D");
  	}
  	
  	// workload_E
-  	public void workload_E()
+  	public void workload_E(List<List<String>> dataset)
   	{
 	    System.out.println("Hello World from E");
  	}
@@ -138,5 +138,4 @@ public class WorkloadGenerator {
 		}
 		return records;
 	}
-
 }

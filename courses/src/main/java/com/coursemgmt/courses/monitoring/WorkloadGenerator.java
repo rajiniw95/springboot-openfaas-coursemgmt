@@ -130,7 +130,7 @@ public class WorkloadGenerator {
 	public List<List<String>> read_dataset(String filename) throws Exception 
 	{
     		List<List<String>> records = new ArrayList<List<String>>();
-		try (CSVReader csvReader = new CSVReader(new FileReader(filename));) {
+		try (CSVReader csvReader = new CSVReader(new FileReader(filename), ',', '\'', 1);) {
     			String[] values = null;
     			while ((values = csvReader.readNext()) != null) {
         			records.add(Arrays.asList(values));
@@ -138,4 +138,5 @@ public class WorkloadGenerator {
 		}
 		return records;
 	}
+
 }

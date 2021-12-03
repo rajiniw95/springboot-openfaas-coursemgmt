@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 
 import java.io.FileReader;
 import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
 import com.opencsv.*;
 
 public class WorkloadGenerator {
@@ -21,8 +23,8 @@ public class WorkloadGenerator {
  	}
 		
 	// method to extract workload_type from user input file
-	public String get_workload_type(String file_name)throws Exception {
-	
+	public String get_workload_type(String file_name)throws Exception 
+	{
 		// read file as string
    		String data = read_file_as_string(file_name);
     					
@@ -45,8 +47,8 @@ public class WorkloadGenerator {
   	}
   	
   	// method to extract workload_type from user input file
-	public String get_dataset_location(String file_name)throws Exception {
-	
+	public String get_dataset_location(String file_name)throws Exception 
+	{
 		// read file as string
    		String data = read_file_as_string(file_name);
     					
@@ -123,30 +125,17 @@ public class WorkloadGenerator {
   	{
 	    System.out.println("Hello World from E");
  	}
- 	
- 	// method to read and extract data set input to array
-	public void read_dataset(String filename) throws Exception {
-    		try {
-        		// Create an object of file reader
-        		// class with CSV file as a parameter.
-        		FileReader filereader = new FileReader(filename);
- 
-        		// create csvReader object and skip first Line
-        		CSVReader csvReader = new CSVReaderBuilder(filereader)
-                                  .withSkipLines(1)
-                                  .build();
-        		List<String[]> allData = csvReader.readAll();
- 
-        		// print Data
-        		for (String[] row : allData) {
-            			for (String cell : row) {
-                		System.out.print(cell + "\t");
-            			}
-            			System.out.println();
-        		}
-    		}
-    		catch (Exception e) {
-        		e.printStackTrace();
-    		}
+	
+	// method to read and extract data set input to array
+	public List<List<String>> read_dataset(String filename) throws Exception 
+	{
+    		List<List<String>> records = new ArrayList<List<String>>();
+		try (CSVReader csvReader = new CSVReader(new FileReader(filename));) {
+    			String[] values = null;
+    			while ((values = csvReader.readNext()) != null) {
+        			records.add(Arrays.asList(values));
+    			}
+		}
+		return records;
 	}
 }

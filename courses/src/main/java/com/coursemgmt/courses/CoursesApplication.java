@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 import com.coursemgmt.courses.monitoring.WorkloadGenerator;
 
-import java.nio.file.*;;
+import java.nio.file.*;
+import java.util.List;
 
 @SpringBootApplication
 public class CoursesApplication {
@@ -32,10 +33,10 @@ public class CoursesApplication {
     		String dataset_location = workload_gen.get_dataset_location(user_input_file_location);
     		System.out.println("The user defined dataset location is : " + dataset_location);
     		
-    		workload_gen.read_dataset(dataset_location);
+    		List<List<String>> dataset = workload_gen.read_dataset(dataset_location);
+    		System.out.println(dataset);
     		workload_gen.run_workload(workload_type);
-    		
-				
+
 		try {
             		// http_req.sendGET_home();
             		// http_req.sendGET_new_course();

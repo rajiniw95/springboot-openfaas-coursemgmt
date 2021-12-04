@@ -139,23 +139,5 @@ public class HTTPRequestGenerator {
              		CloseableHttpResponse response = http_client.execute(post)) {
             		System.out.println("Course with id " + c_id + "UPDATED successfully");
         	}
-
     	}
-    	
-    	// http://127.0.0.1:8080/
-    	public void sendGET_home_for_cid() throws Exception {
-
-        	HttpGet request = new HttpGet(uri_home);
-
-        	try (CloseableHttpResponse response = http_client.execute(request)) {
-            		// Get HttpResponse Status
-            		System.out.println(response.getStatusLine().toString());
-            		HttpEntity entity = response.getEntity();
-            		if (entity != null) {
-            			String result = EntityUtils.toString(entity);
-                		System.out.println(result);
-                		System.out.println("VIEW HOME PAGE request sent successfully");
-            		}
-        	}
-	}
 }

@@ -127,7 +127,11 @@ public class WorkloadGenerator {
     		}
     		
     		if (workload_type.equals("workload_E")) {
-    			workload_E(dataset, http_req);
+    			workload_E(http_req);
+    		}  
+    		
+    		if (workload_type.equals("workload_F")) {
+    			workload_F(dataset, http_req);
     		}   	
  	}
  	
@@ -326,12 +330,50 @@ public class WorkloadGenerator {
  	// workload_E (DELETE_ONLY)
  	// 100% Delete
  	// Delete all existing courses from database
-  	public void workload_E(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public void workload_E(HTTPRequestGenerator http_req) throws Exception
   	{
   		List<String> cid_list = get_cid_list(http_req);
 
 	    	System.out.println(cid_list);
 	    	
+	    	// send DELETE request for each cid in database
+	    	for (int i = 0; i < cid_list.size(); i++) {
+ 			String cid = cid_list.get(i).trim();
+ 			http_req.sendGET_delete_course(cid);
+		}
+ 	}
+ 	
+ 	// workload_F (CREATE_AND_DELETE)
+ 	// 100% Delete
+ 	// Delete all existing courses from database
+  	public void workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	{
+  		// create new records for each row in dataset
+  		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
+		
+		// get cid list by calling getAllCourses serverless function
+		List<String> cid_list = get_cid_list(http_req);
+
+	    	System.out.println(cid_list);
+	    	
+	    	// delete all cid in database
 	    	for (int i = 0; i < cid_list.size(); i++) {
  			String cid = cid_list.get(i).trim();
  			http_req.sendGET_delete_course(cid);

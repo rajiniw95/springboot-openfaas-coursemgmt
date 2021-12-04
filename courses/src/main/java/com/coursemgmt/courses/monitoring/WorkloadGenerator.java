@@ -12,6 +12,15 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import com.opencsv.*;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Supplier;
+
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 
 public class WorkloadGenerator {
@@ -261,13 +270,72 @@ public class WorkloadGenerator {
   		}
  	}
  	
- 	// workload_B (CREATE_ONLY)
- 	// 100% CREATE
- 	// send HTTP request for save new course (repeated for all records in database)  	
+ 	// serverless invocation to return all course ID values
+ 	// (we need this to call retrieves, updates and deletes)
+ 	public List<String> get_cid_list(HTTPRequestGenerator http_req) throws Exception
+  	{
+  		HttpClient client = HttpClient.newHttpClient();  		
+  		String uri = "http://127.0.0.1:31112/function/getallcourses";
+
+        	try {
+            		// send HTTP request
+            		HttpRequest request = HttpRequest.newBuilder()
+                    		.uri(URI.create(uri))
+                    		.build();
+
+            		// get HTTP response
+            		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+            		// extract body of HTTP response
+            		String response_body = response.body();            	
+            		response_body = response_body.replaceAll(", $", "");
+            		System.out.println(response_body);
+            		
+            		// split response body by commas and assign to array
+            		String[] array_response = response_body.split(",");
+
+            		// get array size
+            		int array_size = array_response.length;
+
+            		// remove extra spaces from all array elements
+            		String[] trimmed_array = new String[array_size];
+            		for (int i = 0; i < array_response.length; i++)
+                		trimmed_array[i] = array_response[i].trim();
+
+            		// define number of attributes in class
+            		int class_size = 5;
+            		
+            		// define list of course objects, to add the gson objects to and return to model
+            		List<String> cid_list = new ArrayList<String>();
+
+            		// n is defined to iterate over objects
+            		int n = 1;
+
+            		// loop to extract course ID of each record
+            		for (int i = 0; i < array_size; i = i + class_size) {
+                		cid_list.add(array_response[i]); }
+                	
+			return cid_list;
+        	} catch (Exception e) {
+        		List<String> exception_list = new ArrayList<String>();
+            		exception_list.add(e.toString());
+            		return exception_list;
+        	}	    	
+ 	}
+ 	
+ 	// workload_E (DELETE_ONLY)
+ 	// 100% Delete
+ 	// Delete all existing courses from database
   	public void workload_E(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
-  		int number_records = dataset.size();
+  		List<String> cid_list = get_cid_list(http_req);
+
+	    	System.out.println(cid_list);
 	    	
+	    	for (int i = 0; i < cid_list.size(); i++) {
+ 			String cid = cid_list.get(i).trim();
+ 			http_req.sendGET_delete_course(cid);
+		}
  	}
 	
 	// method to read and extract data set input to array

@@ -2,7 +2,6 @@ package com.coursemgmt.courses.controller;
 
 import com.coursemgmt.courses.model.Course;
 import com.coursemgmt.courses.service.CourseService;
-//import com.coursemgmt.courses.monitoring.App;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,7 +52,6 @@ public class CourseController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
 
-
         String uri = "http://127.0.0.1:31112/function/getallcourses";
 
         try {
@@ -102,9 +100,6 @@ public class CourseController {
             // n is defined to iterate over objects
             int n = 1;
 
-            // Begin writing course objects to CSV (for use by the monitoring tool)
-            PrintWriter writer = new PrintWriter("db_course_list.csv");
-
             // loop to break response array in to class_size chunks, so that each can be converted to an object
             for (int i = 0; i < array_size; i = i + class_size) {
                 // add object elements to arraylist
@@ -113,14 +108,7 @@ public class CourseController {
                 for (int j = 0; j < class_size; j++) {
                     list.add(trimmed_array[k]);
                     k++;
-
-                    // append object data to CSV (for use by the monitoring tool)
-                    writer.append(String.valueOf(list.get(j)));
-                    writer.append(",");
                 }
-
-                // append new line to CSV (for use by the monitoring tool)
-                writer.append("\n");
 
                 System.out.println(Arrays.toString(list.toArray()));
                 n++;
@@ -138,9 +126,6 @@ public class CourseController {
                 // add new course object to course object list
                 course_obj_list.add(course_gson);
             }
-
-            // End CSV  writer (for use by the monitoring tool)
-            writer.close();
 
             // add course object list to model
             model.addAttribute("listCourses", course_obj_list);

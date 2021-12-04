@@ -1,0 +1,5 @@
+workload_type = workload_E;
+
+dataset_location = /home/rajini/Desktop/coursemgmt-openfaas/course_list_dataset.csv;
+
+retrieve_count = 4;

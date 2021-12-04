@@ -132,10 +132,18 @@ public class WorkloadGenerator {
     		
     		if (workload_type.equals("workload_F")) {
     			workload_F(dataset, http_req);
+    		}  
+    		
+    		if (workload_type.equals("workload_G")) {
+    			workload_G(dataset, http_req);
+    		} 
+    		
+    		if (workload_type.equals("workload_H")) {
+    			workload_H(dataset, http_req);
     		}   	
  	}
  	
- 	// workload_A (CREATE HEAVY)
+ 	// workload_A (CREATE_HEAVY)
  	// 50% HTTP with no invokations, 50% CREATE
  	// load new course form and then save new course (repeated for all records in dataset)  
  	// follows the natural order of HTTP request (new course form --> enter data to form --> save new course)	
@@ -344,8 +352,9 @@ public class WorkloadGenerator {
  	}
  	
  	// workload_F (CREATE_AND_DELETE)
- 	// 100% Delete
- 	// Delete all existing courses from database
+ 	// 50% Create, 50% Delete (assuming that there were no other records in database)
+ 	// (existing records are also deleted)
+ 	// Insert and delete a set of courses from database
   	public void workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		// create new records for each row in dataset
@@ -376,6 +385,79 @@ public class WorkloadGenerator {
 	    	// delete all cid in database
 	    	for (int i = 0; i < cid_list.size(); i++) {
  			String cid = cid_list.get(i).trim();
+ 			http_req.sendGET_delete_course(cid);
+		}
+ 	}
+ 	
+ 	// workload_G (RETRIEVE_AND_UPDATE)
+ 	// 50% retrieve record by ID, 50% Update (assuming that there are records in database)
+  	public void workload_G(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	{	
+		// get cid list by calling getAllCourses serverless function
+		List<String> cid_list = get_cid_list(http_req);
+
+	    	System.out.println(cid_list);
+	    	
+	    	// for all cid in database
+	    	for (int i = 0; i < cid_list.size(); i++) {
+ 			String cid = cid_list.get(i).trim();
+ 			String c_code = "c_code_update_" + i; 
+ 			String c_name = "c_name_update_" + i; 
+ 			String c_lec = "c_lec_update_" + i; 
+ 			String c_credits = "200"; 
+ 			
+ 			// retrieve record by CID
+ 			http_req.sendGET_update_form(cid);
+ 			
+ 			// update record with new parameters
+ 			http_req.sendPOST_update_course(cid, c_code, c_name, c_lec, c_credits); 
+		}
+ 	}
+ 	
+ 	// workload_H (ALL_OPERATIONS)
+ 	// 25% Create, 25% Retrieve, 25% Update and 25% Delete
+  	public void workload_H(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	{	
+		// create new record for each row in dataset
+		int number_records = dataset.size();
+	    	for (int i = 0; i < number_records; i++) {
+	    		System.out.println(i);
+	    	
+  			// get current record (i^th)
+  			List<String> record = new ArrayList<String>(4);
+  			record = dataset.get(i);
+  			System.out.println(record);
+  			
+  			// separate current record to Course attributes
+  			String course_code = record.get(0);
+  			String course_name = record.get(1);
+  			String lecturer = record.get(2);
+  			String credits = record.get(3);
+  			
+  			// Create new course record in database
+  			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+		}
+		
+		// get cid list by calling getAllCourses serverless function
+		List<String> cid_list = get_cid_list(http_req);
+
+	    	System.out.println(cid_list);
+	    	
+	    	// for all cid in database
+	    	for (int i = 0; i < cid_list.size(); i++) {
+ 			String cid = cid_list.get(i).trim();
+ 			String c_code = "c_code_update_" + i; 
+ 			String c_name = "c_name_update_" + i; 
+ 			String c_lec = "c_lec_update_" + i; 
+ 			String c_credits = "200"; 
+ 			
+ 			// retrieve record by CID
+ 			http_req.sendGET_update_form(cid);
+ 			
+ 			// update record with new parameters
+ 			http_req.sendPOST_update_course(cid, c_code, c_name, c_lec, c_credits); 
+ 			
+ 			// delete record
  			http_req.sendGET_delete_course(cid);
 		}
  	}

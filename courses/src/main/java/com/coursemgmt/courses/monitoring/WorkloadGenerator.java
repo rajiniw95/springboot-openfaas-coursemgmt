@@ -147,6 +147,7 @@ public class WorkloadGenerator {
  	// 50% HTTP with no invokations, 50% CREATE
  	// load new course form and then save new course (repeated for all records in dataset)  
  	// follows the natural order of HTTP request (new course form --> enter data to form --> save new course)	
+	// ZIPFIAN
   	public void workload_A(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		int number_records = dataset.size();
@@ -174,7 +175,8 @@ public class WorkloadGenerator {
  	
 	// workload_B (CREATE_ONLY)
  	// 100% CREATE
- 	// send HTTP request for save new course (repeated for all records in database)  	
+ 	// send HTTP request for save new course (repeated for all records in database)  
+	// ZIPFIAN
   	public void workload_B(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		int number_records = dataset.size();
@@ -217,6 +219,7 @@ public class WorkloadGenerator {
  	// if number_records >= int_retrieve_count --> then call save+get for retrieve_count # of times
  	// if number_records < int_retrieve_count --> then call save+get for number_records # of times AND get for delta number of times
  	// We increase the size of the database by one record upon each iteration (and there by the amount of data being retieved)
+	// ZIPFIAN
   	public void workload_D(String filename, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		String retrieve_count = get_retrieve_count(filename);
@@ -338,6 +341,7 @@ public class WorkloadGenerator {
  	// workload_E (DELETE_ONLY)
  	// 100% Delete
  	// Delete all existing courses from database
+	// ZIPFIAN
   	public void workload_E(HTTPRequestGenerator http_req) throws Exception
   	{
   		List<String> cid_list = get_cid_list(http_req);
@@ -355,6 +359,7 @@ public class WorkloadGenerator {
  	// 50% Create, 50% Delete (assuming that there were no other records in database)
  	// (existing records are also deleted)
  	// Insert and delete a set of courses from database
+	// ZIPFIAN
   	public void workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		// create new records for each row in dataset
@@ -391,6 +396,7 @@ public class WorkloadGenerator {
  	
  	// workload_G (RETRIEVE_AND_UPDATE)
  	// 50% retrieve record by ID, 50% Update (assuming that there are records in database)
+	// ZIPFIAN
   	public void workload_G(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
 		// get cid list by calling getAllCourses serverless function
@@ -416,6 +422,7 @@ public class WorkloadGenerator {
  	
  	// workload_H (ALL_OPERATIONS)
  	// 25% Create, 25% Retrieve, 25% Update and 25% Delete
+	// UNIFORM
   	public void workload_H(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
 		// create new record for each row in dataset

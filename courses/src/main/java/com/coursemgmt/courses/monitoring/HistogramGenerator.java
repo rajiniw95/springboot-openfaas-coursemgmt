@@ -89,8 +89,7 @@ public class HistogramGenerator {
 		{
 			System.out.println(delta_durations.get(i));
     			histogram.recordValue(delta_durations.get(i));
-		}	
-		histogram.reset();   
+		}	 
         	       	  		
   		FileOutputStream fos = new FileOutputStream(filepath);  
        

@@ -188,6 +188,8 @@ public class WorkloadGenerator {
 	// ZIPFIAN
   	public ArrayList<Long> workload_A(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
+  		ArrayList<Long> delta_durations_A = new ArrayList<Long>();
+  		
   		int number_records = dataset.size();
 	    	for (int i = 0; i < number_records; i++) {
 	    		System.out.println(i);
@@ -209,6 +211,8 @@ public class WorkloadGenerator {
   			// Create new course record in database
   			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
 		}
+		
+		return delta_durations_A;
  	}
  	
 	// workload_B (CREATE_ONLY)
@@ -262,6 +266,8 @@ public class WorkloadGenerator {
   		String retrieve_count = get_retrieve_count(filename);
   		int int_retrieve_count=Integer.parseInt(retrieve_count); 
   		
+  		ArrayList<Long> delta_durations_C = new ArrayList<Long>();
+  		
   		// call homepage HTTP request for 'retrieve_count' number of times
 	    	for (int i = 0; i < int_retrieve_count; i++) {
 	    		System.out.println(i);
@@ -278,8 +284,10 @@ public class WorkloadGenerator {
   			
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
-  			delta_durations_B.add(delta_duration);
+  			delta_durations_C.add(delta_duration);
 		}
+		
+		return delta_durations_C;
  	}
  	
  	// workload_D (RETRIEVE_DYNAMIC)
@@ -290,6 +298,8 @@ public class WorkloadGenerator {
 	// ZIPFIAN
   	public ArrayList<Long> workload_D(String filename, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
+  		ArrayList<Long> delta_durations_D = new ArrayList<Long>();
+  		
   		String retrieve_count = get_retrieve_count(filename);
   		int int_retrieve_count=Integer.parseInt(retrieve_count); 
   		
@@ -351,6 +361,8 @@ public class WorkloadGenerator {
 	    			http_req.sendGET_home();
 			}
   		}
+  		
+  		return delta_durations_D;
  	}
  	
  	// serverless invocation to return all course ID values
@@ -412,6 +424,8 @@ public class WorkloadGenerator {
 	// ZIPFIAN
   	public ArrayList<Long> workload_E(HTTPRequestGenerator http_req) throws Exception
   	{
+  		ArrayList<Long> delta_durations_E = new ArrayList<Long>();
+  		
   		List<String> cid_list = get_cid_list(http_req);
 
 	    	System.out.println(cid_list);
@@ -432,8 +446,10 @@ public class WorkloadGenerator {
   			
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
-  			delta_durations_B.add(delta_duration);
+  			delta_durations_E.add(delta_duration);
 		}
+		
+		return delta_durations_E;
  	}
  	
  	// workload_F (CREATE_AND_DELETE)
@@ -443,6 +459,8 @@ public class WorkloadGenerator {
 	// ZIPFIAN
   	public ArrayList<Long> workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
+  		ArrayList<Long> delta_durations_F = new ArrayList<Long>();
+  		
   		// create new records for each row in dataset
   		int number_records = dataset.size();
 	    	for (int i = 0; i < number_records; i++) {
@@ -473,6 +491,8 @@ public class WorkloadGenerator {
  			String cid = cid_list.get(i).trim();
  			http_req.sendGET_delete_course(cid);
 		}
+		
+		return delta_durations_F;
  	}
  	
  	// workload_G (RETRIEVE_AND_UPDATE)
@@ -480,6 +500,8 @@ public class WorkloadGenerator {
 	// ZIPFIAN
   	public ArrayList<Long> workload_G(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
+		ArrayList<Long> delta_durations_G = new ArrayList<Long>();
+		
 		// get cid list by calling getAllCourses serverless function
 		List<String> cid_list = get_cid_list(http_req);
 
@@ -499,6 +521,8 @@ public class WorkloadGenerator {
  			// update record with new parameters
  			http_req.sendPOST_update_course(cid, c_code, c_name, c_lec, c_credits); 
 		}
+		
+		return delta_durations_G;
  	}
  	
  	// workload_H (ALL_OPERATIONS)
@@ -506,6 +530,8 @@ public class WorkloadGenerator {
 	// UNIFORM
   	public ArrayList<Long> workload_H(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
+		ArrayList<Long> delta_durations_H = new ArrayList<Long>();
+		
 		// create new record for each row in dataset
 		int number_records = dataset.size();
 	    	for (int i = 0; i < number_records; i++) {
@@ -548,6 +574,8 @@ public class WorkloadGenerator {
  			// delete record
  			http_req.sendGET_delete_course(cid);
 		}
+		
+		return delta_durations_H;
  	}
 	
 	// method to read and extract data set input to array

@@ -6,7 +6,11 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.FileOutputStream;
+
+import java.sql.Timestamp;  
 
 public class HistogramGenerator {
 
@@ -31,7 +35,7 @@ public class HistogramGenerator {
         	histogram.recordValue(endTime - startTime);
     	}
 
-    	public static void create_histogram() {        
+    	public static void create_histogram_test() {        
         	long startTime = System.currentTimeMillis();
         	long now;
 
@@ -57,6 +61,33 @@ public class HistogramGenerator {
             		ps.println("UPDATE APPLIED");
             		ps.flush();
         	} catch (FileNotFoundException e) {
+            		e.printStackTrace();
+        	}
+        
+        	System.out.println("Self Scaling Histogram Created and Analyzed");
+    	}
+    	
+    	public static void create_histogram(String workload_type, String output_histogram_location) throws IOException{        
+        	long startTime = System.currentTimeMillis();
+        	long now;
+        	
+        	Timestamp timestamp_filename = new Timestamp(System.currentTimeMillis());
+  		long time_filename = timestamp_filename.getTime();
+  		String str_timestamp_filename = String.valueOf(time_filename);
+
+        	// define file name of output desitination
+        	String filename = workload_type + "_" + str_timestamp_filename + ".txt";    
+        	String filepath = output_histogram_location + filename;     
+        	       	  		
+  		FileOutputStream fos = new FileOutputStream(filepath);  
+       
+        	// Write Output Percentile Distribution to PrintStream
+        	try(PrintStream ps = new PrintStream(fos)){
+        		ps.println("Recorded latencies [in sec] for Create+Close of a DatagramSocket:");
+            		//histogram.outputPercentileDistribution(ps, 1000.0);
+            		ps.println("UPDATE APPLIED");
+            		ps.flush();
+        	} catch (Exception e) {
             		e.printStackTrace();
         	}
         

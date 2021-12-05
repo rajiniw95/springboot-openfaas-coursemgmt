@@ -1,0 +1,2 @@
+Recorded latencies [in sec] for Create+Close of a DatagramSocket:
+UPDATE APPLIED

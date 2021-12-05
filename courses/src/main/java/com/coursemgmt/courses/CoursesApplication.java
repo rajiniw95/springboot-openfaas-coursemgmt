@@ -40,6 +40,10 @@ public class CoursesApplication {
     		String retrieve_count = workload_gen.get_retrieve_count(user_input_file_location);
     		System.out.println("The user defined retrieve count : " + retrieve_count);
     		
+    		// extract output histogram location from user input file 
+    		String output_histogram_location = workload_gen.get_output_histogram_location(user_input_file_location);
+    		System.out.println("The user defined output histogram location : " + output_histogram_location);
+    		
     		// get dataset to memory
     		List<List<String>> dataset = workload_gen.read_dataset(dataset_location);
 		System.out.println("INPUT DATASET");   
@@ -53,20 +57,13 @@ public class CoursesApplication {
 		ArrayList<Long> delta_durations = new ArrayList<Long>();
 	
 		try {
-			delta_durations = workload_gen.run_workload(user_input_file_location, workload_type, dataset, http_req);
-			
-            		// http_req.sendGET_home();
-            		// http_req.sendGET_new_course();
-            		// http_req.sendGET_delete_course("916");
-            		// http_req.sendGET_update_form("909");
-            		// http_req.sendPOST_save_course("CSMC 3333", "Network", "Ben", "200");
-            		// http_req.sendPOST_update_course("922", "CSMC 3335", "Networks", "BenZ", "250");           		
+			delta_durations = workload_gen.run_workload(user_input_file_location, workload_type, dataset, http_req);          		
         	} finally {
             		http_req.close();
         	}
         	
         	System.out.println(delta_durations.toString());
 						
-        	hist_gen.create_histogram();
+        	hist_gen.create_histogram(workload_type, output_histogram_location);
     	}
 }

@@ -21,9 +21,17 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
+import java.sql.Timestamp;  
+
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 
-import java.sql.Timestamp;  
+// DEFINED HTTP REQUEST METHODS
+// http_req.sendGET_home();
+// http_req.sendGET_new_course();
+// http_req.sendGET_delete_course("916");
+// http_req.sendGET_update_form("909");
+// http_req.sendPOST_save_course("CSMC 3333", "Network", "Ben", "200");
+// http_req.sendPOST_update_course("922", "CSMC 3335", "Networks", "BenZ", "250"); 
 
 public class WorkloadGenerator {
 		
@@ -83,7 +91,7 @@ public class WorkloadGenerator {
     		return defined_dataset_location;
   	}
   	
-  	// method to extract workload_type from user input file
+  	// method to extract retrieve_count from user input file
 	public String get_retrieve_count(String file_name)throws Exception 
 	{
 		// read file as string
@@ -105,6 +113,30 @@ public class WorkloadGenerator {
 		}
 		
     		return defined_retrieve_count;
+  	}
+  	
+  	// method to extract output_histogram_location from user input file
+	public String get_output_histogram_location(String file_name)throws Exception 
+	{
+		// read file as string
+   		String data = read_file_as_string(file_name);
+    					
+    		// split rows to the segments array
+    		String segments[] = data.split(";");
+    		
+    		// string matching to find array element starting with "workload_type"
+    		Pattern pattern = Pattern.compile("output_histogram_location");  
+      		String[] user_input;
+      		String defined_output_histogram_location = "";
+    		for (String s: segments) {  
+    			user_input = s.split(" = ", 2); 
+    			Matcher matcher = pattern.matcher(user_input[0]);        
+    			if (matcher.find()) {    				
+  				defined_output_histogram_location = user_input[1]; 
+			}
+		}
+		
+    		return defined_output_histogram_location;
   	}
   	
   	// method to run the user defined workload 

@@ -64,6 +64,6 @@ public class CoursesApplication {
         	
         	System.out.println(delta_durations.toString());
 						
-        	hist_gen.create_histogram(workload_type, output_histogram_location);
+        	hist_gen.create_histogram(workload_type, output_histogram_location, delta_durations);
     	}
 }

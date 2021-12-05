@@ -11,11 +11,17 @@ import java.io.PrintStream;
 import java.io.FileOutputStream;
 
 import java.sql.Timestamp;  
+import java.util.concurrent.TimeUnit;
+
+import java.util.ArrayList;
 
 public class HistogramGenerator {
 
     	// A Histogram covering the range from 1 nsec to 1 hour with 3 decimal point resolution:
-   	static Histogram histogram = new Histogram(3600000000000L, 3);
+   	// static Histogram histogram = new Histogram(3600000000000L, 3);
+   	
+   	static Histogram histogram = new Histogram(TimeUnit.SECONDS.toNanos(1), 3);
+	// (max recorded value, decimal point precision)             
 
     	static public volatile DatagramSocket socket;
 
@@ -67,7 +73,7 @@ public class HistogramGenerator {
         	System.out.println("Self Scaling Histogram Created and Analyzed");
     	}
     	
-    	public static void create_histogram(String workload_type, String output_histogram_location) throws IOException{        
+    	public static void create_histogram(String workload_type, String output_histogram_location, ArrayList<Long> delta_durations) throws IOException{        
         	long startTime = System.currentTimeMillis();
         	long now;
         	
@@ -77,15 +83,21 @@ public class HistogramGenerator {
 
         	// define file name of output desitination
         	String filename = workload_type + "_" + str_timestamp_filename + ".txt";    
-        	String filepath = output_histogram_location + filename;     
+        	String filepath = output_histogram_location + filename;  
+        	
+        	for(int i = 0; i < delta_durations.size(); i++)
+		{
+			System.out.println(delta_durations.get(i));
+    			histogram.recordValue(delta_durations.get(i));
+		}	
+		histogram.reset();   
         	       	  		
   		FileOutputStream fos = new FileOutputStream(filepath);  
        
         	// Write Output Percentile Distribution to PrintStream
         	try(PrintStream ps = new PrintStream(fos)){
-        		ps.println("Recorded latencies [in sec] for Create+Close of a DatagramSocket:");
-            		//histogram.outputPercentileDistribution(ps, 1000.0);
-            		ps.println("UPDATE APPLIED");
+        		ps.println("Recorded latencies [in sec] for HTTP requests:");
+            		histogram.outputPercentileDistribution(ps, 1000.0);
             		ps.flush();
         	} catch (Exception e) {
             		e.printStackTrace();

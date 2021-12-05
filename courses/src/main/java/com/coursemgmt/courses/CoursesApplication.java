@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 import com.coursemgmt.courses.monitoring.WorkloadGenerator;
+import com.coursemgmt.courses.monitoring.HistogramGenerator;
 
 import java.nio.file.*;
 import java.util.List;
@@ -18,6 +19,7 @@ public class CoursesApplication {
 		
 		HTTPRequestGenerator http_req = new HTTPRequestGenerator();
 		WorkloadGenerator workload_gen = new WorkloadGenerator();
+		HistogramGenerator hist_gen = new HistogramGenerator();
 		
 		// UPDATE if required (path to user input txt file)
 		String user_input_file_location = "/home/rajini/Desktop/coursemgmt-openfaas/user_input.txt";
@@ -59,5 +61,7 @@ public class CoursesApplication {
         	} finally {
             		http_req.close();
         	}
+        	
+        	hist_gen.create_histogram();
     	}
 }

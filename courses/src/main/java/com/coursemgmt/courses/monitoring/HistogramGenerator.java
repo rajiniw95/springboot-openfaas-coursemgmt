@@ -52,7 +52,7 @@ public class HistogramGenerator {
         
         	// Write Output Percentile Distribution to PrintStream
         	try(PrintStream ps = new PrintStream(filename)){
-        		ps.println("Recorded latencies [in usec] for Create+Close of a DatagramSocket:");
+        		ps.println("Recorded latencies [in sec] for Create+Close of a DatagramSocket:");
             		histogram.outputPercentileDistribution(ps, 1000.0);
             		ps.println("UPDATE APPLIED");
             		ps.flush();

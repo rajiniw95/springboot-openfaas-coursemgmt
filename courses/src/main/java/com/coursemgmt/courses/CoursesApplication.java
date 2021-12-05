@@ -9,6 +9,7 @@ import com.coursemgmt.courses.monitoring.HistogramGenerator;
 
 import java.nio.file.*;
 import java.util.List;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class CoursesApplication {
@@ -49,8 +50,10 @@ public class CoursesApplication {
 		System.out.println("RUNNING WORKLOAD " + workload_type + " WITH DATASET " + dataset_location);
 		System.out.println("===========================");
 
+		ArrayList<Long> delta_durations = new ArrayList<Long>();
+	
 		try {
-			workload_gen.run_workload(user_input_file_location, workload_type, dataset, http_req);
+			delta_durations = workload_gen.run_workload(user_input_file_location, workload_type, dataset, http_req);
 			
             		// http_req.sendGET_home();
             		// http_req.sendGET_new_course();
@@ -62,6 +65,8 @@ public class CoursesApplication {
             		http_req.close();
         	}
         	
+        	System.out.println(delta_durations.toString());
+						
         	hist_gen.create_histogram();
     	}
 }

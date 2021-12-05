@@ -23,6 +23,8 @@ import java.util.function.Supplier;
 
 import com.coursemgmt.courses.monitoring.HTTPRequestGenerator;
 
+import java.sql.Timestamp;  
+
 public class WorkloadGenerator {
 		
 	// method to read user input file as string
@@ -106,18 +108,20 @@ public class WorkloadGenerator {
   	}
   	
   	// method to run the user defined workload 
-  	public void run_workload(String filename, String workload_type, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> run_workload(String filename, String workload_type, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		workload_type = workload_type.trim();
+  		
+  		ArrayList<Long> delta_durations = new ArrayList<Long>();
   		
     		if (workload_type.equals("workload_A")) {
     			workload_A(dataset, http_req);
     		}
     		
     		if (workload_type.equals("workload_B")) {
-    			workload_B(dataset, http_req);
+    			delta_durations = workload_B(dataset, http_req);
     		}
-    		
+
     		if (workload_type.equals("workload_C")) {
     			workload_C(filename, http_req);
     		}
@@ -140,7 +144,9 @@ public class WorkloadGenerator {
     		
     		if (workload_type.equals("workload_H")) {
     			workload_H(dataset, http_req);
-    		}   	
+    		}   
+    		
+    		return delta_durations;	
  	}
  	
  	// workload_A (CREATE_HEAVY)
@@ -177,9 +183,12 @@ public class WorkloadGenerator {
  	// 100% CREATE
  	// send HTTP request for save new course (repeated for all records in database)  
 	// ZIPFIAN
-  	public void workload_B(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
-  	{
+  	public ArrayList<Long> workload_B(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	{	
   		int number_records = dataset.size();
+  		
+  		ArrayList<Long> delta_durations_B = new ArrayList<Long>();
+  		
 	    	for (int i = 0; i < number_records; i++) {
 	    		System.out.println(i);
 	    	
@@ -194,9 +203,22 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
+  			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+  			long start_time = timestamp_start.getTime();
+  			
   			// Create new course record in database
   			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+
+			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+  			long end_time = timestamp_end.getTime();
+  			
+  			long delta_duration = end_time - start_time;
+  			delta_durations_B.add(delta_duration);
 		}
+		
+		return delta_durations_B;
  	}
  	
  	// workload_C (RETRIEVE_ONLY_STATIC)

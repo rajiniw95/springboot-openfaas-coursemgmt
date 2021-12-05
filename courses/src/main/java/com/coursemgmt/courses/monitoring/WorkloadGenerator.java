@@ -186,7 +186,7 @@ public class WorkloadGenerator {
  	// load new course form and then save new course (repeated for all records in dataset)  
  	// follows the natural order of HTTP request (new course form --> enter data to form --> save new course)	
 	// ZIPFIAN
-  	public void workload_A(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_A(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		int number_records = dataset.size();
 	    	for (int i = 0; i < number_records; i++) {
@@ -246,6 +246,7 @@ public class WorkloadGenerator {
 			Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
   			long end_time = timestamp_end.getTime();
   			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
   			delta_durations_B.add(delta_duration);
 		}
@@ -256,7 +257,7 @@ public class WorkloadGenerator {
  	// workload_C (RETRIEVE_ONLY_STATIC)
  	// 100% RETRIEVE when Database size is static
  	// send HTTP request for get home page (repeated for retrieve_count)  	
-  	public void workload_C(String filename, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_C(String filename, HTTPRequestGenerator http_req) throws Exception
   	{
   		String retrieve_count = get_retrieve_count(filename);
   		int int_retrieve_count=Integer.parseInt(retrieve_count); 
@@ -264,17 +265,30 @@ public class WorkloadGenerator {
   		// call homepage HTTP request for 'retrieve_count' number of times
 	    	for (int i = 0; i < int_retrieve_count; i++) {
 	    		System.out.println(i);
+	    		
+	    		// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+  			long start_time = timestamp_start.getTime();
+  			
 	    		http_req.sendGET_home();
+	    		
+	    		// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+  			long end_time = timestamp_end.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration = end_time - start_time;
+  			delta_durations_B.add(delta_duration);
 		}
  	}
  	
  	// workload_D (RETRIEVE_DYNAMIC)
- 	// 100% RETRIEVE as the Database size grows
+ 	// 50% CREATE 50% RETRIEVE as the Database size grows
  	// if number_records >= int_retrieve_count --> then call save+get for retrieve_count # of times
  	// if number_records < int_retrieve_count --> then call save+get for number_records # of times AND get for delta number of times
  	// We increase the size of the database by one record upon each iteration (and there by the amount of data being retieved)
 	// ZIPFIAN
-  	public void workload_D(String filename, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_D(String filename, List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		String retrieve_count = get_retrieve_count(filename);
   		int int_retrieve_count=Integer.parseInt(retrieve_count); 
@@ -396,7 +410,7 @@ public class WorkloadGenerator {
  	// 100% Delete
  	// Delete all existing courses from database
 	// ZIPFIAN
-  	public void workload_E(HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_E(HTTPRequestGenerator http_req) throws Exception
   	{
   		List<String> cid_list = get_cid_list(http_req);
 
@@ -405,7 +419,20 @@ public class WorkloadGenerator {
 	    	// send DELETE request for each cid in database
 	    	for (int i = 0; i < cid_list.size(); i++) {
  			String cid = cid_list.get(i).trim();
+ 			
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+  			long start_time = timestamp_start.getTime();
+  			
  			http_req.sendGET_delete_course(cid);
+ 			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end = new Timestamp(System.currentTimeMillis());
+  			long end_time = timestamp_end.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration = end_time - start_time;
+  			delta_durations_B.add(delta_duration);
 		}
  	}
  	
@@ -414,7 +441,7 @@ public class WorkloadGenerator {
  	// (existing records are also deleted)
  	// Insert and delete a set of courses from database
 	// ZIPFIAN
-  	public void workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_F(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{
   		// create new records for each row in dataset
   		int number_records = dataset.size();
@@ -451,7 +478,7 @@ public class WorkloadGenerator {
  	// workload_G (RETRIEVE_AND_UPDATE)
  	// 50% retrieve record by ID, 50% Update (assuming that there are records in database)
 	// ZIPFIAN
-  	public void workload_G(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_G(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
 		// get cid list by calling getAllCourses serverless function
 		List<String> cid_list = get_cid_list(http_req);
@@ -477,7 +504,7 @@ public class WorkloadGenerator {
  	// workload_H (ALL_OPERATIONS)
  	// 25% Create, 25% Retrieve, 25% Update and 25% Delete
 	// UNIFORM
-  	public void workload_H(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
+  	public ArrayList<Long> workload_H(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	
 		// create new record for each row in dataset
 		int number_records = dataset.size();

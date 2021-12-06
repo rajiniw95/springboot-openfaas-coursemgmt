@@ -147,7 +147,7 @@ public class WorkloadGenerator {
   		ArrayList<Long> delta_durations = new ArrayList<Long>();
   		
     		if (workload_type.equals("workload_A")) {
-    			workload_A(dataset, http_req);
+    			delta_durations = workload_A(dataset, http_req);
     		}
     		
     		if (workload_type.equals("workload_B")) {
@@ -155,27 +155,27 @@ public class WorkloadGenerator {
     		}
 
     		if (workload_type.equals("workload_C")) {
-    			workload_C(filename, http_req);
+    			delta_durations = workload_C(filename, http_req);
     		}
 
     		if (workload_type.equals("workload_D")) {
-    			workload_D(filename, dataset, http_req);
+    			delta_durations = workload_D(filename, dataset, http_req);
     		}
     		
     		if (workload_type.equals("workload_E")) {
-    			workload_E(http_req);
+    			delta_durations = workload_E(http_req);
     		}  
     		
     		if (workload_type.equals("workload_F")) {
-    			workload_F(dataset, http_req);
+    			delta_durations = workload_F(dataset, http_req);
     		}  
     		
     		if (workload_type.equals("workload_G")) {
-    			workload_G(dataset, http_req);
+    			delta_durations = workload_G(dataset, http_req);
     		} 
     		
     		if (workload_type.equals("workload_H")) {
-    			workload_H(dataset, http_req);
+    			delta_durations = workload_H(dataset, http_req);
     		}   
     		
     		return delta_durations;	

@@ -87,7 +87,6 @@ public class HistogramGenerator {
         	
         	for(int i = 0; i < delta_durations.size(); i++)
 		{
-			System.out.println(delta_durations.get(i));
     			histogram.recordValue(delta_durations.get(i));
 		}	 
         	       	  		
@@ -95,8 +94,22 @@ public class HistogramGenerator {
        
         	// Write Output Percentile Distribution to PrintStream
         	try(PrintStream ps = new PrintStream(fos)){
-        		ps.println("Recorded latencies [in sec] for HTTP requests:");
-            		histogram.outputPercentileDistribution(ps, 1000.0);
+        		ps.println("Recorded latencies [in milli seconds] for HTTP requests :");
+        		ps.println("Workload Type : " + workload_type);
+        		ps.println("Recorded HTTP request completion times :");
+        		ps.println(delta_durations);
+        		ps.println();
+        		ps.println("Histogram Distribution : ");
+            		histogram.outputPercentileDistribution(ps, 1.0);
+            		ps.println();
+            		ps.println("50th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(50));
+            		ps.println("90th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(90));
+            		ps.println("95th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(95));
+            		ps.println("99th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(99));
             		ps.flush();
         	} catch (Exception e) {
             		e.printStackTrace();

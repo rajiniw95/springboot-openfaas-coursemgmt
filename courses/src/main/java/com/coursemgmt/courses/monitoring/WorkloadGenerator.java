@@ -182,7 +182,7 @@ public class WorkloadGenerator {
  	}
  	
  	// workload_A (CREATE_HEAVY)
- 	// 50% HTTP with no invokations, 50% CREATE
+ 	// 50% HTTP with no serverless invokations, 50% CREATE
  	// load new course form and then save new course (repeated for all records in dataset)  
  	// follows the natural order of HTTP request (new course form --> enter data to form --> save new course)	
 	// ZIPFIAN
@@ -217,7 +217,7 @@ public class WorkloadGenerator {
  	
 	// workload_B (CREATE_ONLY)
  	// 100% CREATE
- 	// send HTTP request for save new course (repeated for all records in database)  
+ 	// send HTTP request for save new course (repeated for all records in dataset)  
 	// ZIPFIAN
   	public ArrayList<Long> workload_B(List<List<String>> dataset, HTTPRequestGenerator http_req) throws Exception
   	{	

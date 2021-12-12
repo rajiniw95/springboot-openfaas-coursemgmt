@@ -1,0 +1,40 @@
+Recorded latencies [in milli seconds] for HTTP requests :
+Workload Type : workload_F
+HTTP Request Type : delete
+Recorded HTTP request completion times :
+[115, 80, 77, 158]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+      77.000 0.000000000000          1           1.00
+      77.000 0.100000000000          1           1.11
+      77.000 0.200000000000          1           1.25
+      80.000 0.300000000000          2           1.43
+      80.000 0.400000000000          2           1.67
+      80.000 0.500000000000          2           2.00
+     115.000 0.550000000000          3           2.22
+     115.000 0.600000000000          3           2.50
+     115.000 0.650000000000          3           2.86
+     115.000 0.700000000000          3           3.33
+     115.000 0.750000000000          3           4.00
+     158.000 0.775000000000          4           4.44
+     158.000 1.000000000000          4
+#[Mean    =      107.500, StdDeviation   =       32.760]
+#[Max     =      158.000, Total count    =            4]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+80
+90th Percentile : 
+158
+95th Percentile : 
+158
+99th Percentile : 
+158
+99.9th Percentile : 
+158
+99.99th Percentile : 
+158
+99.999th Percentile : 
+158

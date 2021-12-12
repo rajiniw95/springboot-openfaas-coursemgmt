@@ -60,6 +60,12 @@ public class HistogramGenerator {
             		ps.println(histogram.getValueAtPercentile(95));
             		ps.println("99th Percentile : ");
             		ps.println(histogram.getValueAtPercentile(99));
+            		ps.println("99.9th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(99.9));
+            		ps.println("99.99th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(99.99));
+            		ps.println("99.999th Percentile : ");
+            		ps.println(histogram.getValueAtPercentile(99.999));
             		ps.flush();
         	} catch (Exception e) {
             		e.printStackTrace();

@@ -194,6 +194,7 @@ public class WorkloadGenerator {
 	    	for (int i = 0; i < number_records; i++) {
 	    		System.out.println(i);
 	    		
+	    		//============================//
 	    		// MONITORING: get start time for HTTP request
   			Timestamp timestamp_start_load_form = new Timestamp(System.currentTimeMillis());
   			long start_time_load_form = timestamp_start_load_form.getTime();
@@ -208,6 +209,7 @@ public class WorkloadGenerator {
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration_load_form = end_time_load_form - start_time_load_form;
   			delta_durations_A.add(delta_duration_load_form);
+  			//============================//
   			
   			// get current record (i^th)
   			List<String> record = new ArrayList<String>(4);
@@ -220,6 +222,7 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
+  			//============================//
   			// MONITORING: get start time for HTTP request
   			Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
   			long start_time_save = timestamp_start_save.getTime();
@@ -234,6 +237,7 @@ public class WorkloadGenerator {
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration_save = end_time_save - start_time_save;
   			delta_durations_A.add(delta_duration_save);
+  			//============================//
   			
   			// both load_form and save latency values are added to the same array list
   			// the values are separated into two in CoursesApplication.java and the histogram method is called for each
@@ -267,6 +271,7 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
+  			//============================//
   			// MONITORING: get start time for HTTP request
   			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
   			long start_time = timestamp_start.getTime();
@@ -281,6 +286,7 @@ public class WorkloadGenerator {
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
   			delta_durations_B.add(delta_duration);
+  			//============================//
 		}
 		
 		return delta_durations_B;
@@ -300,6 +306,7 @@ public class WorkloadGenerator {
 	    	for (int i = 0; i < int_retrieve_count; i++) {
 	    		System.out.println(i);
 	    		
+	    		//============================//
 	    		// MONITORING: get start time for HTTP request
   			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
   			long start_time = timestamp_start.getTime();
@@ -313,6 +320,7 @@ public class WorkloadGenerator {
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
   			delta_durations_C.add(delta_duration);
+  			//============================//
 		}
 		
 		return delta_durations_C;
@@ -350,12 +358,40 @@ public class WorkloadGenerator {
   				String course_name = record.get(1);
   				String lecturer = record.get(2);
   				String credits = record.get(3);
-  			
-  				// Create new course record in database
-  				http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
   				
+  				//============================//
+  				// MONITORING: get start time for HTTP request
+  				Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+  				long start_time_save = timestamp_start_save.getTime();
+	    		
+	    			// Create new course record in database
+  				http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+  			
+  				// MONITORING: get end time for HTTP request
+				Timestamp timestamp_end_save = new Timestamp(System.currentTimeMillis());
+  				long end_time_save = timestamp_end_save.getTime();
+  			
+  				// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  				long delta_duration_save = end_time_save - start_time_save;
+  				delta_durations_D.add(delta_duration_save);
+  				//============================//
+  				
+  				//============================//
+  				// MONITORING: get start time for HTTP request
+  				Timestamp timestamp_start_home = new Timestamp(System.currentTimeMillis());
+  				long start_time_home = timestamp_start_home.getTime();
+  			
   				// call homepage HTTP request
   				http_req.sendGET_home();
+  			
+  				// MONITORING: get end time for HTTP request
+				Timestamp timestamp_end_home = new Timestamp(System.currentTimeMillis());
+  				long end_time_home = timestamp_end_home.getTime();
+  			
+  				// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  				long delta_duration_home = end_time_home - start_time_home;
+  				delta_durations_D.add(delta_duration_home);
+  				//============================//
 			}
 		}
 		// eg: records = 75, retrieve_count = 100
@@ -376,20 +412,68 @@ public class WorkloadGenerator {
   				String course_name = record.get(1);
   				String lecturer = record.get(2);
   				String credits = record.get(3);
-  			
-  				// Create new course record in database
-  				http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
   				
+  				//============================//
+  				// MONITORING: get start time for HTTP request
+  				Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+  				long start_time_save = timestamp_start_save.getTime();
+	    		
+	    			// Create new course record in database
+  				http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+  			
+  				// MONITORING: get end time for HTTP request
+				Timestamp timestamp_end_save = new Timestamp(System.currentTimeMillis());
+  				long end_time_save = timestamp_end_save.getTime();
+  			
+  				// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  				long delta_duration_save = end_time_save - start_time_save;
+  				delta_durations_D.add(delta_duration_save);
+  				//============================//
+  				
+  				//============================//
+  				// MONITORING: get start time for HTTP request
+  				Timestamp timestamp_start_home = new Timestamp(System.currentTimeMillis());
+  				long start_time_home = timestamp_start_home.getTime();
+  			
   				// call homepage HTTP request
   				http_req.sendGET_home();
+  			
+  				// MONITORING: get end time for HTTP request
+				Timestamp timestamp_end_home = new Timestamp(System.currentTimeMillis());
+  				long end_time_home = timestamp_end_home.getTime();
+  			
+  				// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  				long delta_duration_home = end_time_home - start_time_home;
+  				delta_durations_D.add(delta_duration_home);
+  				//============================//
 			}
 			
 			for ( int j = 0; j < (int_retrieve_count - number_records); j++) {
 	    			System.out.println(j);
-	    			http_req.sendGET_home();
+	    			  
+	    			 //============================//				
+	    			// MONITORING: get start time for HTTP request
+  				Timestamp timestamp_start_home = new Timestamp(System.currentTimeMillis());
+  				long start_time_home = timestamp_start_home.getTime();
+  			
+  				// call homepage HTTP request
+  				http_req.sendGET_home();
+  			
+  				// MONITORING: get end time for HTTP request
+				Timestamp timestamp_end_home = new Timestamp(System.currentTimeMillis());
+  				long end_time_home = timestamp_end_home.getTime();
+  			
+  				// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  				long delta_duration_home = end_time_home - start_time_home;
+  				delta_durations_D.add(delta_duration_home);
+  				//============================//
 			}
+			
+			// both save and getCourse latency values are added to the same array list
+  			// the values are separated into two in CoursesApplication.java and the histogram method is called for each
   		}
   		
+  		// array list containing latency values for both types of requests
   		return delta_durations_D;
  	}
  	
@@ -462,10 +546,12 @@ public class WorkloadGenerator {
 	    	for (int i = 0; i < cid_list.size(); i++) {
  			String cid = cid_list.get(i).trim();
  			
+ 			//============================//
  			// MONITORING: get start time for HTTP request
   			Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
   			long start_time = timestamp_start.getTime();
   			
+  			// Delete course in database
  			http_req.sendGET_delete_course(cid);
  			
  			// MONITORING: get end time for HTTP request
@@ -475,6 +561,7 @@ public class WorkloadGenerator {
   			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
   			long delta_duration = end_time - start_time;
   			delta_durations_E.add(delta_duration);
+  			//============================//
 		}
 		
 		return delta_durations_E;
@@ -505,8 +592,22 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
-  			// Create new course record in database
+  			//============================//
+  			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+  			long start_time_save = timestamp_start_save.getTime();
+  			
+ 			// Create new course record in database
   			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+ 			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_save = new Timestamp(System.currentTimeMillis());
+  			long end_time_save = timestamp_end_save.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_save = end_time_save - start_time_save;
+  			delta_durations_F.add(delta_duration_save);
+  			//============================//
 		}
 		
 		// get cid list by calling getAllCourses serverless function
@@ -517,9 +618,32 @@ public class WorkloadGenerator {
 	    	// delete all cid in database
 	    	for (int i = 0; i < cid_list.size(); i++) {
  			String cid = cid_list.get(i).trim();
- 			http_req.sendGET_delete_course(cid);
+ 			
+ 			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_delete = new Timestamp(System.currentTimeMillis());
+  			long start_time_delete = timestamp_start_delete.getTime();
+  			
+ 			// Delete course in database
+  			http_req.sendGET_delete_course(cid);
+ 			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_delete = new Timestamp(System.currentTimeMillis());
+  			long end_time_delete = timestamp_end_delete.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_delete = end_time_delete - start_time_delete;
+  			delta_durations_F.add(delta_duration_delete); 	
+  			//============================//		
 		}
 		
+		// both saveCourse and deleteCourse latency values are added to the same array list
+  		// the values are separated into two in CoursesApplication.java and the histogram method is called for each
+  		
+  		// unlike workloads A and D, the two request types are not intermixed. Requests of one type are completed fully before moving on to the next request type
+  		// Hence, we just need to break up the array in two right in the middle. 
+  		
+  		// array list containing latency values for both types of requests
 		return delta_durations_F;
  	}
  	
@@ -543,13 +667,45 @@ public class WorkloadGenerator {
  			String c_lec = "c_lec_update_" + i; 
  			String c_credits = "200"; 
  			
+ 			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_get = new Timestamp(System.currentTimeMillis());
+  			long start_time_get = timestamp_start_get.getTime();
+  			
  			// retrieve record by CID
  			http_req.sendGET_update_form(cid);
  			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_get = new Timestamp(System.currentTimeMillis());
+  			long end_time_get = timestamp_end_get.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_get = end_time_get - start_time_get;
+  			delta_durations_G.add(delta_duration_get);
+ 			//============================//
+ 			
+			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_update = new Timestamp(System.currentTimeMillis());
+  			long start_time_update = timestamp_start_update.getTime();
+  			
  			// update record with new parameters
  			http_req.sendPOST_update_course(cid, c_code, c_name, c_lec, c_credits); 
+ 			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_update = new Timestamp(System.currentTimeMillis());
+  			long end_time_update = timestamp_end_update.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_update = end_time_update - start_time_update;
+  			delta_durations_G.add(delta_duration_update); 
+  			//============================//
+  			
+  			// both getById and updateCourse latency values are added to the same array list
+  			// the values are separated into two in CoursesApplication.java and the histogram method is called for each
 		}
 		
+		// array list containing latency values for both types of requests
 		return delta_durations_G;
  	}
  	
@@ -576,8 +732,22 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
+  			//============================//
+  			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+  			long start_time_save = timestamp_start_save.getTime();
+  			
   			// Create new course record in database
   			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+  			
+  			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_save = new Timestamp(System.currentTimeMillis());
+  			long end_time_save = timestamp_end_save.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_save = end_time_save - start_time_save;
+  			delta_durations_H.add(delta_duration_save); 
+  			//============================//
 		}
 		
 		// get cid list by calling getAllCourses serverless function
@@ -593,14 +763,56 @@ public class WorkloadGenerator {
  			String c_lec = "c_lec_update_" + i; 
  			String c_credits = "200"; 
  			
+ 			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_retrieve = new Timestamp(System.currentTimeMillis());
+  			long start_time_retrieve = timestamp_start_retrieve.getTime();
+  			
  			// retrieve record by CID
  			http_req.sendGET_update_form(cid);
  			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_retrieve = new Timestamp(System.currentTimeMillis());
+  			long end_time_retrieve = timestamp_end_retrieve.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_retrieve = end_time_retrieve - start_time_retrieve;
+  			delta_durations_H.add(delta_duration_retrieve); 
+  			//============================//
+ 			
+ 			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_update = new Timestamp(System.currentTimeMillis());
+  			long start_time_update = timestamp_start_update.getTime();
+  			
  			// update record with new parameters
  			http_req.sendPOST_update_course(cid, c_code, c_name, c_lec, c_credits); 
  			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_update = new Timestamp(System.currentTimeMillis());
+  			long end_time_update = timestamp_end_update.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_update = end_time_update - start_time_update;
+  			delta_durations_H.add(delta_duration_update); 
+  			//============================//
+ 			
+ 			//============================//
+ 			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_delete = new Timestamp(System.currentTimeMillis());
+  			long start_time_delete = timestamp_start_delete.getTime();
+  			
  			// delete record
  			http_req.sendGET_delete_course(cid);
+ 			
+ 			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_delete = new Timestamp(System.currentTimeMillis());
+  			long end_time_delete = timestamp_end_delete.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_delete = end_time_delete - start_time_delete;
+  			delta_durations_H.add(delta_duration_delete); 
+  			//============================//
 		}
 		
 		return delta_durations_H;
@@ -617,5 +829,38 @@ public class WorkloadGenerator {
     			}
 		}
 		return records;
+	}
+	
+	// method to get the intermix of HTTP request types defined for each workload
+	public List<String> get_workload_request_types(String workload_type) 
+	{ 
+    		List<String> request_types = new ArrayList<String>();
+		
+		if (workload_type.equals("workload_A")) {
+			request_types.add("load_form");
+			request_types.add("create");			
+		} else if (workload_type.equals("workload_B")) {
+			request_types.add("create");	
+		} else if (workload_type.equals("workload_C")) {
+			request_types.add("retrieve");
+		} else if (workload_type.equals("workload_D")) {
+			request_types.add("create");	
+			request_types.add("retrieve");
+		} else if (workload_type.equals("workload_E")) {
+			request_types.add("delete");
+		} else if (workload_type.equals("workload_F")) {
+			request_types.add("create");	
+			request_types.add("delete");
+		} else if (workload_type.equals("workload_G")) {
+			request_types.add("retrieve_by_id");
+			request_types.add("update");
+		} else if (workload_type.equals("workload_H")) {
+			request_types.add("create");	
+			request_types.add("retrieve_by_id");
+			request_types.add("update");
+			request_types.add("delete");
+		}
+		
+		return request_types;
 	}
 }

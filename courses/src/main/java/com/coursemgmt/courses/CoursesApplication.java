@@ -63,6 +63,17 @@ public class CoursesApplication {
         	}
         	
         	System.out.println(delta_durations.toString());
+        	
+        	if ((workload_type.equals("workload_A")) || (workload_type.equals("workload_D"))) {
+        		ArrayList<Long> request_type_1 = new ArrayList<Long>();
+        		ArrayList<Long> request_type_2 = new ArrayList<Long>();
+        		for (int i = 0; i < delta_durations.size(); i += 2) {
+            			request_type_1.add(delta_durations.get(i));
+            			request_type_2.add(delta_durations.get(i+1));      
+    			}
+  			System.out.println(request_type_1.toString());
+  			System.out.println(request_type_2.toString());
+		}
 						
         	hist_gen.create_histogram(workload_type, output_histogram_location, delta_durations);
     	}

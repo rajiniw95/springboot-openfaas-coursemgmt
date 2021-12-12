@@ -194,8 +194,20 @@ public class WorkloadGenerator {
 	    	for (int i = 0; i < number_records; i++) {
 	    		System.out.println(i);
 	    		
+	    		// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_load_form = new Timestamp(System.currentTimeMillis());
+  			long start_time_load_form = timestamp_start_load_form.getTime();
+	    		
 	    		// load new course form -- no serverless function or database operation invoked
   			http_req.sendGET_new_course();
+  			
+  			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_load_form = new Timestamp(System.currentTimeMillis());
+  			long end_time_load_form = timestamp_end_load_form.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_load_form = end_time_load_form - start_time_load_form;
+  			delta_durations_A.add(delta_duration_load_form);
   			
   			// get current record (i^th)
   			List<String> record = new ArrayList<String>(4);
@@ -208,10 +220,26 @@ public class WorkloadGenerator {
   			String lecturer = record.get(2);
   			String credits = record.get(3);
   			
+  			// MONITORING: get start time for HTTP request
+  			Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+  			long start_time_save = timestamp_start_save.getTime();
+  			
   			// Create new course record in database
   			http_req.sendPOST_save_course(course_code, course_name, lecturer, credits);
+  			
+  			// MONITORING: get end time for HTTP request
+			Timestamp timestamp_end_save = new Timestamp(System.currentTimeMillis());
+  			long end_time_save = timestamp_end_save.getTime();
+  			
+  			// MONITORING: calculate time to completion of HTTP request and add to output ArrayList
+  			long delta_duration_save = end_time_save - start_time_save;
+  			delta_durations_A.add(delta_duration_save);
+  			
+  			// both load_form and save latency values are added to the same array list
+  			// the values are separated into two in CoursesApplication.java and the histogram method is called for each
 		}
 		
+		// array list containing latency values for both types of requests
 		return delta_durations_A;
  	}
  	

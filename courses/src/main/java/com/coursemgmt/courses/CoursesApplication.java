@@ -189,10 +189,10 @@ public class CoursesApplication {
             			latency_request_type_4.add(delta_durations.get(j+2));      
     			}
     			
-  			System.out.println("Latency durations for request type 01 : " + latency_request_type_1.toString());
-  			System.out.println("Latency durations for request type 02 : " + latency_request_type_2.toString());
-  			System.out.println("Latency durations for request type 03 : " + latency_request_type_3.toString());
-  			System.out.println("Latency durations for request type 04 : " + latency_request_type_4.toString());
+  			System.out.println("Latency durations for HTTP request type 01 : " + latency_request_type_1.toString());
+  			System.out.println("Latency durations for HTTP request type 02 : " + latency_request_type_2.toString());
+  			System.out.println("Latency durations for HTTP request type 03 : " + latency_request_type_3.toString());
+  			System.out.println("Latency durations for HTTP request type 04 : " + latency_request_type_4.toString());
   			
   			// create histogram for each latency list
   			System.out.println("Creating histogram for HTTP request type 01 ... ");

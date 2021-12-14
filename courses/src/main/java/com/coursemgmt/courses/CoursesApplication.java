@@ -215,6 +215,31 @@ public class CoursesApplication {
 		System.out.println("Latency values for updateCourse serverless invocations : " + latency_update_SL.toString());
 		System.out.println("Latency values for deleteCourseById serverless invocations : " + latency_delete_SL.toString());
 		
+        	if (latency_retrieve_SL.isEmpty() == false)
+            		System.out.println("The List is NOT empty");
+        	else
+            		System.out.println("The List is empty");
+            		
+            	if (latency_retrieve_by_id_SL.isEmpty() == false)
+            		System.out.println("The List is NOT empty");
+        	else
+            		System.out.println("The List is empty");
+            		
+            	if (latency_save_SL.isEmpty() == false)
+            		System.out.println("The List is NOT empty");
+        	else
+            		System.out.println("The List is empty");
+            		
+            	if (latency_update_SL.isEmpty() == false)
+            		System.out.println("The List is NOT empty");
+        	else
+            		System.out.println("The List is empty");
+            		
+            	if (latency_delete_SL.isEmpty() == false)
+            		System.out.println("The List is NOT empty");
+        	else
+            		System.out.println("The List is empty");
+		
 		System.out.println("=====================================================");
 		System.out.println("LATENCY ANALYSIS COMPLETED FOR SERVERLESS INVOCATIONS");
 		System.out.println("=====================================================");

@@ -837,28 +837,28 @@ public class WorkloadGenerator {
     		List<String> request_types = new ArrayList<String>();
 		
 		if (workload_type.equals("workload_A")) {
-			request_types.add("load_form");
-			request_types.add("create");			
+			request_types.add("HTTP_load_form");
+			request_types.add("HTTP_create");			
 		} else if (workload_type.equals("workload_B")) {
-			request_types.add("create");	
+			request_types.add("HTTP_create");	
 		} else if (workload_type.equals("workload_C")) {
-			request_types.add("retrieve");
+			request_types.add("HTTP_retrieve");
 		} else if (workload_type.equals("workload_D")) {
-			request_types.add("create");	
-			request_types.add("retrieve");
+			request_types.add("HTTP_create");	
+			request_types.add("HTTP_retrieve");
 		} else if (workload_type.equals("workload_E")) {
-			request_types.add("delete");
+			request_types.add("HTTP_delete");
 		} else if (workload_type.equals("workload_F")) {
-			request_types.add("create");	
-			request_types.add("delete");
+			request_types.add("HTTP_create");	
+			request_types.add("HTTP_delete");
 		} else if (workload_type.equals("workload_G")) {
-			request_types.add("retrieve_by_id");
-			request_types.add("update");
+			request_types.add("HTTP_retrieve_by_id");
+			request_types.add("HTTP_update");
 		} else if (workload_type.equals("workload_H")) {
-			request_types.add("create");	
-			request_types.add("retrieve_by_id");
-			request_types.add("update");
-			request_types.add("delete");
+			request_types.add("HTTP_create");	
+			request_types.add("HTTP_retrieve_by_id");
+			request_types.add("HTTP_update");
+			request_types.add("HTTP_delete");
 		}
 		
 		return request_types;

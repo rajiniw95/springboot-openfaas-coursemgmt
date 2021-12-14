@@ -41,10 +41,10 @@ public class HistogramGenerator {
        
         	// Write Output Percentile Distribution to PrintStream
         	try(PrintStream ps = new PrintStream(fos)){
-        		ps.println("Recorded latencies [in milli seconds] for HTTP requests :");
+        		ps.println("Recorded latencies [in milli seconds]:");
         		ps.println("Workload Type : " + workload_type);
-        		ps.println("HTTP Request Type : " + request_type);
-        		ps.println("Recorded HTTP request completion times :");
+        		ps.println("Request/ Invocation/ DB Operation Type : " + request_type);
+        		ps.println("Recorded completion times :");
         		ps.println(delta_durations);
         		ps.println();
         		ps.println("Histogram Distribution : ");

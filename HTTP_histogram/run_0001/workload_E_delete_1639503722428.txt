@@ -1,0 +1,29 @@
+Recorded latencies [in milli seconds]:
+Workload Type : workload_E
+Request/ Invocation/ DB Operation Type : delete
+Recorded completion times :
+[540]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+     540.000 0.000000000000          1           1.00
+     540.000 1.000000000000          1
+#[Mean    =      540.000, StdDeviation   =        0.000]
+#[Max     =      540.000, Total count    =            1]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+540
+90th Percentile : 
+540
+95th Percentile : 
+540
+99th Percentile : 
+540
+99.9th Percentile : 
+540
+99.99th Percentile : 
+540
+99.999th Percentile : 
+540

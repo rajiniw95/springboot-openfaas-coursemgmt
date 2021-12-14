@@ -215,25 +215,25 @@ public class CoursesApplication {
 		System.out.println("Latency values for updateCourse serverless invocations : " + latency_update_SL.toString());
 		System.out.println("Latency values for deleteCourseById serverless invocations : " + latency_delete_SL.toString());
 		
-        	if (latency_retrieve_SL.isEmpty() == false)
+        	if (latency_retrieve_SL.isEmpty() == false) {
         		System.out.println("Creating histogram for getAllCourses serverless invocations ... ");
-  			hist_gen.create_histogram(workload_type, "SL_getAllCourses" , output_histogram_location, latency_retrieve_SL);
+  			hist_gen.create_histogram(workload_type, "SL_getAllCourses" , output_histogram_location, latency_retrieve_SL); }
             		
-            	if (latency_retrieve_by_id_SL.isEmpty() == false)
+            	if (latency_retrieve_by_id_SL.isEmpty() == false) {
         		System.out.println("Creating histogram for getCourseById serverless invocations ... ");
-  			hist_gen.create_histogram(workload_type, "SL_getCourseById" , output_histogram_location, latency_retrieve_by_id_SL);
+  			hist_gen.create_histogram(workload_type, "SL_getCourseById" , output_histogram_location, latency_retrieve_by_id_SL); }
             		
-            	if (latency_save_SL.isEmpty() == false)
+            	if (latency_save_SL.isEmpty() == false) { 
         		System.out.println("Creating histogram for saveCourse serverless invocations ... ");
-  			hist_gen.create_histogram(workload_type, "SL_saveCourse" , output_histogram_location, latency_save_SL);
+  			hist_gen.create_histogram(workload_type, "SL_saveCourse" , output_histogram_location, latency_save_SL); } 
             		
-            	if (latency_update_SL.isEmpty() == false)
+            	if (latency_update_SL.isEmpty() == false) { 
         		System.out.println("Creating histogram for updateCourse serverless invocations ... ");
-  			hist_gen.create_histogram(workload_type, "SL_updateCourse" , output_histogram_location, latency_update_SL);
+  			hist_gen.create_histogram(workload_type, "SL_updateCourse" , output_histogram_location, latency_update_SL); } 
             		
-            	if (latency_delete_SL.isEmpty() == false)
+            	if (latency_delete_SL.isEmpty() == false) {
         		System.out.println("Creating histogram for deleteCourseById serverless invocations ... ");
-  			hist_gen.create_histogram(workload_type, "SL_deleteCourseById" , output_histogram_location, latency_delete_SL);
+  			hist_gen.create_histogram(workload_type, "SL_deleteCourseById" , output_histogram_location, latency_delete_SL); }
 		
 		System.out.println("=====================================================");
 		System.out.println("LATENCY ANALYSIS COMPLETED FOR SERVERLESS INVOCATIONS");

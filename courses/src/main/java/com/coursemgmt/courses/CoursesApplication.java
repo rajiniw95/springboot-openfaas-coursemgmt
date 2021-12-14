@@ -195,15 +195,19 @@ public class CoursesApplication {
   			System.out.println("Latency durations for request type 04 : " + latency_request_type_4.toString());
   			
   			// create histogram for each latency list
-  			System.out.println("Creating histogram for request type 01 ... ");
+  			System.out.println("Creating histogram for HTTP request type 01 ... ");
   			hist_gen.create_histogram(workload_type, request_types.get(0), output_histogram_location, latency_request_type_1);
-  			System.out.println("Creating histogram for request type 02 ... ");
+  			System.out.println("Creating histogram for HTTP request type 02 ... ");
   			hist_gen.create_histogram(workload_type, request_types.get(1), output_histogram_location, latency_request_type_2); 
-  			System.out.println("Creating histogram for request type 03 ... ");
+  			System.out.println("Creating histogram for HTTP request type 03 ... ");
   			hist_gen.create_histogram(workload_type, request_types.get(2), output_histogram_location, latency_request_type_3); 
-  			System.out.println("Creating histogram for request type 04 ... ");
+  			System.out.println("Creating histogram for HTTP request type 04 ... ");
   			hist_gen.create_histogram(workload_type, request_types.get(3), output_histogram_location, latency_request_type_4); 			
 		}
+		
+		System.out.println("============================================");
+		System.out.println("LATENCY ANALYSIS COMPLETED FOR HTTP REQUESTS");
+		System.out.println("============================================");
 		
 		System.out.println("Latency values for getAllCourses serverless invocations : " + latency_retrieve_SL.toString());
 		System.out.println("Latency values for getCourseById serverless invocations : " + latency_retrieve_by_id_SL.toString());
@@ -211,10 +215,18 @@ public class CoursesApplication {
 		System.out.println("Latency values for updateCourse serverless invocations : " + latency_update_SL.toString());
 		System.out.println("Latency values for deleteCourseById serverless invocations : " + latency_delete_SL.toString());
 		
+		System.out.println("=====================================================");
+		System.out.println("LATENCY ANALYSIS COMPLETED FOR SERVERLESS INVOCATIONS");
+		System.out.println("=====================================================");
+		
 		System.out.println("Latency values for database operations of getAllCourses serverless invocations : " + latency_retrieve_DB.toString());
 		System.out.println("Latency values for database operations of getCourseById serverless invocations : " + latency_retrieve_by_id_DB.toString());
 		System.out.println("Latency values for database operations of saveCourse serverless invocations : " + latency_save_DB.toString());
 		System.out.println("Latency values for database operations of updateCourse serverless invocations : " + latency_update_DB.toString());
 		System.out.println("Latency values for database operations of deleteCourseById serverless invocations : " + latency_delete_DB.toString());
+		
+		System.out.println("==================================================");
+		System.out.println("LATENCY ANALYSIS COMPLETED FOR DATABASE OPERATIONS");
+		System.out.println("==================================================");
     	}
 }

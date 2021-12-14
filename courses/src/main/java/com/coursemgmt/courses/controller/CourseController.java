@@ -56,6 +56,10 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/getallcourses";
 
         try {
+        
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
 
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -64,6 +68,14 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long latency = end_time - start_time;
+            CoursesApplication.latency_retrieve_SL.add(latency);
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -161,6 +173,10 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/getcoursebyid?cid=" + cid;
 
         try {
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
+            
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -168,6 +184,14 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long latency = end_time - start_time;
+            CoursesApplication.latency_retrieve_by_id_SL.add(latency);
 
             // extract body of HTTP response
             String response_body = response.body();
@@ -228,6 +252,10 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/savecourse?data=" + uri_parameter;
 
         try {
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
+            
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -236,10 +264,13 @@ public class CourseController {
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             
-            Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
-            long start_time_save = timestamp_start_save.getTime();
-  			
-            CoursesApplication.latency_save_SL.add(start_time_save);
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long latency = end_time - start_time;
+            CoursesApplication.latency_save_SL.add(latency);
 
             // load course saved successfully page 
             return "new_course_saved";
@@ -279,6 +310,10 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/updatecourse?data=" + uri_parameter;
 
         try {
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
+            
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -286,6 +321,14 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long latency = end_time - start_time;
+            CoursesApplication.latency_update_SL.add(latency);
 
             // load course saved successfully page 
             return "course_updated";
@@ -309,6 +352,10 @@ public class CourseController {
         String uri = "http://127.0.0.1:31112/function/deletecoursebyid?cid=" + id;
 
         try {
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
+            
             // send HTTP request
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -316,6 +363,14 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long latency = end_time - start_time;
+            CoursesApplication.latency_delete_SL.add(latency);
 
             // load course deleted successfully page 
             return "course_deleted";

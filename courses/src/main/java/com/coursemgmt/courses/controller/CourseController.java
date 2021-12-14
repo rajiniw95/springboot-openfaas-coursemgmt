@@ -2,6 +2,7 @@ package com.coursemgmt.courses.controller;
 
 import com.coursemgmt.courses.model.Course;
 import com.coursemgmt.courses.service.CourseService;
+import com.coursemgmt.courses.CoursesApplication;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -234,6 +235,11 @@ public class CourseController {
 
             // get HTTP response
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            
+            Timestamp timestamp_start_save = new Timestamp(System.currentTimeMillis());
+            long start_time_save = timestamp_start_save.getTime();
+  			
+            CoursesApplication.latency_save_SL.add(start_time_save);
 
             // load course saved successfully page 
             return "new_course_saved";

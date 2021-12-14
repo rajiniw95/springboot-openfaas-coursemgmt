@@ -15,6 +15,20 @@ import java.util.Arrays;
 @SpringBootApplication
 public class CoursesApplication {
 
+	// define lists to record latency values of serverless invocations
+	public static ArrayList<Long> latency_retrieve_SL = new ArrayList<Long>();
+	public static ArrayList<Long> latency_retrieve_by_id_SL = new ArrayList<Long>();
+	public static ArrayList<Long> latency_save_SL = new ArrayList<Long>();
+	public static ArrayList<Long> latency_update_SL = new ArrayList<Long>();
+	public static ArrayList<Long> latency_delete_SL = new ArrayList<Long>();
+
+	// define lists to record latency values of database operations of serverless ivocations
+	public static ArrayList<Long> latency_retrieve_DB = new ArrayList<Long>();
+	public static ArrayList<Long> latency_retrieve_by_id_DB = new ArrayList<Long>();
+	public static ArrayList<Long> latency_save_DB = new ArrayList<Long>();
+	public static ArrayList<Long> latency_update_DB = new ArrayList<Long>();
+	public static ArrayList<Long> latency_delete_DB = new ArrayList<Long>();
+
 	public static void main(String[] args) throws Exception {
 		// run spring boot app (start up course mgmt system)
 		SpringApplication.run(CoursesApplication.class, args);
@@ -111,7 +125,7 @@ public class CoursesApplication {
 				for (int i = 0; i < delta_durations.size(); i += 2) {
             				latency_request_type_1.add(delta_durations.get(i));
             				latency_request_type_2.add(delta_durations.get(i+1));      
-    				
+    				}
     			} 
     			// CASE 02: extra retrieve requests
     			else {
@@ -190,5 +204,17 @@ public class CoursesApplication {
   			System.out.println("Creating histogram for request type 04 ... ");
   			hist_gen.create_histogram(workload_type, request_types.get(3), output_histogram_location, latency_request_type_4); 			
 		}
+		
+		System.out.println("Latency values for getAllCourses serverless invocations : " + latency_retrieve_SL.toString());
+		System.out.println("Latency values for getCourseById serverless invocations : " + latency_retrieve_by_id_SL.toString());
+		System.out.println("Latency values for saveCourse serverless invocations : " + latency_save_SL.toString());
+		System.out.println("Latency values for updateCourse serverless invocations : " + latency_update_SL.toString());
+		System.out.println("Latency values for deleteCourseById serverless invocations : " + latency_delete_SL.toString());
+		
+		System.out.println("Latency values for database operations of getAllCourses serverless invocations : " + latency_retrieve_DB.toString());
+		System.out.println("Latency values for database operations of getCourseById serverless invocations : " + latency_retrieve_by_id_DB.toString());
+		System.out.println("Latency values for database operations of saveCourse serverless invocations : " + latency_save_DB.toString());
+		System.out.println("Latency values for database operations of updateCourse serverless invocations : " + latency_update_DB.toString());
+		System.out.println("Latency values for database operations of deleteCourseById serverless invocations : " + latency_delete_DB.toString());
     	}
 }

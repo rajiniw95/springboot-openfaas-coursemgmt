@@ -1,0 +1,40 @@
+Recorded latencies [in milli seconds]:
+Workload Type : workload_A
+Request/ Invocation/ DB Operation Type : HTTP_load_form
+Recorded completion times :
+[491, 9, 25, 20]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+       9.000 0.000000000000          1           1.00
+       9.000 0.100000000000          1           1.11
+       9.000 0.200000000000          1           1.25
+      20.000 0.300000000000          2           1.43
+      20.000 0.400000000000          2           1.67
+      20.000 0.500000000000          2           2.00
+      25.000 0.550000000000          3           2.22
+      25.000 0.600000000000          3           2.50
+      25.000 0.650000000000          3           2.86
+      25.000 0.700000000000          3           3.33
+      25.000 0.750000000000          3           4.00
+     491.000 0.775000000000          4           4.44
+     491.000 1.000000000000          4
+#[Mean    =      136.250, StdDeviation   =      204.897]
+#[Max     =      491.000, Total count    =            4]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+20
+90th Percentile : 
+491
+95th Percentile : 
+491
+99th Percentile : 
+491
+99.9th Percentile : 
+491
+99.99th Percentile : 
+491
+99.999th Percentile : 
+491

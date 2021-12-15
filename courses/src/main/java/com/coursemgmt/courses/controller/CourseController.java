@@ -85,15 +85,16 @@ public class CourseController {
             System.out.println("END RESPONSE BODY FOR GET ALL COURSES");
 
             // split response body by commas and assign to array
-            String[] array_response_with_latency = response_body.split(",");
+            //String[] array_response_with_latency = response_body.split(",");
+            String[] array_response = response_body.split(",");
             
             // MONITORING DB operations : extract latency from response and add to global ArrayList
-            String db_latency_str = array_response_with_latency[0];
-            long db_latency = Long.parseLong(db_latency_str);
-            CoursesApplication.latency_retrieve_DB.add(db_latency);
+            //String db_latency_str = array_response_with_latency[0];
+            //long db_latency = Long.parseLong(db_latency_str);
+            //CoursesApplication.latency_retrieve_DB.add(db_latency);
             
             // remove first element of response array (which is the DB latency value)
-            String[] array_response = Arrays.copyOfRange(array_response_with_latency, 1, array_response_with_latency.length);
+            //String[] array_response = Arrays.copyOfRange(array_response_with_latency, 1, array_response_with_latency.length);
 
             // get array size
             int array_size = array_response.length;

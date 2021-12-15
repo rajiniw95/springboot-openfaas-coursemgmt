@@ -1,0 +1,40 @@
+Recorded latencies [in milli seconds]:
+Workload Type : workload_H
+Request/ Invocation/ DB Operation Type : SL_getCourseById
+Recorded completion times :
+[3988, 22, 23, 7]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+       7.000 0.000000000000          1           1.00
+       7.000 0.100000000000          1           1.11
+       7.000 0.200000000000          1           1.25
+      22.000 0.300000000000          2           1.43
+      22.000 0.400000000000          2           1.67
+      22.000 0.500000000000          2           2.00
+      23.000 0.550000000000          3           2.22
+      23.000 0.600000000000          3           2.50
+      23.000 0.650000000000          3           2.86
+      23.000 0.700000000000          3           3.33
+      23.000 0.750000000000          3           4.00
+    3989.000 0.775000000000          4           4.44
+    3989.000 1.000000000000          4
+#[Mean    =     1010.250, StdDeviation   =     1719.794]
+#[Max     =     3989.000, Total count    =            4]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+22
+90th Percentile : 
+3989
+95th Percentile : 
+3989
+99th Percentile : 
+3989
+99.9th Percentile : 
+3989
+99.99th Percentile : 
+3989
+99.999th Percentile : 
+3989

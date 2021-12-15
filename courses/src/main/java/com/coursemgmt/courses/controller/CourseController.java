@@ -336,6 +336,13 @@ public class CourseController {
             // MONITORING SL invocation : calculate time to completion of serverless invocation and add to global ArrayList
             long latency = end_time - start_time;
             CoursesApplication.latency_update_SL.add(latency);
+            
+            // MONITORING DB operations : extract latency from response and add to global ArrayList
+            String response_body = response.body();
+            String[] response_list = response_body.split(",");
+            String db_latency_str = response_list[0];
+            long db_latency = Long.parseLong(db_latency_str);
+            CoursesApplication.latency_update_DB.add(db_latency);
 
             // load course saved successfully page 
             return "course_updated";
@@ -378,6 +385,13 @@ public class CourseController {
             // MONITORING SL invocation : calculate time to completion of serverless invocation and add to global ArrayList
             long latency = end_time - start_time;
             CoursesApplication.latency_delete_SL.add(latency);
+            
+            // MONITORING DB operations : extract latency from response and add to global ArrayList
+            String response_body = response.body();
+            String[] response_list = response_body.split(",");
+            String db_latency_str = response_list[0];
+            long db_latency = Long.parseLong(db_latency_str);
+            CoursesApplication.latency_delete_DB.add(db_latency);
 
             // load course deleted successfully page 
             return "course_deleted";

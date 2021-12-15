@@ -200,14 +200,21 @@ public class CourseController {
             System.out.println(response_body);
             System.out.println("END RESPONSE BODY FOR GET COURSE BY ID");
 
-            // put response body to array and assign elements to variables
+            // put response body to array 
             String[] course_detail_list = response_body.split(",");
-            String response_course_id = course_detail_list[0];
+            
+            // MONITORING DB operations : extract latency from response and add to global ArrayList
+            String db_latency_str = course_detail_list[0];
+            long db_latency = Long.parseLong(db_latency_str);
+            CoursesApplication.latency_retrieve_by_id_DB.add(db_latency);
+            
+            // assign response elements to variables
+            String response_course_id = course_detail_list[1];
             long long_course_id = Long.parseLong(response_course_id);
-            String response_course_code = course_detail_list[1];
-            String response_course_name = course_detail_list[2];
-            String response_lecturer = course_detail_list[3];
-            String response_credits = course_detail_list[4];
+            String response_course_code = course_detail_list[2];
+            String response_course_name = course_detail_list[3];
+            String response_lecturer = course_detail_list[4];
+            String response_credits = course_detail_list[5];
             String trimmed_response_creedits = response_credits.trim();
             int int_credits = Integer.parseInt(trimmed_response_creedits);
 

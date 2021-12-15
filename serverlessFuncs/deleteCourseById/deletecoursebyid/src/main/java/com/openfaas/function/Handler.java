@@ -45,6 +45,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             Integer executed_int = new Integer(executed);
             String executed_string = executed_int.toString();
             
+            // append DB latency to beginning of response (comma separated from 'executed')
             String executed_latency = str_db_latency + "," + executed_string;
             
             Response res = new Response();

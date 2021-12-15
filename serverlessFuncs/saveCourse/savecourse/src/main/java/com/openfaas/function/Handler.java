@@ -34,14 +34,28 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             
             String q = "INSERT INTO courses (course_code, course_name, lecturer, credits) VALUES ('" + course_code + "', '" + course_name + "', '" + lecturer + "', '" + credits + "')";
             
+            // MONITORING: get start time for serverless invocation
+            Timestamp timestamp_start = new Timestamp(System.currentTimeMillis());
+            long start_time = timestamp_start.getTime();
+            
             Statement statement = connection.createStatement();
             int executed = statement.executeUpdate(q);
+            
+            // MONITORING: get end time for serverless invocation
+            Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
+            long end_time = timestamp_end.getTime();
+            
+            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            long db_latency = end_time - start_time;
+            String str_db_latency = String.valueOf(db_latency);
 
             Integer executed_int = new Integer(executed);
             String executed_string = executed_int.toString();
             
+            String executed_latency = str_db_latency + "," + executed_string;
+            
             Response res = new Response();
-            res.setBody(executed_string);
+            res.setBody(executed_latency);
 
             return res;
 

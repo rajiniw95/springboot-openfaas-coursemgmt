@@ -244,6 +244,26 @@ public class CoursesApplication {
 		System.out.println("Latency values for database operations of saveCourse serverless invocations : " + latency_save_DB.toString());
 		System.out.println("Latency values for database operations of updateCourse serverless invocations : " + latency_update_DB.toString());
 		System.out.println("Latency values for database operations of deleteCourseById serverless invocations : " + latency_delete_DB.toString());
+
+        	if (latency_retrieve_DB.isEmpty() == false) {
+        		System.out.println("Creating histogram for getAllCourses serverless invocations ... ");
+  			hist_gen.create_histogram(workload_type, "DB_getAllCourses" , output_histogram_location, latency_retrieve_DB); }
+            		
+            	if (latency_retrieve_by_id_DB.isEmpty() == false) {
+        		System.out.println("Creating histogram for getCourseById serverless invocations ... ");
+  			hist_gen.create_histogram(workload_type, "DB_getCourseById" , output_histogram_location, latency_retrieve_by_id_DB); }
+            		
+            	if (latency_save_DB.isEmpty() == false) { 
+        		System.out.println("Creating histogram for saveCourse serverless invocations ... ");
+  			hist_gen.create_histogram(workload_type, "DB_saveCourse" , output_histogram_location, latency_save_DB); } 
+            		
+            	if (latency_update_DB.isEmpty() == false) { 
+        		System.out.println("Creating histogram for updateCourse serverless invocations ... ");
+  			hist_gen.create_histogram(workload_type, "DB_updateCourse" , output_histogram_location, latency_update_DB); } 
+            		
+            	if (latency_delete_DB.isEmpty() == false) {
+        		System.out.println("Creating histogram for deleteCourseById serverless invocations ... ");
+  			hist_gen.create_histogram(workload_type, "DB_deleteCourseById" , output_histogram_location, latency_delete_DB); }
 		
 		System.out.println("==================================================");
 		System.out.println("LATENCY ANALYSIS COMPLETED FOR DATABASE OPERATIONS");

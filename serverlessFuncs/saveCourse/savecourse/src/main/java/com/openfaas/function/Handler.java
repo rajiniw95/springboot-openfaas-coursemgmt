@@ -45,7 +45,7 @@ public class Handler extends com.openfaas.model.AbstractHandler {
             Timestamp timestamp_end = new Timestamp(System.currentTimeMillis()); 
             long end_time = timestamp_end.getTime();
             
-            // MONITORING: calculate time to completion of serverless invocation and add to global ArrayList
+            // MONITORING: calculate time to completion of serverless invocation  
             long db_latency = end_time - start_time;
             String str_db_latency = String.valueOf(db_latency);
 

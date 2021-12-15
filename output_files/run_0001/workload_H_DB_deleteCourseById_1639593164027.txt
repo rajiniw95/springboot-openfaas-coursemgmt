@@ -1,0 +1,48 @@
+Recorded latencies [in milli seconds]:
+Workload Type : workload_H
+Request/ Invocation/ DB Operation Type : DB_deleteCourseById
+Recorded completion times :
+[0, 1, 0, 0, 1, 1, 0, 1, 2, 1, 0, 1]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+       0.000 0.000000000000          5           1.00
+       0.000 0.100000000000          5           1.11
+       0.000 0.200000000000          5           1.25
+       0.000 0.300000000000          5           1.43
+       0.000 0.400000000000          5           1.67
+       1.000 0.500000000000         11           2.00
+       1.000 0.550000000000         11           2.22
+       1.000 0.600000000000         11           2.50
+       1.000 0.650000000000         11           2.86
+       1.000 0.700000000000         11           3.33
+       1.000 0.750000000000         11           4.00
+       1.000 0.775000000000         11           4.44
+       1.000 0.800000000000         11           5.00
+       1.000 0.825000000000         11           5.71
+       1.000 0.850000000000         11           6.67
+       1.000 0.875000000000         11           8.00
+       1.000 0.887500000000         11           8.89
+       1.000 0.900000000000         11          10.00
+       1.000 0.912500000000         11          11.43
+       2.000 0.925000000000         12          13.33
+       2.000 1.000000000000         12
+#[Mean    =        0.667, StdDeviation   =        0.624]
+#[Max     =        2.000, Total count    =           12]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+1
+90th Percentile : 
+1
+95th Percentile : 
+2
+99th Percentile : 
+2
+99.9th Percentile : 
+2
+99.99th Percentile : 
+2
+99.999th Percentile : 
+2

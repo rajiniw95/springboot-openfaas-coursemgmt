@@ -499,7 +499,10 @@ public class WorkloadGenerator {
             		System.out.println(response_body);
             		
             		// split response body by commas and assign to array
-            		String[] array_response = response_body.split(",");
+            		String[] array_response_with_latency = response_body.split(",");
+            
+                       // remove first element of response array (which is the DB latency value)
+            		String[] array_response = Arrays.copyOfRange(array_response_with_latency, 1, array_response_with_latency.length);
 
             		// get array size
             		int array_size = array_response.length;

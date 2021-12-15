@@ -1,0 +1,29 @@
+Recorded latencies [in milli seconds]:
+Workload Type : workload_C
+Request/ Invocation/ DB Operation Type : HTTP_retrieve
+Recorded completion times :
+[546]
+
+Histogram Distribution : 
+       Value     Percentile TotalCount 1/(1-Percentile)
+
+     546.000 0.000000000000          1           1.00
+     546.000 1.000000000000          1
+#[Mean    =      546.000, StdDeviation   =        0.000]
+#[Max     =      546.000, Total count    =            1]
+#[Buckets =           20, SubBuckets     =         2048]
+
+50th Percentile : 
+546
+90th Percentile : 
+546
+95th Percentile : 
+546
+99th Percentile : 
+546
+99.9th Percentile : 
+546
+99.99th Percentile : 
+546
+99.999th Percentile : 
+546

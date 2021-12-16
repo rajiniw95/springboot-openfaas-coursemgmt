@@ -184,9 +184,12 @@ public class CoursesApplication {
             			latency_request_type_1.add(delta_durations.get(i));     
     			}
     			for (int j = save_count; j < delta_durations.size(); j += 3) {
-            			latency_request_type_2.add(delta_durations.get(j));
-            			latency_request_type_3.add(delta_durations.get(j+1));
-            			latency_request_type_4.add(delta_durations.get(j+2));      
+    				if (delta_durations.get(j) != null)
+            				latency_request_type_2.add(delta_durations.get(j));
+            			if (delta_durations.get(j+1) != null)
+            				latency_request_type_3.add(delta_durations.get(j+1));
+            			if (delta_durations.get(j+2) != null)
+            				latency_request_type_4.add(delta_durations.get(j+2));      
     			}
     			
   			System.out.println("Latency durations for HTTP request type 01 : " + latency_request_type_1.toString());

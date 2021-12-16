@@ -183,6 +183,7 @@ public class CoursesApplication {
         		for (int i = 0; i < save_count; i++) {
             			latency_request_type_1.add(delta_durations.get(i));     
     			}
+    			System.out.println("workload_H i loop completed");
     			for (int j = save_count; j < delta_durations.size(); j += 3) {
     				if (delta_durations.get(j) != null)
             				latency_request_type_2.add(delta_durations.get(j));
@@ -191,6 +192,7 @@ public class CoursesApplication {
             			if (delta_durations.get(j+2) != null)
             				latency_request_type_4.add(delta_durations.get(j+2));      
     			}
+    			System.out.println("workload_H j loop completed");
     			
   			System.out.println("Latency durations for HTTP request type 01 : " + latency_request_type_1.toString());
   			System.out.println("Latency durations for HTTP request type 02 : " + latency_request_type_2.toString());

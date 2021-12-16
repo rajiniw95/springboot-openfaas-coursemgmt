@@ -40,7 +40,7 @@ Deletes all existing courses in the database
 
 50% CREATE new record, 50% DELETE (ZIPFIAN)
 
-Insert a set of records to the satabase and then delete all existing courses from database
+Insert a set of records to the database and then delete all existing courses from database
 
 ### workload_G : RETRIEVE_AND_UPDATE
 

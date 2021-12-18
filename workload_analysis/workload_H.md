@@ -41,18 +41,18 @@ Types of HTTP Repests in Workload H
 
 |Database Operation: CREATE 	|H:CREATE (500)		|H:CREATE (5,000)	|H:CREATE (50,000)		|H:CREATE (500,000)		|
 |---							|---				|---				|---					|---					|
-|<strong>Total Count</strong>   |500				|5000				|49848					|500000					|
-|Mean   	  					|64.360				|57.101				|2.257					|						|
-|Std Deviation   				|71.752				|63.059				|11.131					|						|	
-|50 th Percentile   			|43					|42					|1						|						|	
-|90 th Percentile    			|104				|81					|2						|						|	
-|95 th Percentile    			|184				|139				|4						|						|	
-|99 th Percentile    			|419				|399				|17						|						|	
-|99.9 th Percentile   		 	|713				|655				|141					|						|
-|99.99 th Percentile  			|713				|1086				|344					|						|
-|99.999 th Percentile  			|713				|1086				|1223					|						|
-|Max    						|713				|1086				|1223					|						|
-|<strong>No response rate 		|0%					|0%					|0.21%					|						|
+|<strong>Total Count</strong>   |500				|5000				|50000					|500000					|
+|Mean   	  					|64.360				|57.101				|						|						|
+|Std Deviation   				|71.752				|63.059				|						|						|	
+|50 th Percentile   			|43					|42					|						|						|	
+|90 th Percentile    			|104				|81					| 						|						|	
+|95 th Percentile    			|184				|139				| 						|						|	
+|99 th Percentile    			|419				|399				| 						|						|	
+|99.9 th Percentile   		 	|713				|655				|						|						|
+|99.99 th Percentile  			|713				|1086				|						|						|
+|99.999 th Percentile  			|713				|1086				|						|						|
+|Max    						|713				|1086				|						|						|
+|<strong>No response rate 		|0%					|0%					|						|						|
 <br>
 
 |HTTP Request Type: retrieve\_by\_id 	|H:retrieve\_by\_id (500)	|H:retrieve\_by\_id (5,000)	|H:retrieve\_by\_id (50,000)	|H:retrieve\_by\_id (500,000)	|
@@ -133,18 +133,18 @@ Types of HTTP Repests in Workload H
 
 |Database Operation: UPDATE 	|H:UPDATE (500)		|H:UPDATE (5,000)	|H:UPDATE (50,000)		|H:UPDATE (500,000)		|
 |---							|---				|---				|---					|---					|
-|<strong>Total Count</strong>   |500				|5000				|49819					|500000					|
-|Mean   	  					|85.094				|87.725				|89.926					|						|
-|Std Deviation   				|104.447			|117.131			|107.792				|						|	
-|50 th Percentile   			|47					|47					|46						|						|	
-|90 th Percentile    			|163				|161				|222					|						|	
-|95 th Percentile    			|258				|315				|352					|						|	
-|99 th Percentile    			|610				|631				|534					|						|	
-|99.9 th Percentile   		 	|745				|1069				|729					|						|
-|99.99 th Percentile  			|745				|1137				|864					|						|
-|99.999 th Percentile  			|745				|1137				|1087					|						|
-|Max    						|745				|1137				|1087 					|						|
-|<strong>No response rate 		|0%					|0%					|0.12%					|						|
+|<strong>Total Count</strong>   |500				|5000				|50000					|500000					|
+|Mean   	  					|85.094				|87.725				|						|						|
+|Std Deviation   				|104.447			|117.131			|						|						|	
+|50 th Percentile   			|47					|47					| 						|						|	
+|90 th Percentile    			|163				|161				|						|						|	
+|95 th Percentile    			|258				|315				|   					|						|	
+|99 th Percentile    			|610				|631				|						|						|	
+|99.9 th Percentile   		 	|745				|1069				|						|						|
+|99.99 th Percentile  			|745				|1137				|						|						|
+|99.999 th Percentile  			|745				|1137				|						|						|
+|Max    						|745				|1137				|	 					|						|
+|<strong>No response rate 		|0%					|0%					|						|						|
 
 |HTTP Request Type: delete 		 	|H:delete (500)			|H:delete (5,000)			|H:delete (50,000)			|H:delete (500,000)			|
 |---								|---					|---						|---						|---						|

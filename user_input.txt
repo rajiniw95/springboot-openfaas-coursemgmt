@@ -1,4 +1,4 @@
-workload_type = workload_E;
+workload_type = workload_G;
 
 dataset_location = /home/rajini/Desktop/coursemgmt-openfaas/datasets/course_list_dataset_500000.csv;
 

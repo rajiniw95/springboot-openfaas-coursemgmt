@@ -19,11 +19,12 @@ public class App {
     2. App.java: workload_type, request_type, output_histogram_location, input_data_file */
 
     // USER INPUT: UPDATE AS REQUIRED
-    public static String workload_type = "workload_G";
+    public static String workload_type = "workload_D";
     public static String request_type = "DB_ALL";
     public static String output_histogram_location = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/output_files_processed/";
-    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/input_files/workload_G_DB_ALL.txt";
-    
+    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/input_files/workload_D_DB_ALL.txt";
+    public static int no_operations = 2;
+
     public static String read_file_as_string(String file_name)throws Exception
   	{
     		String data = "";
@@ -37,16 +38,18 @@ public class App {
     	String values[] = data.split(", "); 
 
         int values_length = values.length;
-        int combined_length = values_length/2;
-        String[] values_combined = new String[combined_length];
+        int combined_length = values_length/no_operations;
+        int[] values_combined = new int[combined_length];
 
-        for (int i = 0; i < (values.length)/2; i++) {
-            values_combined[i] = values[i]+values[i+((values.length)/2)];
+        for (int i = 0; i < (values.length)/no_operations; i++) {
+            int val1 = Integer.parseInt(values[i]);
+            int val2 = Integer.parseInt(values[i+((values.length)/no_operations)]);
+            values_combined[i] = val1 + val2;
         }
 
         ArrayList<Long> latency_values = new ArrayList<Long>();
         for (int i = 0; i < values_combined.length; i++) {
-            latency_values.add(Long.parseLong(values_combined[i]));
+            latency_values.add(Long.valueOf(values_combined[i]));
         }
 		return latency_values;
   	}

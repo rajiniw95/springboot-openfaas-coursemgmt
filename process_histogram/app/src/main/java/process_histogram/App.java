@@ -17,13 +17,13 @@ public class App {
     /* NECESSARY UPDATES
     1. Add latency input values to file (file name to be defined in App.java)
     2. App.java: workload_type, request_type, output_histogram_location, input_data_file */
-    
-    // USER INPUT: UPDATE AS REQUIRED
-    public static String workload_type = "workloadAAA";
-    public static String request_type = "ALL";
-    public static String output_histogram_location = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/output_files_processed/";
-    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/data1.txt";
 
+    // USER INPUT: UPDATE AS REQUIRED
+    public static String workload_type = "workload_G";
+    public static String request_type = "DB_ALL";
+    public static String output_histogram_location = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/output_files_processed/";
+    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/input_files/workload_G_DB_ALL.txt";
+    
     public static String read_file_as_string(String file_name)throws Exception
   	{
     		String data = "";
@@ -34,10 +34,19 @@ public class App {
 	public static ArrayList<Long> get_latency_array(String file_name)throws Exception 
 	{
    		String data = read_file_as_string(file_name);
-    	String values[] = data.split(", ");
+    	String values[] = data.split(", "); 
+
+        int values_length = values.length;
+        int combined_length = values_length/2;
+        String[] values_combined = new String[combined_length];
+
+        for (int i = 0; i < (values.length)/2; i++) {
+            values_combined[i] = values[i]+values[i+((values.length)/2)];
+        }
+
         ArrayList<Long> latency_values = new ArrayList<Long>();
-        for (int i = 0; i < values.length; i++) {
-            latency_values.add(Long.parseLong(values[i]));
+        for (int i = 0; i < values_combined.length; i++) {
+            latency_values.add(Long.parseLong(values_combined[i]));
         }
 		return latency_values;
   	}

@@ -19,10 +19,10 @@ public class App {
     2. App.java: workload_type, request_type, output_histogram_location, input_data_file */
 
     // USER INPUT: UPDATE AS REQUIRED
-    public static String workload_type = "workload_D";
+    public static String workload_type = "workload_F_river";
     public static String request_type = "DB_ALL";
-    public static String output_histogram_location = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/output_files_processed/";
-    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/input_files/workload_D_DB_ALL.txt";
+    public static String output_histogram_location = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/output_files_processed/river/";
+    public static String input_data_file = "/Users/rajini/Documents/GitHub/springboot-openfaas-coursemgmt/process_histogram/input_files/river/workload_F_river_DB_ALL.txt";
     public static int no_operations = 2;
 
     public static String read_file_as_string(String file_name)throws Exception

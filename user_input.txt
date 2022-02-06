@@ -1,7 +1,7 @@
-workload_type = workload_B;
+workload_type = workload_F;
 
-dataset_location = /home/rajini/GitHub/springboot-openfaas-coursemgmt/datasets/course_list_dataset_4.csv;
+dataset_location = /home/rajini/GitHub/springboot-openfaas-coursemgmt/datasets/course_list_dataset_50000.csv;
 
-retrieve_count = 4;
+retrieve_count = 50000;
 
-output_histogram_location = /home/rajini/GitHub/springboot-openfaas-coursemgmt/output_files/river/4/;
+output_histogram_location = /home/rajini/GitHub/springboot-openfaas-coursemgmt/output_files/river/50000/;

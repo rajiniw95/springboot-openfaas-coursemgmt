@@ -22,12 +22,12 @@ import java.util.List;
 public class HTTPRequestGenerator {
 
 	// declare variables for URIs
-	private static String uri_home = "http://127.0.0.1:31112/";
-	private static String uri_new_course = "http://127.0.0.1:31112/showNewCourseForm/";
-	private static String uri_update_form = "http://127.0.0.1:31112/showFormForUpdate/";
-	private static String uri_save_course = "http://127.0.0.1:31112/saveCourse";
-	private static String uri_update_course = "http://127.0.0.1:31112/updateCourse";
-	private static String uri_delete_course = "http://127.0.0.1:31112/deleteCourse/";
+	private static String uri_home = "http://127.0.0.1:8080/";
+	private static String uri_new_course = "http://127.0.0.1:8080/showNewCourseForm/";
+	private static String uri_update_form = "http://127.0.0.1:8080/showFormForUpdate/";
+	private static String uri_save_course = "http://127.0.0.1:8080/saveCourse";
+	private static String uri_update_course = "http://127.0.0.1:8080/updateCourse";
+	private static String uri_delete_course = "http://127.0.0.1:8080/deleteCourse/";
 
 	private final CloseableHttpClient http_client = HttpClients.createDefault();
   	

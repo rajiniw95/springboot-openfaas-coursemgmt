@@ -7,8 +7,11 @@ import javax.persistence.*;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cid")
     private long id;
+
+    /*@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;*/
 
     @Column(name = "course_code")
     private String courseCode;

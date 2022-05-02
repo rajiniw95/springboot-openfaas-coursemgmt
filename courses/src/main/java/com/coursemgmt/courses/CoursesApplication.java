@@ -38,8 +38,8 @@ public class CoursesApplication {
 		HistogramGenerator hist_gen = new HistogramGenerator();
 		
 		// UPDATE if required (path to user input txt file)
-		// String user_input_file_location = "/home/rajini/Desktop/coursemgmt-openfaas/user_input.txt";
-		String user_input_file_location = "/home/rajini/GitHub/springboot-openfaas-coursemgmt/user_input.txt";
+		String user_input_file_location = "/home/rajini/Desktop/coursemgmt-openfaas/user_input.txt";
+		// String user_input_file_location = "/home/rajini/GitHub/springboot-openfaas-coursemgmt/user_input.txt";
 
 		System.out.println("READING USER INPUT FILE ...");
 		System.out.println("===========================");

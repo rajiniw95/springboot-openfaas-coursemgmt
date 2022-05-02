@@ -14,8 +14,8 @@ public class Handler extends com.openfaas.model.AbstractHandler {
 
     public Handler() {
         try {
-	    connection = DriverManager.getConnection("jdbc:mysql://10.96.0.2:3306/coursedb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true", "root", "password");
-	    // connection = DriverManager.getConnection("jdbc:mysql://10.43.0.2:3306/coursedb", "root", "password");
+	        // connection = DriverManager.getConnection("jdbc:mysql://10.96.0.2:3306/coursedb?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true", "root", "password");
+	        connection = DriverManager.getConnection("jdbc:mysql://10.43.0.2:3306/coursedb", "root", "password");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,7 +1,7 @@
 workload_type = workload_A;
 
-dataset_location = /home/rajini/Desktop/coursemgmt-openfaas/datasets/course_list_dataset_50000.csv;
+dataset_location = /home/rajini/Desktop/coursemgmt-openfaas/datasets/course_list_dataset_4.csv;
 
-retrieve_count = 50000;
+retrieve_count = 4;
 
-output_histogram_location = /home/rajini/Desktop/coursemgmt-openfaas/output_files/50000/;
+output_histogram_location = /home/rajini/Desktop/coursemgmt-openfaas/output_files/4/;

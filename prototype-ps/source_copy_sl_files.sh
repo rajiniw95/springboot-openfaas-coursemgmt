@@ -1,0 +1,1 @@
+scp -r $source_sl_path rajini@river-fe3.cs.uchicago.edu:$target_path

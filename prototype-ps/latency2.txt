@@ -1,0 +1,10 @@
+Set up the SQL instance at the target (seconds) = 
+.496647
+Deploy serverless functions at the target (seconds) = 
+16
+Total time for sequential execution of migration (seconds) = 
+44
+Copy serverless function files from source to target (seconds) = 
+64
+Copy serverless function files from source to target (seconds) = 
+3

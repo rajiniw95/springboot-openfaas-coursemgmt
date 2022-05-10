@@ -1,3 +1,5 @@
+start_time=$(date +%s)
+
 k=$(sudo kubectl get pods --all-namespaces | grep "mysql*" | grep "Running")
 
 # extract namespace of mysql pod
@@ -27,4 +29,9 @@ sudo kubectl exec $podname -n $namespace -- mysqldump -u root -ppassword coursed
 # copy dump.sql file to target
 scp -r $source_db_dump/dump.sql rajini@river-fe3.cs.uchicago.edu:$target_path
 
-scp -r $source_sql_k8s_yaml rajini@river-fe3.cs.uchicago.edu:$target_path
+end_time=$(date +%s)
+
+elapsed=$(( end_time - start_time ))
+
+echo "Generate and copy DB file from source to target (seconds) = " >> $latency_file_name
+echo $elapsed >> $latency_file_name

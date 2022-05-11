@@ -1,0 +1,8 @@
+Copy serverless function files from source to target (seconds) = 
+39
+Generate and copy DB file from source to target (seconds) = 
+19
+Copy yaml files to generate sql instance from source to target (seconds) = 
+7
+Set up the SQL instance at the target (seconds) = 
+.526416

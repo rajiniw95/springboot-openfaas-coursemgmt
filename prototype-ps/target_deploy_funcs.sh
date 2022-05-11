@@ -1,4 +1,4 @@
-start_time=$(date +%s)
+# start_time=$(date +%s)
 
 # TODO : get from variables.sh
 target_path='/home/rajini/prototype_ps/'
@@ -25,8 +25,8 @@ cd ..;
 echo $FILE;
 done
 
-end_time=$(date +%s)
+# end_time=$(date +%s)
 
-elapsed=$(( end_time - start_time ))
+# elapsed=$(( end_time - start_time ))
 
-echo $elapsed 
+# echo $elapsed 

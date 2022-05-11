@@ -2,13 +2,13 @@ start_time=$(date +%s)
 
 source variables.sh
 
-source source_copy_sl_files.sh &
+source source_copy_sl_files.sh < /home/rajini/Desktop/river-pw.sh &
 
-source source_copy_db_file.sh &
-
-source source_copy_sql_yaml.sh &
+source source_copy_sql_yaml.sh & < /home/rajini/Desktop/river-pw.sh &
 
 wait
+
+source source_copy_db_file.sh 
 
 setup_sql=`ssh rajini@river-fe3.cs.uchicago.edu 'bash -s' < target_setup_sql.sh` 
 setup_sql=${setup_sql: -7}

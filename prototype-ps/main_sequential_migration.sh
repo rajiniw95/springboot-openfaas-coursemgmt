@@ -4,6 +4,8 @@ source variables.sh
 
 source source_copy_sl_files.sh 
 
+source source_generate_db_file.sh 
+
 source source_copy_db_file.sh  
 
 source source_copy_sql_yaml.sh 

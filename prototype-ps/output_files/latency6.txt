@@ -1,12 +1,12 @@
-Copy serverless function files from source to target (seconds) = 
+Copy serverless function files from source to destination (seconds) = 
 40
-Generate and copy DB file from source to target (seconds) = 
+Generate and copy DB file from source to destination (seconds) = 
 18
-Copy yaml files to generate sql instance from source to target (seconds) = 
+Copy yaml files to generate sql instance from source to destination (seconds) = 
 6
-Set up the SQL instance at the target (seconds) = 
+Set up the SQL instance at the destination (seconds) = 
 .537082
-Deploy serverless functions at the target (seconds) = 
+Deploy serverless functions at the destination (seconds) = 
 6
 Total time for sequential execution of migration (seconds) = 
 66

@@ -1,7 +1,12 @@
+### create the mysql container instance at the destination from the copied yaml
+### runs at the destination
+
 start_time=$(date +%s.%6N)
 
-# TODO : get from variables.sh
-target_path='/home/rajini/prototype_ps/'
+# load path/ filename variables 
+source variables.sh
+
+cd $destination_path
 
 cd mysql-k8s
 

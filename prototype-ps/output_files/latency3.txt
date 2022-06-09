@@ -1,14 +1,14 @@
-Copy serverless function files from source to target (seconds) = 
+Copy serverless function files from source to destination (seconds) = 
 4
-Generate and copy DB file from source to target (seconds) = 
+Generate and copy DB file from source to destination (seconds) = 
 2
-Copy yaml files to generate sql instance from source to target (seconds) = 
+Copy yaml files to generate sql instance from source to destination (seconds) = 
 1
-Copy serverless function files from source to target (seconds) = 
+Copy serverless function files from source to destination (seconds) = 
 45
-Generate and copy DB file from source to target (seconds) = 
+Generate and copy DB file from source to destination (seconds) = 
 14
-Copy yaml files to generate sql instance from source to target (seconds) = 
+Copy yaml files to generate sql instance from source to destination (seconds) = 
 8
-Set up the SQL instance at the target (seconds) = 
+Set up the SQL instance at the destination (seconds) = 
 .648086

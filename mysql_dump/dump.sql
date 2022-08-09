@@ -38,7 +38,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1327278,'cs222','python','mary','200'),(1327279,'cs333','c','peter','300'),(1327280,'CS888','HCI','Sarah','100'),(1327281,'CS001','Discovering Computer Science','Todd Camacho','100'),(1327282,'CS002','Computer Science with Applications','Giana Chandler','300'),(1327283,'CS003','Introduction to Computer Science','Luciana Norris','300'),(1327284,'CS004','Introduction to Computing and Programming','Brittany Barajas','200');
+INSERT INTO `courses` VALUES (1327278,'cs222','python','mary','200'),(1327279,'cs333','c','peter','300'),(1327280,'CS888','HCI','Sarah','100'),(1327281,'CS001','Discovering Computer Science','Todd Camacho','100'),(1327282,'CS002','Computer Science with Applications','Giana Chandler','300'),(1327283,'CS003','Introduction to Computer Science','Luciana Norris','300');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-09  7:23:21
+-- Dump completed on 2022-08-09 18:33:13

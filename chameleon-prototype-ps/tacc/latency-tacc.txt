@@ -1,0 +1,8 @@
+Copy serverless function files from source to destination (seconds) = 
+3.121722
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.376800
+Copy serverless function files from source to destination (seconds) = 
+75.544793
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+1.377543

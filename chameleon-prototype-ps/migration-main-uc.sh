@@ -15,7 +15,7 @@ source variables.sh
 #echo $deploy_openfaas >> $latency_file_name
 
 ### Copy serverless function files from the source to the destination
-#source s2t_copy_sl_files.sh 
+source s2t_copy_sl_files.sh 
 
 ### Copy MySQL yaml for container creation from source to destination
 #source s2t_copy_sql_yaml.sh
@@ -28,9 +28,9 @@ source variables.sh
 #dump_link=$(source source_upload_db_file.sh)
 
 ### Deploy the serverless functions at the destination
-deploy_funcs=`ssh cc@192.5.87.211 'bash -s' < destination_deploy_funcs.sh`
+#deploy_funcs=`ssh cc@192.5.87.211 'bash -s' < destination_deploy_funcs.sh`
 # TODO: extract the last space delimited substring
-echo "DEPLOYED!!!!"
+#echo "DEPLOYED!!!!"
 deploy_funcs=${deploy_funcs: -6}
-echo "Deploy serverless functions at the destination (seconds) = " >> $latency_file_name
-echo $deploy_funcs >> $latency_file_name
+#echo "Deploy serverless functions at the destination (seconds) = " >> $latency_file_name
+#echo $deploy_funcs >> $latency_file_name

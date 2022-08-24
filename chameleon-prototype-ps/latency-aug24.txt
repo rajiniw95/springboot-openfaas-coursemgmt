@@ -1,0 +1,6 @@
+Copy serverless function files from source to destination (seconds) = 
+.005409
+Copy serverless function files from source to destination (seconds) = 
+.008620
+Copy serverless function files from source to destination (seconds) = 
+.008654

@@ -1,10 +1,15 @@
 ### copy the serverless function folder from the source to destination
 ### prompts for the cnet password if destination is river
 
+# line added on chameleon -- currently in chameleon-prototype-ps/ folder, need to get to the previous level to find the sl funcs folder
+# cd before starting to measure latency, because navigating placement in folder structure is not migration related 
+cd ..
+
 start_time=$(date +%s.%6N)
 
 # command for the actual work -- scp
-scp -r $source_sl_path $destination_ssh:$destination_path
+# scp -r $source_sl_path $destination_ssh:$destination_path
+tar -czvf sl-func-files.tar.gz $source_sl_path && ssh $destination_ssh "tar -xzv" < sl-func-files.tar.gz
 
 end_time=$(date +%s.%6N)
 

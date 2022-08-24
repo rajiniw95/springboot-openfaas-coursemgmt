@@ -18,7 +18,8 @@ source variables.sh
 source s2t_copy_sl_files.sh 
 
 ### Copy MySQL yaml for container creation from source to destination
-#source s2t_copy_sql_yaml.sh
+cd chameleon-prototype-ps # cd to folder with shell script -- directory changed in the previous script
+source s2t_copy_sql_yaml.sh
 
 ### Create the database dump at the source
 #source source_generate_db_file.sh

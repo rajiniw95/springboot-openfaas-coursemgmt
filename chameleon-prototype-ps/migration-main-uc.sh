@@ -22,7 +22,8 @@ cd chameleon-prototype-ps # cd to folder with shell script -- directory changed 
 source s2t_copy_sql_yaml.sh
 
 ### Create the database dump at the source
-#source source_generate_db_file.sh
+cd chameleon-prototype-ps # cd to folder with shell script -- directory changed in the previous script
+source source_generate_db_file.sh
 
 ### Copy the database dump file from the source to the target
 # upload the dump file and get the link
@@ -32,6 +33,6 @@ source s2t_copy_sql_yaml.sh
 #deploy_funcs=`ssh cc@192.5.87.211 'bash -s' < destination_deploy_funcs.sh`
 # TODO: extract the last space delimited substring
 #echo "DEPLOYED!!!!"
-deploy_funcs=${deploy_funcs: -6}
+#deploy_funcs=${deploy_funcs: -6}
 #echo "Deploy serverless functions at the destination (seconds) = " >> $latency_file_name
 #echo $deploy_funcs >> $latency_file_name

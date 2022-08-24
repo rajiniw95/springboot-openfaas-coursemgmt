@@ -1,6 +1,20 @@
-Copy serverless function files from source to destination (seconds) = 
-.005409
-Copy serverless function files from source to destination (seconds) = 
-.008620
-Copy serverless function files from source to destination (seconds) = 
-.008654
+Generate DB dump file at the source (seconds) = 
+.329763
+Generate DB dump file at the source (seconds) = 
+.291732
+Generate DB dump file at the source (seconds) = 
+.328300
+Deploy serverless functions at the destination (seconds) = 
+s.sh 0
+Generate DB dump file at the source (seconds) = 
+.293141
+Deploy serverless functions at the destination (seconds) = 
+s.sh 0
+Generate DB dump file at the source (seconds) = 
+.314576
+Deploy serverless functions at the destination (seconds) = 
+s.sh 0
+Generate DB dump file at the source (seconds) = 
+.305018
+Deploy serverless functions at the destination (seconds) = 
+sFuncs

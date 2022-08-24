@@ -1,8 +1,24 @@
 Copy serverless function files from source to destination (seconds) = 
-.796197
-Copy serverless function files from source to destination (seconds) = 
-.795675
-Copy serverless function files from source to destination (seconds) = 
-.787576
+.814376
 Copy yaml files to generate sql instance from source to destination (seconds) = 
-.678221
+.681545
+Copy serverless function files from source to destination (seconds) = 
+.806499
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.688215
+Copy serverless function files from source to destination (seconds) = 
+.814824
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.683675
+Copy serverless function files from source to destination (seconds) = 
+.809120
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.684435
+Copy serverless function files from source to destination (seconds) = 
+.824051
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.694960
+Copy serverless function files from source to destination (seconds) = 
+.817116
+Copy yaml files to generate sql instance from source to destination (seconds) = 
+.691196

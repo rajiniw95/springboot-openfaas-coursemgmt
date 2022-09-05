@@ -1,7 +1,7 @@
-workload_type = workload_A;
+workload_type = workload_C;
 
-dataset_location = /home/rajini/Desktop/coursemgmt-openfaas/datasets/course_list_dataset_4.csv;
+dataset_location = /home/cc/springboot-openfaas-coursemgmt/datasets/course_list_dataset_4.csv;
 
 retrieve_count = 4;
 
-output_histogram_location = /home/rajini/Desktop/coursemgmt-openfaas/output_files/4/;
+output_histogram_location = /home/cc/springboot-openfaas-coursemgmt/output_files/chameleon/;

@@ -15,15 +15,15 @@ source variables.sh
 #echo $deploy_openfaas >> $latency_file_name
 
 ### Copy serverless function files from the source to the destination
-source s2t_copy_sl_files.sh 
+#source s2t_copy_sl_files_rcp.sh 
 
 ### Copy MySQL yaml for container creation from source to destination
-cd chameleon-prototype-ps # cd to folder with shell script -- directory changed in the previous script
-source s2t_copy_sql_yaml.sh
+#source s2t_copy_sql_yaml_rcp.sh
+
+source s2t_copy_bundled_tarscp.sh
 
 ### Create the database dump at the source
-cd chameleon-prototype-ps # cd to folder with shell script -- directory changed in the previous script
-source source_generate_db_file.sh
+#source source_generate_db_file.sh
 
 ### Copy the database dump file from the source to the target
 # upload the dump file and get the link

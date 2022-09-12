@@ -1,6 +1,0 @@
-Generate DB dump file at the source (seconds) = 
-.326829
-Generate DB dump file at the source (seconds) = 
-.290633
-Generate DB dump file at the source (seconds) = 
-.309340

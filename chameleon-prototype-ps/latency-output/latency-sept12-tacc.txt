@@ -1,0 +1,36 @@
+Copy serverless function files from source to destination (seconds) -- tar|scp|untar = 
+.110081
+Copy yaml files to generate sql instance from source to destination (seconds) -- tar|scp|untar = 
+.886759
+Copy serverless function files from source to destination (seconds) -- tar|scp|untar = 
+.957061
+Copy yaml files to generate sql instance from source to destination (seconds) -- tar|scp|untar = 
+.697621
+Copy serverless function files from source to destination (seconds) -- scp = 
+1.705533
+Copy yaml files to generate sql instance from source to destination (seconds) -- scp = 
+.069656
+Copy serverless function files from source to destination (seconds) -- scp = 
+.069096
+Copy yaml files to generate sql instance from source to destination (seconds) -- scp = 
+.068908
+Copy serverless function files from source to destination (seconds) -- scp = 
+1.813590
+Copy yaml files to generate sql instance from source to destination (seconds) -- scp = 
+.742650
+Copy serverless function files from source to destination (seconds) -- rcp = 
+1.800096
+Copy yaml files to generate sql instance from source to destination (seconds) -- rcp = 
+.734890
+Copy bundled folder from source to destination (seconds) -- scp = 
+.008012
+Copy bundled folder from source to destination (seconds) -- scp = 
+.008083
+Copy bundled folder from source to destination (seconds) -- scp = 
+1.836371
+Copy bundled folder from source to destination (seconds) -- rcp = 
+1.698939
+Copy bundled folder from source to destination (seconds) -- tar|scp|untar = 
+.122038
+Copy bundled folder from source to destination (seconds) -- tar|scp|untar = 
+.883792

@@ -34,3 +34,9 @@ Copy bundled folder from source to destination (seconds) -- tar|scp|untar =
 .122038
 Copy bundled folder from source to destination (seconds) -- tar|scp|untar = 
 .883792
+Copy bundled folder from source to destination (seconds) -- tar|scp|untar = 
+.894059
+Set up the SQL instance at the destination (seconds) = 
+.805333
+Set up the SQL instance at the destination (seconds) = 
+.757326

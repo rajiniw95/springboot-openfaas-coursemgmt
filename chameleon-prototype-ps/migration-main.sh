@@ -20,7 +20,8 @@ source variables.sh
 ### Copy MySQL yaml for container creation from source to destination
 #source s2t_copy_sql_yaml_rcp.sh
 
-source s2t_copy_bundled_tarscp.sh
+### Bundle all file transfers together
+#source s2t_copy_bundled_tarscp.sh
 
 ### Create the database dump at the source
 #source source_generate_db_file.sh
@@ -36,3 +37,16 @@ source s2t_copy_bundled_tarscp.sh
 #deploy_funcs=${deploy_funcs: -6}
 #echo "Deploy serverless functions at the destination (seconds) = " >> $latency_file_name
 #echo $deploy_funcs >> $latency_file_name
+
+################ MIGRATE MYSQL DATABASE ################
+
+### Create the MySQL container instance at the destination
+# FIX : target IP is hardcoded
+#echo "Starting setup of SQL instance at the destination ..."
+setup_sql=`ssh $destination_ssh 'bash -s' < destination_setup_sql.sh`
+echo $setup_sql
+setup_sql=${setup_sql: -7}
+echo $setup_sql
+cd latency-output
+echo "Set up the SQL instance at the destination (seconds) = " >> $latency_file_name
+echo $setup_sql >> $latency_file_name

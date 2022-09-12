@@ -1,0 +1,2 @@
+Set up the SQL instance at the destination (seconds) = 
+.805333

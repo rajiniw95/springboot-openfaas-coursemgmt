@@ -3,12 +3,6 @@
 
 start_time=$(date +%s.%6N)
 
-sudo docker login
-
-sudo kubectl rollout status -n openfaas deploy/gateway
-
-sudo kubectl port-forward svc/gateway -n openfaas 31112:8080 &
-
 export OPENFAAS_URL="127.0.0.1:31112"
 
 # This command retrieves your password

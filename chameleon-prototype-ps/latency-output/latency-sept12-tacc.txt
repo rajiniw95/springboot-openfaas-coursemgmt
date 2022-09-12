@@ -40,3 +40,19 @@ Set up the SQL instance at the destination (seconds) =
 .805333
 Set up the SQL instance at the destination (seconds) = 
 .757326
+Set up the SQL instance at the destination (seconds) = 
+.736723
+Deploy OpenFaas at the destination (seconds) = 
+.259855
+Deploy OpenFaas at the destination (seconds) = 
+.246556
+Deploy OpenFaas at the destination (seconds) = 
+.257829
+Deploy OpenFaas at the destination (seconds) = 
+.241037
+Deploy OpenFaas at the destination (seconds) = 
+.246274
+Open tunnel for OpenFaas from k8s to the destination machine (seconds) = 
+.128925
+Login to the OpenFaas gatewat at the destination (seconds) = 
+.132142

@@ -1,8 +1,6 @@
 ### create the mysql container instance at the destination from the copied yaml
 ### runs at the destination
 
-echo "Executing at the destination site ..."
-
 start_time=$(date +%s.%6N)
 
 # load path/ filename variables 

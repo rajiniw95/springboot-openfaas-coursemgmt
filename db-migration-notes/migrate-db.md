@@ -1,15 +1,15 @@
 # Migrating the MySQL database using disk files
 
-** DATE: Sept 12, 2022 **
+**DATE: Sept 12, 2022**
 
-Main sql file extensions
+###Main sql file extensions
 
-- .frm – This is the extension of file which contains the schema or definition of the table.
+- *.frm* – This is the extension of file which contains the schema or definition of the table.
 - .myd – This is the extension of file which contains MyISAM table data.
 - .myi – This is the extension of file which contains MyISAM table indices.
 Should exist for all tables.
-- .opt - Whenever database is created or changed using MySQL commands, the characteristics of database are stored in text file namely db.opt file . 
-- .ibd - These are the files with extensions \*.ibd which stores the data and index of MySQL InnoDB tables. This type of file is created or used by MySQL InnoDB software and associated with it . 
+- *.opt* - Whenever database is created or changed using MySQL commands, the characteristics of database are stored in text file namely db.opt file . 
+- *.ibd* - These are the files with extensions \*.ibd which stores the data and index of MySQL InnoDB tables. This type of file is created or used by MySQL InnoDB software and associated with it . 
 
 InnoDB is a general-purpose storage engine that balances high reliability and high performance. In MySQL 8.0, InnoDB is the default MySQL storage engine. Unless you have configured a different default storage engine, issuing a CREATE TABLE statement without an ENGINE clause creates an InnoDB table.
 
@@ -27,6 +27,7 @@ To find the correct place to copy from
 
 - sudo su
 - find / -iname 'coursedb\*'
+
 where 'coursedb' is the name of the database to find. 
 
 **What files should we copy (transfer from source to target)???**
@@ -36,12 +37,17 @@ where 'coursedb' is the name of the database to find.
 - we still get the same errors so ended up copying the entire *\data* folder!!! -- Find out if we can load the database without copying the entire folder. 
 
 For ERROR 1006 (HY000) Can't create database (errno: 13) MySQL 5.6.1, we need to change permissions on the /data folder. 
+
 [https://stackoverflow.com/questions/18719748/error-1006-hy000-cant-create-database-errno-13-mysql-5-6-12](https://stackoverflow.com/questions/18719748/error-1006-hy000-cant-create-database-errno-13-mysql-5-6-12)
+
 **chown -R root:systemd-coredump file-path\data\**
+
 Change permission from root to systemd-coredump, where systemd-coredump is the process handling the docker mysql instance. 
 
 How do we find the location to copy the disk files to at the destination???
+
 HACK! -- figure out the proper way. 
+
 Create the mysql instance and the database at the destination machine and 'find' for coursedb. 
 
 After copying, to reload the database, 

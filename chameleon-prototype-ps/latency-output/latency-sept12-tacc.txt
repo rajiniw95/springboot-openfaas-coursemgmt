@@ -56,3 +56,31 @@ Open tunnel for OpenFaas from k8s to the destination machine (seconds) =
 .128925
 Login to the OpenFaas gatewat at the destination (seconds) = 
 .132142
+Copy database disk files from source to destination (seconds) -- scp = 
+1.715765
+Copy database disk files from source to destination (seconds) -- tar|scp|untar = 
+2.587020
+Copy database disk files from source to destination (seconds) -- scp = 
+1.657971
+Copy database disk files from source to destination (seconds) -- tar|scp|untar = 
+2.623388
+Copy database disk files from source to destination (seconds) -- rcp = 
+1.580171
+Copy database disk files from source to destination (seconds) -- rcp = 
+1.589605
+Copy database disk files from source to destination (seconds) -- rcp = 
+1.578007
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+
+Move the database disk files to the K8S container at the destination (seconds) = 
+

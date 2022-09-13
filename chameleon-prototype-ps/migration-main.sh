@@ -63,7 +63,7 @@ source variables.sh
 ### Move the copied database disk files to the relevant priviledged folder at the destination machine
 move_db_disk=`ssh $destination_ssh 'bash -s' < destination_move_db_file.sh`
 echo $move_db_disk
-move_db_disk=${move_db_disk: -7}
+move_db_disk=${move_db_disk: -8}
 echo $move_db_disk
 cd latency-output
 echo "Move the database disk files to the K8S container at the destination (seconds) = " >> $latency_file_name

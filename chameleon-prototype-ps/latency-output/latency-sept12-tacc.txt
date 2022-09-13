@@ -70,17 +70,7 @@ Copy database disk files from source to destination (seconds) -- rcp =
 1.589605
 Copy database disk files from source to destination (seconds) -- rcp = 
 1.578007
+Move the database disk files to the K8S container at the destination (seconds) =
+1.412861 
 Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
-Move the database disk files to the K8S container at the destination (seconds) = 
-
+1.453336

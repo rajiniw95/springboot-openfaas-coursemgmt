@@ -3,8 +3,8 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:31112
 functions:
-  getallcourses:
+  getcoursebyid:
     lang: java11
-    handler: ./getallcourses
-    image: rajiniw95/getallcourses:latest
+    handler: ./getcoursebyid
+    image: localhost:5001/getcoursebyid:latest
 

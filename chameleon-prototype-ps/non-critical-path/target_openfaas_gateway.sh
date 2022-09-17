@@ -1,4 +1,4 @@
-### deploy openfaas at the destination machine
+### deploy openfaas at the target machine
 ### runs at the destination
 
 start_time=$(date +%s.%6N)

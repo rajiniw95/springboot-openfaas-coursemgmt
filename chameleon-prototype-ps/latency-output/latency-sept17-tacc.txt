@@ -1,0 +1,6 @@
+Bundle files at the source (seconds) = 
+.085131
+Bundle files at the source (seconds) = 
+.083257
+Copy bundled folder from source to target (seconds) -- tar = 
+1.016140

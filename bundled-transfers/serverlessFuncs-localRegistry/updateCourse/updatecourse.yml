@@ -6,5 +6,5 @@ functions:
   updatecourse:
     lang: java11
     handler: ./updatecourse
-    image: rajiniw95/updatecourse:latest
+    image: localhost:5001/updatecourse:latest
 

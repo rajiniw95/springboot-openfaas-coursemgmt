@@ -4,3 +4,9 @@ Bundle files at the source (seconds) =
 .083257
 Copy bundled folder from source to target (seconds) -- tar = 
 1.016140
+Open tunnel for OpenFaas from k8s to the target (seconds) = 
+.129246
+Login to the OpenFaas gateway at the target (seconds) = 
+.138847
+Build serverless functions at the target (seconds) = 
+828

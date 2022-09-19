@@ -15,7 +15,7 @@ for FILE in *;
 do
 cd $FILE;
 FILE=${FILE,,}
-sudo faas-cli build -f $FILE.yml;
+#sudo faas-cli build -f $FILE.yml;
 cd ..;
 echo $FILE;
 done

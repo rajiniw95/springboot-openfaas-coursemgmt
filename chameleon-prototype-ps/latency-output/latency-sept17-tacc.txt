@@ -10,3 +10,5 @@ Login to the OpenFaas gateway at the target (seconds) =
 .138847
 Build serverless functions at the target (seconds) = 
 828
+Set up the SQL instance at the target (seconds) = 
+.781836

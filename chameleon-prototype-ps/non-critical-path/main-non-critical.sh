@@ -31,6 +31,18 @@ cd non-critical-path
 # cd ..
 # cd non-critical-path
 
+
+#### Create the MySQL container instance at the target
+setup_sql=`ssh $destination_ssh 'bash -s' < target_setup_sql_instance.sh`
+echo $setup_sql
+setup_sql=${setup_sql: -7}
+echo $setup_sql
+cd ../latency-output
+echo "Set up the SQL instance at the target (seconds) = " >> $latency_file_name
+echo $setup_sql >> $latency_file_name
+cd ..
+cd non-critical-path
+
 #### Build the serverless functions at the target
 build_funcs=`ssh $destination_ssh 'bash -s' < target_build_funcs.sh`
 echo "Function built!!!!"

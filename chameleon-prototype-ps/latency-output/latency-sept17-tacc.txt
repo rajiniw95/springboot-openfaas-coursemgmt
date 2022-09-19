@@ -12,3 +12,11 @@ Build serverless functions at the target (seconds) =
 828
 Set up the SQL instance at the target (seconds) = 
 .781836
+Open tunnel for OpenFaas from k8s to the target (seconds) = 
+.130910
+Login to the OpenFaas gateway at the target (seconds) = 
+.132127
+Set up the SQL instance at the target (seconds) = 
+.017596
+Set up the SQL instance at the target (seconds) = 
+.875170

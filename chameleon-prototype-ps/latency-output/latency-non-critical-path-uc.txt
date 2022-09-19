@@ -1,0 +1,22 @@
+Save tar files of the function images at the source (seconds) = 
+14.280309
+Save tar files of the function images at the source (seconds) = 
+13.834531
+Bundle files at the source (seconds) = 
+.075609
+Bundle files at the source (seconds) = 
+.083195
+Copy bundled folder from source to target (seconds) -- tar = 
+76.754580
+Open tunnel for OpenFaas from k8s to the target (seconds) = 
+.120006
+Login to the OpenFaas gateway at the target (seconds) = 
+.114813
+Set up the SQL instance at the target (seconds) = 
+.959134
+Load serverless function images at the target (seconds) = 
+5.685990
+Push serverless function images to the local image registry at the target (seconds) = 
+11.026553
+Deploy serverless functions at the target (seconds) = 
+.172605

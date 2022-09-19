@@ -19,7 +19,7 @@ end_time=$(date +%s.%6N)
 
 elapsed=$(echo "scale=6; $end_time - $start_time" | bc)
 
-cd latency-output/
+cd ../latency-output/
 
 echo "Bundle files at the source (seconds) = " >> $latency_file_name
 echo $elapsed >> $latency_file_name

@@ -35,7 +35,7 @@ Copy bundled folder from source to target (seconds) -- tar =
 Save tar files of the function images at the source (seconds) = 
 14.164081
 Bundle files at the source (seconds) = 
-.007844
+.086984
 Copy bundled folder from source to target (seconds) -- tar = 
 78.020421
 Save tar files of the function images at the source (seconds) = 

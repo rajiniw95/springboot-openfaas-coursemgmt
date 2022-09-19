@@ -3,7 +3,10 @@ cd ..
 source variables.sh
 cd non-critical-path
 
-#### Create bundled folder with all files for transfer to target 
+#### Save docker function images as tar files in the folder to be transferred
+# source source_save_func_images.sh
+
+#### Create bundled folder with files for transfer to target (mysql yaml, variable.sh)
 # source source_bundle_files.sh 
 
 #### Transfer bundled folder to target
@@ -31,7 +34,6 @@ cd non-critical-path
 # cd ..
 # cd non-critical-path
 
-
 #### Create the MySQL container instance at the target
 # setup_sql=`ssh $destination_ssh 'bash -s' < target_setup_sql_instance.sh`
 # echo $setup_sql
@@ -43,29 +45,29 @@ cd non-critical-path
 # cd ..
 # cd non-critical-path
 
-#### Build the serverless functions at the target
-# build_funcs=`ssh $destination_ssh 'bash -s' < target_build_func_images.sh`
-# build_funcs=${build_funcs: -15}
+#### Load the serverless function images at the target
+# load_func_images=`ssh $destination_ssh 'bash -s' < target_load_func_images.sh`
+# load_func_images=${load_func_images: -15}
 # cd ../latency-output
-# echo "Build serverless function images at the target (seconds) = " >> $latency_file_name
-# echo $build_funcs >> $latency_file_name
+# echo "Load serverless function images at the target (seconds) = " >> $latency_file_name
+# echo $load_func_images >> $latency_file_name
 # cd ..
 # cd non-critical-path
 
 #### Push function images to the local registry at the target
-# push_funcs=`ssh $destination_ssh 'bash -s' < target_push_func_images.sh`
-# push_funcs=${push_funcs: -15}
-# cd ../latency-output
-# echo "Push serverless function images to the local image registry at the target (seconds) = " >> $latency_file_name
-# echo $push_funcs >> $latency_file_name
-# cd ..
-# cd non-critical-path
+push_funcs=`ssh $destination_ssh 'bash -s' < target_push_func_images.sh`
+push_funcs=${push_funcs: -15}
+cd ../latency-output
+echo "Push serverless function images to the local image registry at the target (seconds) = " >> $latency_file_name
+echo $push_funcs >> $latency_file_name
+cd ..
+cd non-critical-path
 
 #### Deploy serverless functions at the target
-# deploy_funcs=`ssh $destination_ssh 'bash -s' < target_deploy_funcs.sh`
-# deploy_funcs=${deploy_funcs: -15}
-# cd ../latency-output
-# echo "Deploy serverless functions at the target (seconds) = " >> $latency_file_name
-# echo $deploy_funcs >> $latency_file_name
-# cd ..
-# cd non-critical-path
+deploy_funcs=`ssh $destination_ssh 'bash -s' < target_deploy_funcs.sh`
+deploy_funcs=${deploy_funcs: -15}
+cd ../latency-output
+echo "Deploy serverless functions at the target (seconds) = " >> $latency_file_name
+echo $deploy_funcs >> $latency_file_name 
+cd ..
+cd non-critical-path

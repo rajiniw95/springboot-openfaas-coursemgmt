@@ -26,3 +26,25 @@ Push serverless function images to the local image registry at the target (secon
 16.898466
 Deploy serverless functions at the target (seconds) = 
 1.222795
+Save tar files of the function images at the source (seconds) = 
+14.271112
+Bundle files at the source (seconds) = 
+.008429
+Copy bundled folder from source to target (seconds) -- tar = 
+79.204542
+Save tar files of the function images at the source (seconds) = 
+14.164081
+Bundle files at the source (seconds) = 
+.007844
+Copy bundled folder from source to target (seconds) -- tar = 
+78.020421
+Save tar files of the function images at the source (seconds) = 
+14.624754
+Copy bundled folder from source to target (seconds) -- tar = 
+79.649049
+Load serverless function images at the target (seconds) = 
+14.967346
+Push serverless function images to the local image registry at the target (seconds) = 
+18.261083
+Deploy serverless functions at the target (seconds) = 
+.822105

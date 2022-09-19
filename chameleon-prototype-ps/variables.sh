@@ -1,4 +1,4 @@
-destination_ssh='cc@129.114.109.232'
+destination_ssh='cc@129.114.109.239'
 
 source_sl_path='serverlessFuncs/'
 source_sl_registry_path='serverlessFuncs-localRegistry/' 
@@ -8,8 +8,9 @@ source_db_dump='/home/cc/springboot-openfaas-coursemgmt/mysql_dump/'
 source_sql_k8s_yaml='mysql-k8s/'
 
 bundled_folder='bundled-transfers/'
+sl_func_images='sl-func-images/'
 
-latency_file_name='latency-critical-path.txt'
+latency_file_name='latency-non-critical-path.txt'
 
 database_name='coursedb'
 

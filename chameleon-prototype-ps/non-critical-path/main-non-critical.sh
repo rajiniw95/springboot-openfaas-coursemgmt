@@ -44,12 +44,28 @@ cd non-critical-path
 # cd non-critical-path
 
 #### Build the serverless functions at the target
-build_funcs=`ssh $destination_ssh 'bash -s' < target_build_funcs.sh`
-echo "Function built!!!!"
-build_funcs=${build_funcs: -9}
-cd ../latency-output
-echo "Build serverless function images at the target (seconds) = " >> $latency_file_name
-echo $build_funcs >> $latency_file_name
-cd ..
-cd non-critical-path
+# build_funcs=`ssh $destination_ssh 'bash -s' < target_build_func_images.sh`
+# build_funcs=${build_funcs: -15}
+# cd ../latency-output
+# echo "Build serverless function images at the target (seconds) = " >> $latency_file_name
+# echo $build_funcs >> $latency_file_name
+# cd ..
+# cd non-critical-path
 
+#### Push function images to the local registry at the target
+# push_funcs=`ssh $destination_ssh 'bash -s' < target_push_func_images.sh`
+# push_funcs=${push_funcs: -15}
+# cd ../latency-output
+# echo "Push serverless function images to the local image registry at the target (seconds) = " >> $latency_file_name
+# echo $push_funcs >> $latency_file_name
+# cd ..
+# cd non-critical-path
+
+#### Deploy serverless functions at the target
+# deploy_funcs=`ssh $destination_ssh 'bash -s' < target_deploy_funcs.sh`
+# deploy_funcs=${deploy_funcs: -15}
+# cd ../latency-output
+# echo "Deploy serverless functions at the target (seconds) = " >> $latency_file_name
+# echo $deploy_funcs >> $latency_file_name
+# cd ..
+# cd non-critical-path

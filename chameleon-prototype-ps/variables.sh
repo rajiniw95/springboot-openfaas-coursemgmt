@@ -9,7 +9,7 @@ source_sql_k8s_yaml='mysql-k8s/'
 
 bundled_folder='bundled-transfers/'
 
-latency_file_name='latency-sept17-tacc.txt'
+latency_file_name='latency-critical-path.txt'
 
 database_name='coursedb'
 

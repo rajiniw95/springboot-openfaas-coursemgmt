@@ -20,3 +20,9 @@ Set up the SQL instance at the target (seconds) =
 .017596
 Set up the SQL instance at the target (seconds) = 
 .875170
+Build serverless function images at the target (seconds) = 
+693.889509
+Push serverless function images to the local image registry at the target (seconds) = 
+16.898466
+Deploy serverless functions at the target (seconds) = 
+1.222795

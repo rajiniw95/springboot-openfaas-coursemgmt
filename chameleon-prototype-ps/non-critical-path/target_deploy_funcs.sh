@@ -1,5 +1,3 @@
-start_time=$(date +%s)
-
 # load path/ filename variables
 source bundled-transfers/variables.sh
 
@@ -11,17 +9,19 @@ echo $sl_funcs_path
 
 cd $sl_funcs_path
 
+start_time=$(date +%s.%6N)
+
 for FILE in *;
 do
 cd $FILE;
 FILE=${FILE,,}
-#sudo faas-cli build -f $FILE.yml;
+sudo faas-cli deploy -f $FILE.yml;
 cd ..;
 echo $FILE;
 done
 
-end_time=$(date +%s)
+end_time=$(date +%s.%6N)
 
-elapsed=$(( end_time - start_time ))
+elapsed=$(echo "scale=6; $end_time - $start_time" | bc)
 
 echo $elapsed 

@@ -1,0 +1,10 @@
+Get mysql pod names for source and target = 
+.997327
+Transfer mysql database files from source to target = 
+1.604506
+Get mysql pod names for source and target = 
+1.038967
+Get mysql pod names for source and target = 
+1.011063
+Transfer mysql database files from source to target = 
+1.685794

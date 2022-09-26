@@ -1,5 +1,5 @@
-destination_ssh='cc@129.114.109.221'
-destination_ip='129.114.109.221'
+destination_ssh='cc@129.114.109.232'
+destination_ip='129.114.109.232'
 	
 source_sl_path='serverlessFuncs/'
 source_sl_registry_path='serverlessFuncs-localRegistry/' 
@@ -11,7 +11,7 @@ source_sql_k8s_yaml='mysql-k8s/'
 bundled_folder='bundled-transfers/'
 sl_func_images='sl-func-images/'
 
-latency_file_name='latency-non-critical-path-uc.txt'
+latency_file_name='latency-critical-path-tacc.txt'
 
 database_name='coursedb'
 

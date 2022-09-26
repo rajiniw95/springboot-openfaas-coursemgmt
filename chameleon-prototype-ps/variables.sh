@@ -1,5 +1,6 @@
-destination_ssh='cc@192.5.86.200'
-
+destination_ssh='cc@129.114.109.221'
+destination_ip='129.114.109.221'
+	
 source_sl_path='serverlessFuncs/'
 source_sl_registry_path='serverlessFuncs-localRegistry/' 
 destination_path='/home/cc/'

@@ -8,3 +8,21 @@ Get mysql pod names for source and target =
 1.011063
 Transfer mysql database files from source to target = 
 1.685794
+Get mysql pod names for source and target = 
+.991885
+Get mysql pod names for source and target = 
+.977016
+Get mysql pod names for source and target = 
+.992559
+Transfer mysql database files from source to target =
+1.624882
+Get mysql pod names for source and target = 
+1.005055
+Transfer mysql database files from source to target = 
+1.590730
+Get mysql pod names for source and target = 
+.981399
+Transfer mysql database files from source to target = 
+1.653401
+Reload the database at the target (seconds) = 
+.330085

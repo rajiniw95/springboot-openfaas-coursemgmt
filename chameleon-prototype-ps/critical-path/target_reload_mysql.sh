@@ -1,6 +1,6 @@
 start_time=$(date +%s.%6N)
 
-sudo kubectl exec mysql-79c846684f-2vrfm -- service mysql restart
+sudo kubectl exec mysql-79c846684f-2vrfm -- service mysql reload
 
 end_time=$(date +%s.%6N)
 

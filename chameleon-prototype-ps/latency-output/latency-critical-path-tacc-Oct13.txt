@@ -1,0 +1,5 @@
+
+Transfer cold data files from source to target = 
+1.248956
+Load hot data at the target (seconds) = 
+.186165

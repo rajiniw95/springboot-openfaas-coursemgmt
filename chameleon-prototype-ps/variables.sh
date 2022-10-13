@@ -11,7 +11,7 @@ source_sql_k8s_yaml='mysql-k8s/'
 bundled_folder='bundled-transfers/'
 sl_func_images='sl-func-images/'
 
-latency_file_name='latency-critical-path-tacc-Oct12.txt'
+latency_file_name='latency-critical-path-tacc-Oct13.txt'
 
 database_name='coursedb'
 

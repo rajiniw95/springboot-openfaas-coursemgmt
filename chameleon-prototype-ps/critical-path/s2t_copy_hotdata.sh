@@ -3,7 +3,7 @@ start_time=$(date +%s.%6N)
 sudo kubectl exec mysql-0 -- mysqladmin flush-logs
 
 #TODO: get binary log file name for the last written log file -- hardcode for now
-sudo kubectl exec mysql-0 -- tar -cf - $bin_log_filename | ssh $destination_ssh sudo kubectl exec -i mysql-0 -- tar xf - -C /
+sudo kubectl exec mysql-0 -- tar -cf - var/lib/mysql/mysqld-bin.000006 | ssh $destination_ssh sudo kubectl exec -i mysql-0 -- tar xf - -C /
 
 end_time=$(date +%s.%6N)
 

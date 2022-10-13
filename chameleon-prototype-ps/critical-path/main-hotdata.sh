@@ -3,12 +3,12 @@ cd ..
 source variables.sh
 cd critical-path
 
-#source s2t_transfer_db_files.sh
+source s2t_copy_hotdata.sh
 
-#reload_db=`ssh $destination_ssh 'bash -s' < target_reload_mysql.sh`
-#reload_db=${reload_db: -7}
+#load_hotdata=`ssh $destination_ssh 'bash -s' < target_load_hotdata.sh`
+#load_hotdata=${load_hotdata: -7}
 #cd ../latency-output
-#echo "Reload the database at the target (seconds) = " >> $latency_file_name
-#echo $reload_db >> $latency_file_name
+#echo "Load hot data at the target (seconds) = " >> $latency_file_name
+#echo $load_hotdata >> $latency_file_name
 #cd ..
 #cd critical-path

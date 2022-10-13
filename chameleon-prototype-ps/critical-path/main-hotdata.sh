@@ -3,7 +3,7 @@ cd ..
 source variables.sh
 cd critical-path
 
-#source s2t_copy_hotdata.sh
+source s2t_copy_hotdata.sh
 
 load_hotdata=`ssh $destination_ssh 'bash -s' < target_load_hotdata.sh`
 load_hotdata=${load_hotdata: -7}

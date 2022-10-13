@@ -6,7 +6,7 @@
 
 start_time=$(date +%s.%6N)
 
-sudo kubectl exec $podname_source -- tar --exclude='/var/lib/mysql/performance_schema/*' --exclude='/var/lib/mysql/mysql/*' -cf - /var/lib/mysql | ssh $destination_ssh sudo kubectl exec -i $podname_target -- tar xf - -C /
+sudo kubectl exec mysql-0 -- tar --exclude='/var/lib/mysql/performance_schema/*' --exclude='/var/lib/mysql/mysql/*' -cf - /var/lib/mysql | ssh $destination_ssh sudo kubectl exec -i mysql-0 -- tar xf - -C /
 
 end_time=$(date +%s.%6N)
 

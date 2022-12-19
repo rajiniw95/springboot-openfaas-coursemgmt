@@ -29,7 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.4'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.5.4'
-    runtimeOnly 'mysql:mysql-connector-java:8.0.26'
+    // runtimeOnly 'mysql:mysql-connector-java:8.0.26'
     // runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
 
